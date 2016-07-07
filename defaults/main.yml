@@ -1,0 +1,3 @@
+---
+rclone_version: "1.30"
+gather_facts: no

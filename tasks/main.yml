@@ -1,0 +1,49 @@
+---
+- name: rclone - define tmpdir
+  set_fact:
+    rclone_setup_tmp_dir: "/tmp/rclone_setup"
+
+- name: install rclone - make temp dir
+  file:
+    path: "{{ rclone_setup_tmp_dir}}"
+    state: directory
+    mode: 0775
+
+- name: install rclone - unzip package
+  unarchive:
+    src: http://downloads.rclone.org/rclone-current-linux-amd64.zip
+    dest: "{{ rclone_setup_tmp_dir}}"
+    copy: no
+  become: yes
+
+- name: install rclone - copy binary
+  copy:
+    src: "{{ rclone_setup_tmp_dir}}/rclone-v{{ rclone_version }}-linux-amd64/rclone"
+    dest: "/usr/sbin/rclone"
+    mode: 0755
+    owner: root
+    group: root
+    remote_src: true
+  become: yes
+
+- name: install rclone - make dir for local manpages
+  file:
+    path: /usr/local/share/man/man1
+    state: directory
+    mode: 0775
+    owner: root
+    group: staff
+
+- name: install rclone - copy manpage
+  copy:
+    src: "{{ rclone_setup_tmp_dir}}/rclone-v{{ rclone_version }}-linux-amd64/rclone.1"
+    dest: "/usr/local/share/man/man1/rclone.1"
+    mode: 0644
+    owner: root
+    group: root
+    remote_src: true
+  become: yes
+
+- name: install rclone - install manpage
+  shell: mandb
+  become: yes
