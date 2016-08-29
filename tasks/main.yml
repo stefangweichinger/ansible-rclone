@@ -36,7 +36,7 @@
     remote_src: true
   become: yes
 
-- name: Debian/Ubuntu install rclone - make dir for local manpages
+- name: Debian install rclone - make dir for local manpages
   file:
     path: /usr/local/share/man/man1
     state: directory
