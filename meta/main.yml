@@ -12,7 +12,10 @@ galaxy_info:
   - name: Debian
     versions:
     - jessie
+  - name: Ubuntu
+    versions:
+    - xenial
+  - name: CentOS 
   categories:
   - networking
   - system
-

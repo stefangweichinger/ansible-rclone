@@ -3,6 +3,16 @@
   set_fact:
     rclone_setup_tmp_dir: "/tmp/rclone_setup"
 
+- name: Debian/Ubuntu  install unzip if needed
+  apt: name=unzip state=present
+  become: yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'    
+
+- name: Cent OS/RedHat install unzip if needed
+  yum: name=unzip state=present
+  become: yes
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
+
 - name: install rclone - make temp dir
   file:
     path: "{{ rclone_setup_tmp_dir}}"
@@ -11,7 +21,7 @@
 
 - name: install rclone - unzip package
   unarchive:
-    src: http://downloads.rclone.org/rclone-current-linux-amd64.zip
+    src: https://github.com/ncw/rclone/releases/download/v{{ rclone_version }}/rclone-v{{ rclone_version }}-linux-amd64.zip
     dest: "{{ rclone_setup_tmp_dir}}"
     copy: no
   become: yes
@@ -26,13 +36,24 @@
     remote_src: true
   become: yes
 
-- name: install rclone - make dir for local manpages
+- name: Debian install rclone - make dir for local manpages
   file:
     path: /usr/local/share/man/man1
     state: directory
     mode: 0775
     owner: root
     group: staff
+  when: ansible_distribution == 'Debian'  
+
+- name: Cent OS/RedHat/Ubutnu install rclone - make dir for local manpages
+  file:
+    path: /usr/local/share/man/man1
+    state: directory
+    mode: 0775
+    owner: root
+    group: root
+  become: yes  
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat' or ansible_distribution == 'Ubuntu'
 
 - name: install rclone - copy manpage
   copy:
