@@ -45,7 +45,7 @@
     group: staff
   when: ansible_distribution == 'Debian'  
 
-- name: Cent OS/RedHat/Ubutnu install rclone - make dir for local manpages
+- name: Cent OS/RedHat/Ubuntu install rclone - make dir for local manpages
   file:
     path: /usr/local/share/man/man1
     state: directory
