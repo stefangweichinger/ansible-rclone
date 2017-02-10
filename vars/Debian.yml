@@ -1,0 +1,8 @@
+---
+
+PACKAGES:
+  - unzip
+
+MAN_PAGES:
+  OWNER: root
+  GROUP: staff

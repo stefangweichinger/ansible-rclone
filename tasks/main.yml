@@ -1,17 +1,24 @@
 ---
+- debug: var=ansible_os_family
+- name: gather os specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - '{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml'
+    - '{{ ansible_distribution }}.yml'
+    - '{{ ansible_os_family }}.yml'
+  tags:
+    - vars
+
 - name: rclone - define tmpdir
   set_fact:
     rclone_setup_tmp_dir: "/tmp/rclone_setup"
 
-- name: Debian/Ubuntu  install unzip if needed
-  apt: name=unzip state=present
+- name: Install required packages
+  package:
+    name: '{{ item }}'
+    state: latest
   become: yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'    
-
-- name: Cent OS/RedHat install unzip if needed
-  yum: name=unzip state=present
-  become: yes
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
+  with_items: '{{ PACKAGES }}'
 
 - name: install rclone - make temp dir
   file:
@@ -24,6 +31,7 @@
     src: https://github.com/ncw/rclone/releases/download/v{{ rclone_version }}/rclone-v{{ rclone_version }}-linux-amd64.zip
     dest: "{{ rclone_setup_tmp_dir}}"
     copy: no
+    creates: '/tmp/rclone_setup/rclone-v{{ rclone_version }}-linux-amd64'
   become: yes
 
 - name: install rclone - copy binary
@@ -36,24 +44,13 @@
     remote_src: true
   become: yes
 
-- name: Debian install rclone - make dir for local manpages
+- name: install rclone - make dir for local manpages
   file:
     path: /usr/local/share/man/man1
     state: directory
     mode: 0775
-    owner: root
-    group: staff
-  when: ansible_distribution == 'Debian'  
-
-- name: Cent OS/RedHat/Ubuntu install rclone - make dir for local manpages
-  file:
-    path: /usr/local/share/man/man1
-    state: directory
-    mode: 0775
-    owner: root
-    group: root
-  become: yes  
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat' or ansible_distribution == 'Ubuntu'
+    owner: '{{ MAN_PAGES.OWNER }}'
+    group: '{{ MAN_PAGES.GROUP }}'
 
 - name: install rclone - copy manpage
   copy:
@@ -68,3 +65,4 @@
 - name: install rclone - install manpage
   shell: mandb
   become: yes
+  changed_when: false
