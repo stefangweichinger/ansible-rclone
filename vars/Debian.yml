@@ -5,4 +5,5 @@ PACKAGES:
 
 MAN_PAGES:
   OWNER: root
-  GROUP: staff
+  GROUP: root
+  PATH: '/usr/share/man/man1'

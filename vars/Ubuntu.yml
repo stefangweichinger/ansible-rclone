@@ -7,3 +7,4 @@ PACKAGES:
 MAN_PAGES:
   OWNER: root
   GROUP: root
+  PATH: '/usr/local/share/man/man1'
