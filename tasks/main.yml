@@ -46,7 +46,7 @@
 
 - name: install rclone - make dir for local manpages
   file:
-    path: /usr/local/share/man/man1
+    path: '{{ MAN_PAGES.PATH }}'
     state: directory
     mode: 0775
     owner: '{{ MAN_PAGES.OWNER }}'
@@ -55,7 +55,7 @@
 - name: install rclone - copy manpage
   copy:
     src: "{{ rclone_setup_tmp_dir}}/rclone-v{{ rclone_version }}-linux-amd64/rclone.1"
-    dest: "/usr/local/share/man/man1/rclone.1"
+    dest: "{{ MAN_PAGES.PATH }}/rclone.1"
     mode: 0644
     owner: root
     group: root
