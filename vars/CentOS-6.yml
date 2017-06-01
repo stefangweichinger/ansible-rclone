@@ -3,7 +3,6 @@
 PACKAGES:
   - unzip
   - man
-  - makewhatis
 
 MAN_PAGES:
   OWNER: root
