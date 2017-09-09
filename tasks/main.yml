@@ -51,6 +51,7 @@
     mode: 0775
     owner: '{{ MAN_PAGES.OWNER }}'
     group: '{{ MAN_PAGES.GROUP }}'
+  become: yes
 
 - name: install rclone - copy manpage
   copy:
