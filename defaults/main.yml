@@ -1,6 +1,6 @@
 ---
 
-rclone_version: "1.36"
+rclone_version: "1.38"
 gather_facts: no
 
 # Defaults in case no variables for OS are chosen
