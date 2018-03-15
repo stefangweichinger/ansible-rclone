@@ -32,6 +32,33 @@
     dest: "{{ rclone_setup_tmp_dir}}"
     copy: no
     creates: '/tmp/rclone_setup/rclone-v{{ rclone_version }}-linux-amd64'
+  when: rclone_version != 'beta'
+  become: yes
+
+- name: install rclone - download file containing current beta version number
+  get_url:
+    url: https://beta.rclone.org/version.txt
+    dest: '{{ rclone_setup_tmp_dir }}/version.txt'
+  when: rclone_version == "beta"
+
+- name: install rclone - read in beta version number from {{ rclone_setup_tmp_dir }}/version.txt
+  slurp:
+    src: '{{ rclone_setup_tmp_dir }}/version.txt'
+  register: rclone_version_beta
+  when: rclone_version == 'beta'
+
+- name: install rclone - format rclone_beta_version variable and redefine as rclone_version
+  set_fact:
+    rclone_version: "{{ rclone_version_beta['content'] | b64decode | replace ('rclone v', '', 1) | trim }}"
+  when: rclone_version == 'beta'
+
+- name: install rclone - unzip package
+  unarchive:
+    src: https://beta.rclone.org/rclone-beta-latest-linux-amd64.zip
+    dest: "{{ rclone_setup_tmp_dir}}"
+    copy: no
+    creates: '/tmp/rclone_setup/rclone-v{{ rclone_version }}-linux-amd64'
+  when: rclone_version_beta
   become: yes
 
 - name: install rclone - copy binary
