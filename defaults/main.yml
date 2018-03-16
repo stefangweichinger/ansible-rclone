@@ -1,5 +1,5 @@
 ---
-
+#rclone version can be defined as a release number or as beta
 rclone_version: "1.39"
 gather_facts: no
 
