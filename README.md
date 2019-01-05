@@ -13,3 +13,4 @@ Usage:
   roles:
     - rclone
 ```
+4. The variable `install_manpages` can be used to toggle the installation of manpages.
