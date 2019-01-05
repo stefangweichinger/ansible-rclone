@@ -79,6 +79,7 @@
     owner: '{{ MAN_PAGES.OWNER }}'
     group: '{{ MAN_PAGES.GROUP }}'
   become: yes
+  when: install_manpages
 
 - name: install rclone - copy manpage
   copy:
@@ -89,8 +90,10 @@
     group: root
     remote_src: true
   become: yes
+  when: install_manpages
 
 - name: install rclone - install manpage
   shell: mandb
   become: yes
   changed_when: false
+  when: install_manpages
