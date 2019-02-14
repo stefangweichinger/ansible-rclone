@@ -1,6 +1,6 @@
 ---
 #rclone version can be defined as a release number or as beta
-rclone_version: "1.46"
+rclone_version: "1.45"
 gather_facts: no
 
 install_manpages: true
