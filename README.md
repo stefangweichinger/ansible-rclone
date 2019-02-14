@@ -1,5 +1,7 @@
 # ansible-rclone
 
+[![Build Status](https://travis-ci.org/stefangweichinger/ansible-rclone.svg?branch=master)](https://travis-ci.org/stefangweichinger/ansible-rclone)
+
 ansible role to install [rclone](https://github.com/ncw/rclone)
 
 Usage:
