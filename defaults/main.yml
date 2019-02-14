@@ -1,6 +1,8 @@
 ---
 #rclone version can be defined as a release number or as beta
-rclone_version: "1.45"
+rclone_version: "1.46"
+# rclone_arch can be defined as an architecture (e.g. arm, mips, 386) listed at https://github.com/ncw/rclone/releases
+rclone_arch: amd64
 gather_facts: no
 
 install_manpages: true
