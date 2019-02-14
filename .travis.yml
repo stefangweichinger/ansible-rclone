@@ -1,57 +1,38 @@
 ---
 language: python
-python: "2.7"
-
-sudo: required
-dist: trusty
-services:
-  - docker
+services: docker
 
 env:
-  - distribution: centos
-    version: 7
-  # - distribution: centos
-  #   version: 6 # package issue with mandb
-  - distribution: fedora
-    version: 25
-  - distribution: ubuntu
-    version: 16.04
-  - distribution: ubuntu
-    version: 14.04
-  - distribution: ubuntu
-    version: 12.04
+  global:
+    - ROLE_NAME: ansible-rclone
+  matrix:
+    - MOLECULE_DISTRO: centos7
+    - MOLECULE_DISTRO: centos6
+    - MOLECULE_DISTRO: fedora29
+    - MOLECULE_DISTRO: fedora28
+    - MOLECULE_DISTRO: fedora28
+    - MOLECULE_DISTRO: fedora27
+    - MOLECULE_DISTRO: fedora26
+    - MOLECULE_DISTRO: fedora25
+    - MOLECULE_DISTRO: ubuntu1810
+    - MOLECULE_DISTRO: ubuntu1804
+    - MOLECULE_DISTRO: ubuntu1604
+    - MOLECULE_DISTRO: debian9
+    - MOLECULE_DISTRO: debian8
 
-before_install:
-  - 'sudo docker run -it --name=ansible-rclone --privileged --detach --volume="${PWD}":/etc/ansible/roles/ansible-rclone:rw spikebyte/docker:latest-${distribution}-${version} bash'
+install:
+  # Install test dependencies.
+  - pip install molecule docker
+
+before_script:
+  # Use actual Ansible Galaxy role name for the project directory.
+  #- cd ../
+  #- mv ansible-role-$ROLE_NAME stefangweichinger.$ROLE_NAME
+  #- cd stefangweichinger.$ROLE_NAME
 
 script:
-  # 1. Syntax check
-  - "sudo docker exec ansible-rclone ansible-playbook /etc/ansible/roles/ansible-rclone/tests/test.yml -i tests/inventory --syntax-check"
+  # Run tests.
+  - molecule test
 
-  # 2. Run playbook to execute role
-  - "sudo docker exec ansible-rclone ansible-playbook /etc/ansible/roles/ansible-rclone/tests/test.yml -i tests/inventory --connection=local"
-
-  # 3. HERE, WRITE SOME TESTS to verify that your role has produced the desired
-  # effect on the target system. Your tests should be bash commands that
-  # complete with an exit status of 0 for a pass, and non-zero for a failure.
-  #
-  # This example tests whether 'hello' exists in /tmp/hello.txt.
-  - >
-    sudo docker exec ansible-rclone bash -c 'file /usr/sbin/rclone' | grep -q 'executable'
-    && (echo 'Test for role result: pass' && exit 0)
-    || (echo 'Test for role result: fail' && exit 1)
-
-  # 4. Idempotence test (run playbook again to confirm nothing changes)
-  - >
-    sudo docker exec ansible-rclone ansible-playbook /etc/ansible/roles/ansible-rclone/tests/test.yml -i tests/inventory --connection=local
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
-
-
-notifications:
-  webhooks:
-    urls:
-      - https://galaxy.ansible.com/api/v1/notifications
-    on_success: always
-    on_failure: never
+#notifications:
+  #webhooks: https://galaxy.ansible.com/api/v1/notifications/
