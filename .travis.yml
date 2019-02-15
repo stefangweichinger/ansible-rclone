@@ -7,12 +7,12 @@ env:
     - ROLE_NAME: ansible-rclone
   matrix:
     - MOLECULE_DISTRO: centos7
-    - MOLECULE_DISTRO: centos6
+    # - MOLECULE_DISTRO: centos6
     # - MOLECULE_DISTRO: fedora29
-    - MOLECULE_DISTRO: fedora28
+    # - MOLECULE_DISTRO: fedora28
     - MOLECULE_DISTRO: fedora27
     - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: ubuntu1604
+    # - MOLECULE_DISTRO: ubuntu1604
     - MOLECULE_DISTRO: ubuntu1404
     - MOLECULE_DISTRO: debian9
     - MOLECULE_DISTRO: debian8
