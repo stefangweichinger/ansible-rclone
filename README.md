@@ -1,6 +1,6 @@
 # ansible-rclone
 
-[![Build Status](https://travis-ci.org/stefangweichinger/ansible-rclone.svg?branch=master)](https://travis-ci.org/stefangweichinger/ansible-rclone)
+[![Build Status](https://travis-ci.org/stefangweichinger/ansible-rclone.svg?branch=molecule_tests)](https://travis-ci.org/stefangweichinger/ansible-rclone)
 
 ansible role to install [rclone](https://github.com/ncw/rclone)
 
@@ -16,3 +16,8 @@ Usage:
     - rclone
 ```
 4. The variable `install_manpages` can be used to toggle the installation of manpages.
+
+## new molecule based tests
+
+pls feel free to review my first steps into testing the role with molecule
+additional distros might be added/tested soon
