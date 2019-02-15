@@ -1,17 +1,12 @@
 ---
-- debug: var=ansible_os_family
-- name: gather os specific variables
+- name: Gather OS specific variables
   include_vars: "{{ item }}"
   with_first_found:
-    - '{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml'
+    - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
     - '{{ ansible_distribution }}.yml'
     - '{{ ansible_os_family }}.yml'
   tags:
     - vars
-
-- name: rclone - define tmpdir
-  set_fact:
-    rclone_setup_tmp_dir: "/tmp/rclone_setup"
 
 - name: Install required packages
   package:
@@ -20,58 +15,31 @@
   become: yes
   with_items: '{{ PACKAGES }}'
 
-- name: install rclone - make temp dir
+- name: Create temporary working directory
   file:
-    path: "{{ rclone_setup_tmp_dir}}"
+    path: "{{ rclone_setup_tmp_dir }}"
     state: directory
     mode: 0775
 
-- name: install rclone - unzip package
-  unarchive:
-    src: https://github.com/ncw/rclone/releases/download/v{{ rclone_version }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}.zip
-    dest: "{{ rclone_setup_tmp_dir}}"
-    copy: no
-    creates: '/tmp/rclone_setup/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}'
-  when: rclone_version != 'beta'
-  become: yes
+- name: Do stable install
+  include_tasks: stable.yml
+  when: rclone_version is undefined or rclone_version != 'beta'
 
-- name: install rclone - download file containing current beta version number
-  get_url:
-    url: https://beta.rclone.org/version.txt
-    dest: '{{ rclone_setup_tmp_dir }}/version.txt'
-  when: rclone_version == "beta"
-
-- name: install rclone - read in beta version number from {{ rclone_setup_tmp_dir }}/version.txt
-  slurp:
-    src: '{{ rclone_setup_tmp_dir }}/version.txt'
-  register: rclone_version_beta
+- name: Do beta install
+  include_tasks: beta.yml
   when: rclone_version == 'beta'
 
-- name: install rclone - format rclone_beta_version variable and redefine as rclone_version
-  set_fact:
-    rclone_version: "{{ rclone_version_beta['content'] | b64decode | replace ('rclone v', '', 1) | trim }}"
-  when: rclone_version == 'beta'
-
-- name: install rclone - unzip package
-  unarchive:
-    src: https://beta.rclone.org/rclone-beta-latest-linux-{{ rclone_arch }}.zip
-    dest: "{{ rclone_setup_tmp_dir}}"
-    copy: no
-    creates: '/tmp/rclone_setup/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}'
-  when: rclone_version_beta
-  become: yes
-
-- name: install rclone - copy binary
+- name: Copy rclone binary
   copy:
     src: "{{ rclone_setup_tmp_dir}}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
-    dest: "/usr/sbin/rclone"
+    dest: "/usr/bin/rclone"
     mode: 0755
     owner: root
     group: root
     remote_src: true
   become: yes
 
-- name: install rclone - make dir for local manpages
+- name: Make dir for local manpages
   file:
     path: '{{ MAN_PAGES.PATH }}'
     state: directory
@@ -81,7 +49,7 @@
   become: yes
   when: install_manpages
 
-- name: install rclone - copy manpage
+- name: Copy rclone manpage
   copy:
     src: "{{ rclone_setup_tmp_dir}}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone.1"
     dest: "{{ MAN_PAGES.PATH }}/rclone.1"
@@ -92,7 +60,7 @@
   become: yes
   when: install_manpages
 
-- name: install rclone - install manpage
+- name: Update mandb
   shell: mandb
   become: yes
   changed_when: false
