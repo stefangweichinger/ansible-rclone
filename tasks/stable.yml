@@ -3,7 +3,7 @@
     - name: Check latest stable rclone version number
       uri:
         url: https://downloads.rclone.org/version.txt
-        return_content: yes
+        return_content: true
       register:
         rclone_latest_version
     - set_fact:
@@ -14,5 +14,5 @@
   unarchive:
     src: https://downloads.rclone.org/v{{ rclone_version }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}.zip
     dest: "{{ rclone_setup_tmp_dir }}"
-    remote_src: yes
+    remote_src: true
     creates: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}"
