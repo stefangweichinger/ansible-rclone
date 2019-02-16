@@ -11,8 +11,8 @@
 - name: Install required packages
   package:
     name: '{{ item }}'
-    state: latest
-  become: yes
+    state: present
+  become: true
   with_items: '{{ PACKAGES }}'
 
 - name: Create temporary working directory
@@ -37,7 +37,7 @@
     owner: root
     group: root
     remote_src: true
-  become: yes
+  become: true
 
 - name: Make dir for local manpages
   file:
@@ -46,7 +46,7 @@
     mode: 0775
     owner: '{{ MAN_PAGES.OWNER }}'
     group: '{{ MAN_PAGES.GROUP }}'
-  become: yes
+  become: true
   when: install_manpages
 
 - name: Copy rclone manpage
@@ -57,11 +57,11 @@
     owner: root
     group: root
     remote_src: true
-  become: yes
+  become: true
   when: install_manpages
 
 - name: Update mandb
-  shell: mandb
-  become: yes
+  command: mandb
+  become: true
   changed_when: false
   when: install_manpages
