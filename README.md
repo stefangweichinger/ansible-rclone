@@ -6,7 +6,7 @@ ansible role to install [rclone](https://github.com/ncw/rclone)
 
 ## Usage
 
-1. Clone this repo into your local roles-directory or install via `ansible-galaxy`.
+1. Clone this repo into your local roles-directory or install via `ansible-galaxy install stefangweichinger.rclone`.
 2. Add role to the hosts you want rclone installed to.
 
 ## Role Variables
