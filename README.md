@@ -1,25 +1,39 @@
 # ansible-rclone
 
-[![Build Status](https://travis-ci.org/stefangweichinger/ansible-rclone.svg?branch=prep_merge)](https://travis-ci.org/stefangweichinger/ansible-rclone)
+[![Build Status](https://travis-ci.org/stefangweichinger/ansible-rclone.svg?branch=master)](https://travis-ci.org/stefangweichinger/ansible-rclone)
 
 ansible role to install [rclone](https://github.com/ncw/rclone)
 
 ## Usage
 
-1. Clone this repo into your local roles-directory
+1. Clone this repo into your local roles-directory or install via `ansible-galaxy`.
 2. Add role to the hosts you want rclone installed to:
 
-``` ---
-- hosts: rclone-hosts
-  roles:
-    - rclone
+## Role Variables
 
-## Variables
+Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-```
-1. The variable `install_manpages` can be used to toggle the installation of manpages.
-2. The variable `rclone_arch` chooses the target architecture (for example 'amd64').
-2. The variable `rclone_version` chooses the version of rclone ('1.64').
+    install_manpages: "true"
+
+This can be used to toggle the installation of manpages.
+
+    rclone_arch: "amd64"
+
+This variable chooses the target architecture (for example 'amd64').
+
+    rclone_version: ""
+
+The version of rclone to install.
+
+## Dependencies
+
+None.
+
+## Example Playbook
+
+    - hosts: rclone-hosts
+      roles:
+        - rclone
 
 ## new molecule based tests
 
