@@ -13,9 +13,15 @@ galaxy_info:
       versions:
         - stretch
         - jessie
+    - name: Fedora
+      versions:
+        - 29
+        - 27
     - name: Ubuntu
       versions:
+        - bionic
         - xenial
+        - trusty
   categories:
     - networking
     - system
