@@ -9,13 +9,19 @@ galaxy_info:
   license: 'GNU General Public License v3'
   min_ansible_version: '2.0'
   platforms:
-  - name: Debian
-    versions:
-    - jessie
-  - name: Ubuntu
-    versions:
-    - xenial
-  - name: RHEL 
+    - name: Debian
+      versions:
+        - stretch
+        - jessie
+    - name: Fedora
+      versions:
+        - 29
+        - 27
+    - name: Ubuntu
+      versions:
+        - bionic
+        - xenial
+        - trusty
   categories:
-  - networking
-  - system
+    - networking
+    - system
