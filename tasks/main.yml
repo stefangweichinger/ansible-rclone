@@ -36,7 +36,7 @@
 
 - name: Copy rclone binary
   copy:
-    src: "{{ rclone_setup_tmp_dir}}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
+    src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
     dest: "/usr/bin/rclone"
     mode: 0755
     owner: root
@@ -56,7 +56,7 @@
 
 - name: Copy rclone manpage
   copy:
-    src: "{{ rclone_setup_tmp_dir}}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone.1"
+    src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone.1"
     dest: "{{ MAN_PAGES.PATH }}/rclone.1"
     mode: 0644
     owner: root
