@@ -6,7 +6,8 @@
         return_content: true
       register:
         rclone_latest_beta_version
-    - set_fact:
+    - name: Set variable for beta version
+      set_fact:
         rclone_version: "{{ rclone_latest_beta_version.content | replace ('rclone v', '', 1) | trim }}"
 
 - name: Get rclone latest beta version
