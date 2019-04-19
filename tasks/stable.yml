@@ -6,6 +6,7 @@
         return_content: true
       register:
         rclone_latest_version
+      check_mode: no
     - name: Set variable to latest stable version number
       set_fact:
         rclone_version: "{{ rclone_latest_version.content | replace ('rclone v', '', 1) | trim }}"
