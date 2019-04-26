@@ -20,6 +20,7 @@ molecule:
   stage: test
   script:
     - docker -v
+    - docker run hello-world
     - python -V
     # - pip install ansible molecule docker
     - ansible --version
