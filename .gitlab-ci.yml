@@ -1,7 +1,12 @@
 ---
+
 image: quay.io/ansible/molecule
+
 stages:
   - test
+
+services:
+  - docker:dind
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip"
