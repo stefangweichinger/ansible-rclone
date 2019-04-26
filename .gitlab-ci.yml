@@ -18,6 +18,8 @@ cache:
 
 molecule:
   stage: test
+  tags:
+    - docker
   script:
     - docker -v
     - docker run hello-world
