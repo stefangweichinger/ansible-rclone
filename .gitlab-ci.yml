@@ -1,0 +1,27 @@
+---
+image: quay.io/ansible/molecule
+stages:
+  - test
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip"
+
+cache:
+  paths:
+    - .pip/
+    - virtenv/
+
+# before_script:
+# - pip install virtualenv
+# - virtualenv virtenv
+# - source virtenv/bin/activate
+
+molecule:
+  stage: test
+  script:
+    - docker -v
+    - python -V
+    # - pip install ansible molecule docker
+    - ansible --version
+    - molecule --version
+    - molecule test
