@@ -43,6 +43,7 @@
     group: root
     remote_src: true
   become: true
+  when: not ansible_check_mode
 
 - name: Make dir for local manpages
   file:
@@ -63,7 +64,7 @@
     group: root
     remote_src: true
   become: true
-  when: install_manpages
+  when: install_manpages and not ansible_check_mode
 
 - name: Update mandb
   command: mandb

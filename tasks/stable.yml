@@ -26,17 +26,21 @@
 
 - name: Do we have the rclone GPG Key?
   shell: gpg --list-keys FBF737ECE9F8AB18604BD2AC93935E02FF3B54FA
+  args:
+    warn: no
+  failed_when: gpg_key.rc not in [0,2]
   register: gpg_key
 
 - name: Get rclone GPG Key if we don't have it
   shell: gpg --recv-keys FBF737ECE9F8AB18604BD2AC93935E02FF3B54FA
-  when: gpg_key.rc != 0
+  when: gpg_key.rc is defined and gpg_key.rc != 0
 
 - name: Check that SHA256SUMS is signed by the GPG key and that the downloaded archive matches
   shell: sha256sum -c --ignore-missing <(gpg --verify --trust-model always --output=- SHA256SUMS)
   args:
     chdir: "{{ rclone_setup_tmp_dir }}"
     executable: /bin/bash
+  when: gpg_key.rc is defined
 
 - name: Extract rclone stable version {{ rclone_version }}
   unarchive:
@@ -44,4 +48,4 @@
     dest: "{{ rclone_setup_tmp_dir }}"
     remote_src: yes
     creates: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}"
-
+  when: not ansible_check_mode
