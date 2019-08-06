@@ -24,7 +24,7 @@
   file:
     path: "{{ rclone_setup_tmp_dir }}"
     state: directory
-    mode: 0775
+    mode: '0775'
 
 - name: Do stable install
   include_tasks: stable.yml
@@ -38,7 +38,7 @@
   copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
     dest: "/usr/bin/rclone"
-    mode: 0755
+    mode: '0755'
     owner: root
     group: root
     remote_src: true
@@ -48,7 +48,7 @@
   file:
     path: '{{ MAN_PAGES.PATH }}'
     state: directory
-    mode: 0775
+    mode: '0775'
     owner: '{{ MAN_PAGES.OWNER }}'
     group: '{{ MAN_PAGES.GROUP }}'
   become: true
@@ -58,7 +58,7 @@
   copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone.1"
     dest: "{{ MAN_PAGES.PATH }}/rclone.1"
-    mode: 0644
+    mode: '0644'
     owner: root
     group: root
     remote_src: true
