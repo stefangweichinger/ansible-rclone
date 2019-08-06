@@ -17,6 +17,14 @@ platforms:
     privileged: false
     pre_build_image: true
 
+  - name: debian8
+    image: "geerlingguy/docker-debian8-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
   - name: debian9
     image: "geerlingguy/docker-debian9-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
@@ -25,8 +33,8 @@ platforms:
     privileged: false
     pre_build_image: true
 
-  - name: debian8
-    image: "geerlingguy/docker-debian8-ansible:latest"
+  - name: debian10
+    image: "geerlingguy/docker-debian10-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
@@ -43,6 +51,14 @@ platforms:
 
   - name: fedora29
     image: "geerlingguy/docker-fedora29-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+  - name: fedora30
+    image: "geerlingguy/docker-fedora30-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
