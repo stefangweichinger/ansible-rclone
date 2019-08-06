@@ -11,10 +11,12 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
+        - buster
         - stretch
         - jessie
     - name: Fedora
       versions:
+        - 30
         - 29
         - 27
     - name: Ubuntu
