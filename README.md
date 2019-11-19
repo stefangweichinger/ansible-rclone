@@ -37,9 +37,9 @@ The version of rclone to install. `rclone_version` is no longer set as a default
 
 The location to install the rclone config file if you provide `rclone_configs`
 
-    rclone_configs
+    rclone_configs: ""
 
-This variable allows for predefined remote configs to be loaded. rclone_configs must be a YAML list with a name, and properties which can be any key, value. See the example below which configures a Google Drive remote:
+This variable allows for predefined remote configs to be loaded. `rclone_configs` must be a YAML list with a name variable and a properties variable which is another list of arbitrary key value pairs. See the example below which would configure a Google Drive remote:
 
 ```
 rclone_configs:
