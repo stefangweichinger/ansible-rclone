@@ -44,6 +44,12 @@
     remote_src: true
   become: true
 
+- name: Set up rclone config
+  template:
+    src: ../templates/rclone.conf.j2
+    dest: {{ rclone_config_location }}
+  when: rclone_configs is defined
+
 - name: Make dir for local manpages
   file:
     path: '{{ MAN_PAGES.PATH }}'

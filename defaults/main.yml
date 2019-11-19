@@ -7,6 +7,9 @@ install_manpages: true
 # Defaults in case no variables for OS are chosen
 rclone_setup_tmp_dir: "/tmp/rclone_setup"
 
+# The location to install the config file if configured
+rclone_config_location: "/root/.config/rclone/rclone.conf"
+
 PACKAGES:
   - unzip
 
