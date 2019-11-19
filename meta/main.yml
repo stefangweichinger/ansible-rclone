@@ -16,6 +16,7 @@ galaxy_info:
         - jessie
     - name: Fedora
       versions:
+        - 31
         - 30
         - 29
         - 27
