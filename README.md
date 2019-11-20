@@ -33,24 +33,6 @@ This variable chooses the target architecture (for example 'amd64').
 
 The version of rclone to install. `rclone_version` is no longer set as a default, but if provided as a variable, can be set to a specific version number or "beta" to install the latest beta version.
 
-    rclone_config_location: "/root/.config/rclone/rclone.conf"
-
-The location to install the rclone config file if you provide `rclone_configs`
-
-    rclone_configs: ""
-
-This variable allows for predefined remote configs to be loaded. `rclone_configs` must be a YAML list with a name variable and a properties variable which is another list of arbitrary key value pairs. See the example below which would configure a Google Drive remote:
-
-```
-rclone_configs:
-  - name: ExampleGoogleDriveRemote
-    properties:
-      type: drive
-      client_id: 12345
-      client_secret: 67890
-      token: {"access_token":"","token_type":"","refresh_token":"","expiry":""}
-```
-
 ## Dependencies
 
 None.
