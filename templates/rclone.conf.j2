@@ -1,7 +1,0 @@
-{% for config in rclone_configs %}
-[{{ config.name }}]
-{% for key, value in config.properties.items() %}
-{{ key }} = {{ value }}
-{% endfor %}
-
-{% endfor %}
