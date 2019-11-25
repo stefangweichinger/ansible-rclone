@@ -51,6 +51,52 @@ rclone_configs:
       token: {"access_token":"","token_type":"","refresh_token":"","expiry":""}
 ```
 
+### rclone_configs detailed example
+
+The `rclone_configs` variable is used to recreate the `rclone.conf` file. This config file stores the rclone remotes that have been defined and are usable. This is an alternative to simply copying a stored `rclone.conf` file directly.
+
+The `rclone_configs` simply takes a list of YAML objects which must have a `name` which will map to the name of the remote, and a `properties` which can be any key, value pairs which will map to the variables stored under that remote. These should be the ones expected by the `rclone.conf` file for the remote type you're configuring.
+
+For example, to recreate a standard encrypted Google Drive mount setup, the `rclone.conf` will look similar to below, assuming you have your encypted files stored in the "media" folder on Google Drive:
+
+```
+[google-drive]
+type = drive
+client_id = <CLIENT_ID>
+client_secret = <CLIENT_SECRET>
+token = {"access_token":"<ACCESS_TOKEN>","token_type":"Bearer","refresh_token":"<REFRESH_TOKEN>","expiry":"<DATETIME>"}
+root_folder_id = <ROOT_FOLDER_ID>
+
+[encrypted-media]
+type = crypt
+remote = google-drive:media
+filename_encryption = standard
+password = <PASSWORD>
+password2 = <PASSWORD2>
+```
+
+To enable ansible-rclone to recreate that config file, you can provide an `rclone_configs` variable as follows.
+Note that this should always be encrypted if stored publicly as it gives access to your remotes:
+
+```
+rclone_configs:
+  - name: google-drive
+    properties:
+      type: drive
+      client_id: <CLIENT_ID>
+      client_secret: <CLIENT_SECRET>
+      token: {"access_token":"<ACCESS_TOKEN>","token_type":"Bearer","refresh_token":"<REFRESH_TOKEN>","expiry":"<DATETIME>"}
+      root_folder_id = <ROOT_FOLDER_ID>
+  - name: encrypted-media
+    properties:
+      type: crypt
+      remote: google-drive:media
+      filename_encryption: standard
+      password: <PASSWORD>
+      password2: <PASSWORD2>
+
+```
+
 ## Dependencies
 
 None.
