@@ -45,6 +45,11 @@
     remote_src: true
   become: true
 
+- name: Ensure sbin/rclone file does not exist.
+  file:
+    state: absent
+    path: /usr/sbin/rclone
+
 - name: Set up rclone config
   template:
     src: rclone.conf.j2
