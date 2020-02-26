@@ -47,7 +47,7 @@
 
 - name: Create config directory
   file:
-    path: '{{ rclone_config_location }}'
+    path: '{{ rclone_config_location | dirname }}'
     state: directory
     mode: '0700'
 
