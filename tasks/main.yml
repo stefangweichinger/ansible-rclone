@@ -8,11 +8,11 @@
   tags:
     - vars
 
-- name: Update repositories cache on Ubuntu Xenial
+- name: Update repositories cache on Ubuntu
   apt:
     update_cache: true
   become: true
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+  when: ansible_distribution == 'Ubuntu'
 
 - name: Install required packages
   package:
