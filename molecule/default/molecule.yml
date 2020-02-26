@@ -6,9 +6,6 @@ driver:
 lint: |
   set -e
   yamllint .
-  ansible-lint
-  options:
-    config-file: molecule/yaml-lint.yml
 platforms:
 
   - name: centos7

@@ -3,10 +3,10 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
-  options:
-    config-file: molecule/yaml-lint.yml
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
 platforms:
   - name: instance
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
@@ -19,8 +19,10 @@ provisioner:
   name: ansible
   playbooks:
     converge: ../playbook.yml
-  lint:
-    name: ansible-lint
+  lint: |
+    set -e
+    yamllint .
+    ansible-lint
 scenario:
   name: travis
   test_sequence:
