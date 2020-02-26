@@ -50,6 +50,7 @@
     path: '{{ rclone_config_location | dirname }}'
     state: directory
     mode: '0700'
+  when: rclone_configs is defined
 
 - name: Set up rclone config
   template:
