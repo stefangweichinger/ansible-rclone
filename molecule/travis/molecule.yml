@@ -6,7 +6,7 @@ driver:
 lint: |
   set -e
   yamllint .
-  ansible-lint
+  ansible-lint ./molecule/playbook.yml
 platforms:
   - name: instance
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
@@ -35,7 +35,7 @@ scenario:
     - converge
     - idempotence
     # - side_effect
-    #- verify
+    # - verify
     - destroy
 verifier:
   name: testinfra
