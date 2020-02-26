@@ -27,6 +27,9 @@
     state: directory
     mode: '0775'
 
+- name: Test existence of rclone
+  include_tasks: does_rclone_exist.yml
+
 - name: Do stable install
   include_tasks: stable.yml
   when: rclone_version is undefined or rclone_version != 'beta'
@@ -38,12 +41,18 @@
 - name: Copy rclone binary
   copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
-    dest: "/usr/bin/rclone"
+    dest: "/usr/local/bin/rclone"
     mode: '0755'
     owner: root
     group: root
     remote_src: true
   become: true
+
+- name: Create a directory if it does not exist
+  file:
+    path: '{{ rclone_config_location }}'
+    state: directory
+    mode: '0700'
 
 - name: Set up rclone config
   template:
