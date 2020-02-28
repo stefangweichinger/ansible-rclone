@@ -46,14 +46,14 @@
   become: true
 
 - name: Check if /usr/sbin/rclone exists
-  stat: 
+  stat:
     path: "/usr/sbin/rclone"
   register: sbin_rclone
 
 - name: Issue warning if /usr/sbin/rclone exists.
-  command: 
+  command:
     cmd: 'true'
-  when: 
+  when:
     - sbin_rclone.stat.exists
     - ('/usr/sbin/rclone exists.' | warn_me())
 
