@@ -3,10 +3,10 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
-  options:
-    config-file: molecule/yaml-lint.yml
+lint: |
+  set -e
+  yamllint .
+  ansible-lint ./molecule/playbook.yml
 platforms:
 
   - name: centos7
@@ -71,14 +71,6 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
-    pre_build_image: true
-
-  - name: ubuntu1404
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu1404}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: false
     pre_build_image: true
 
   - name: ubuntu1604

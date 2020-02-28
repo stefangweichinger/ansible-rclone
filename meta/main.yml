@@ -24,7 +24,6 @@ galaxy_info:
       versions:
         - bionic
         - xenial
-        - trusty
   galaxy_tags:
     - networking
     - system
