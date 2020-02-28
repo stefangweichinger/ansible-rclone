@@ -38,17 +38,24 @@
 - name: Copy rclone binary
   copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
-    dest: "/usr/bin/rclone"
+    dest: "/usr/local/bin/rclone"
     mode: '0755'
     owner: root
     group: root
     remote_src: true
   become: true
 
-- name: Ensure sbin/rclone file does not exist.
-  file:
-    state: absent
-    path: /usr/sbin/rclone
+- name: Check if /usr/sbin/rclone exists
+  stat: 
+    path: "/usr/sbin/rclone"
+  register: sbin_rclone
+
+- name: Issue warning if /usr/sbin/rclone exists.
+  command: 
+    cmd: 'true'
+  when: 
+    - sbin_rclone.stat.exists
+    - ('/usr/sbin/rclone exists.' | warn_me())
 
 - name: Set up rclone config
   template:
