@@ -50,7 +50,7 @@ rclone_configs:
       type: drive
       client_id: 12345
       client_secret: 67890
-      token: {"access_token":"","token_type":"","refresh_token":"","expiry":""}
+      token: '{"access_token":"","token_type":"","refresh_token":"","expiry":""}'
 ```
 
 ### rclone_configs detailed example
@@ -66,7 +66,7 @@ For example, to recreate a standard encrypted Google Drive mount setup, the `rcl
 type = drive
 client_id = <CLIENT_ID>
 client_secret = <CLIENT_SECRET>
-token = {"access_token":"<ACCESS_TOKEN>","token_type":"Bearer","refresh_token":"<REFRESH_TOKEN>","expiry":"<DATETIME>"}
+token = '{"access_token":"<ACCESS_TOKEN>","token_type":"Bearer","refresh_token":"<REFRESH_TOKEN>","expiry":"<DATETIME>"}'
 root_folder_id = <ROOT_FOLDER_ID>
 
 [encrypted-media]
@@ -87,7 +87,7 @@ rclone_configs:
       type: drive
       client_id: <CLIENT_ID>
       client_secret: <CLIENT_SECRET>
-      token: {"access_token":"<ACCESS_TOKEN>","token_type":"Bearer","refresh_token":"<REFRESH_TOKEN>","expiry":"<DATETIME>"}
+      token: '{"access_token":"<ACCESS_TOKEN>","token_type":"Bearer","refresh_token":"<REFRESH_TOKEN>","expiry":"<DATETIME>"}'
       root_folder_id = <ROOT_FOLDER_ID>
   - name: encrypted-media
     properties:
