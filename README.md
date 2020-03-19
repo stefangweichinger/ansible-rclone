@@ -6,7 +6,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 [![GitHub Forks](https://img.shields.io/github/forks/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 
-[![Ansible Role](https://img.shields.io/ansible/role/15522.svg)](https://galaxy.ansible.com/stefangweichinger/rclone)
+[![Ansible Role](https://img.shields.io/ansible/role/15522.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
 [![Ansible Role Downloads](https://img.shields.io/ansible/role/d/15522.svg)](https://galaxy.ansible.com/stefangweichinger/rclone)
 
 
@@ -16,7 +16,7 @@ Please note that this role installs rclone from the upstream repository and not 
 
 ## Usage
 
-1. Clone this repo into your local roles-directory or install via `ansible-galaxy install stefangweichinger.rclone`.
+1. Clone this repo into your local roles-directory or install via `ansible-galaxy install stefangweichinger.ansible_rclone`.
 2. Add role to the hosts you want rclone installed to.
 
 ## Role Variables
