@@ -1,4 +1,5 @@
 # ansible-rclone
+AKA `ansible_rclone` and formerly `rclone`
 
 [![Build Status](https://travis-ci.org/stefangweichinger/ansible-rclone.svg?branch=master)](https://travis-ci.org/stefangweichinger/ansible-rclone)
 
@@ -6,17 +7,17 @@
 [![GitHub Stars](https://img.shields.io/github/stars/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 [![GitHub Forks](https://img.shields.io/github/forks/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 
-[![Ansible Role](https://img.shields.io/ansible/role/15522.svg)](https://galaxy.ansible.com/stefangweichinger/rclone)
-[![Ansible Role Downloads](https://img.shields.io/ansible/role/d/15522.svg)](https://galaxy.ansible.com/stefangweichinger/rclone)
+[![Ansible Role](https://img.shields.io/ansible/role/15522.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
+[![Ansible Role Downloads](https://img.shields.io/ansible/role/d/15522.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
 
 
-ansible role to install [rclone](https://github.com/ncw/rclone)
+An Ansible role to install [rclone](https://github.com/ncw/rclone)
 
 Please note that this role installs rclone from the upstream repository and not from the OS repositories!
 
 ## Usage
 
-1. Clone this repo into your local roles-directory or install via `ansible-galaxy install stefangweichinger.rclone`.
+1. Clone this repo into your local roles-directory or install via `ansible-galaxy install stefangweichinger.ansible_rclone`
 2. Add role to the hosts you want rclone installed to.
 
 ## Role Variables
@@ -108,6 +109,15 @@ None.
     - hosts: rclone-hosts
       roles:
         - rclone
+
+##Troubleshooting
+
+**Module Name Issue**:
+```
+[WARNING]: - stefangweichinger.rclone was NOT installed successfully: - sorry, stefangweichinger.rclone was not found on https://galaxy.ansible.com/api/
+```
+
+Note that this module has undergone a name change. It was previously known as `stefangweichinger.rclone`, however Galaxy changed it's naming methods. We are working on a change that will put move it back to this name for simplicity. Ansible Galaxy substitutes `-` to `_` and used to strip a prefix or `ansible`. For more information, see the [this issue](https://github.com/stefangweichinger/ansible-rclone/issues/48).
 
 ## Tests
 
