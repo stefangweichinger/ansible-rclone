@@ -73,6 +73,14 @@ platforms:
     privileged: true
     pre_build_image: true
 
+  - name: fedora32
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-fedora32}-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+
   - name: ubuntu1604
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu1604}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
