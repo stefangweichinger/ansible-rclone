@@ -7,8 +7,8 @@ AKA `ansible_rclone` and formerly `rclone`
 [![GitHub Stars](https://img.shields.io/github/stars/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 [![GitHub Forks](https://img.shields.io/github/forks/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 
-[![Ansible Role](https://img.shields.io/ansible/role/15522.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
-[![Ansible Role Downloads](https://img.shields.io/ansible/role/d/15522.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
+[![Ansible Role](https://img.shields.io/ansible/role/46861.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
+[![Ansible Role Downloads](https://img.shields.io/ansible/role/d/46861.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
 
 
 An Ansible role to install [rclone](https://github.com/ncw/rclone)
