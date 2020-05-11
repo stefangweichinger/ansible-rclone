@@ -24,7 +24,7 @@ install:
 
 script:
   # Run tests.
-  - molecule test -s travis
+  - molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
