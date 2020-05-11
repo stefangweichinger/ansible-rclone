@@ -20,6 +20,18 @@ Please note that this role installs rclone from the upstream repository and not 
 1. Clone this repo into your local roles-directory or install via `ansible-galaxy install stefangweichinger.ansible_rclone`
 2. Add role to the hosts you want rclone installed to.
 
+## Supported Platforms
+
+(2020-may-11)
+
+* CentOS 7,8
+* Debian 8,9,10
+* Fedora 30,31 (32 coming soon, I hope ... some tests failed)
+* Ubuntu 1604,1804,2004
+
+Some older releases also work with this role, but I decided to remove some of them from `galaxy_info`.
+PRs welcome, but we can't test on every platform.
+
 ## Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
