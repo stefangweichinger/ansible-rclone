@@ -138,8 +138,4 @@ New tests using [molecule](https://molecule.readthedocs.io/en/latest/index.html)
 pls feel free to review my first steps into testing the role with molecule
 additional distros might be added/tested soon
 
-Currently there are two scenarios defined for running [molecule](https://molecule.readthedocs.io/en/latest/index.html):
-
-* default:    runs tests over all defined distros at once, I use this for a local and overall test
-* travis:     this one runs one travis-test-job per distro and is called via .travis.yml
-    
+Check the travis logs at     https://travis-ci.org/github/stefangweichinger/ansible-rclone
