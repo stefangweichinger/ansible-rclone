@@ -13,14 +13,11 @@ galaxy_info:
       versions:
         - buster
         - stretch
-        - jessie
     - name: Fedora
       versions:
         - 32
         - 31
         - 30
-        - 29
-        - 27
     - name: Ubuntu
       versions:
         - bionic
