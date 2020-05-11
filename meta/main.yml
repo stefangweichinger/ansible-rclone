@@ -23,6 +23,7 @@ galaxy_info:
         - 30
     - name: Ubuntu
       versions:
+        - focal
         - bionic
         - xenial
   galaxy_tags:
