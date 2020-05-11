@@ -9,13 +9,16 @@ galaxy_info:
   license: 'GNU General Public License v3'
   min_ansible_version: '2.0'
   platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
     - name: Debian
       versions:
         - buster
         - stretch
     - name: Fedora
       versions:
-        - 32
         - 31
         - 30
     - name: Ubuntu
