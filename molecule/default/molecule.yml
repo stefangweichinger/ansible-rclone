@@ -8,94 +8,13 @@ lint: |
   yamllint .
   ansible-lint
 platforms:
-  - name: centos7
+  - name: instance
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: false
     pre_build_image: true
-
-  - name: debian8
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian8}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: false
-    pre_build_image: true
-
-  - name: debian9
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian9}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: false
-    pre_build_image: true
-
-  - name: debian10
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian10}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: false
-    pre_build_image: true
-
-  - name: fedora27
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-fedora27}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: false
-    pre_build_image: true
-
-  - name: fedora29
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-fedora29}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: false
-    pre_build_image: true
-
-  - name: fedora30
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-fedora30}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-
-  - name: fedora31
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-fedora31}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-
-  - name: fedora32
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-fedora32}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-
-  - name: ubuntu1604
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu1604}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: false
-    pre_build_image: true
-
-  - name: ubuntu1804
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu1804}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: false
-    pre_build_image: true
-
 provisioner:
   name: ansible
   playbooks:
