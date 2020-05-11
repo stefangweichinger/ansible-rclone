@@ -7,7 +7,7 @@
     - name: Update apt cache.
       apt: update_cache=true cache_valid_time=600
       when: ansible_os_family == 'Debian'
-    - name: Wait for systemd to complete initialization.
+    - name: Wait for systemd to complete initialization.     # noqa 303
       command: systemctl is-system-running
       register: systemctl_status
       until: >
