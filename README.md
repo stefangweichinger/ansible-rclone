@@ -28,6 +28,7 @@ Please note that this role installs rclone from the upstream repository and not 
 * Debian 8,9,10
 * Fedora 30,31 (32 coming soon, I hope ... some tests failed)
 * Ubuntu 1604,1804,2004
+* Ubuntu derivated distros: Linux Mint, Pop!\_OS
 
 Some older releases also work with this role, but I decided to remove some of them from `galaxy_info`.
 PRs welcome, but we can't test on every platform.
