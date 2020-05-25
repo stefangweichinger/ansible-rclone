@@ -6,39 +6,18 @@ driver:
 lint: |
   set -e
   yamllint .
-  ansible-lint ./molecule/playbook.yml
+  ansible-lint
 platforms:
   - name: instance
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: false
+    privileged: true
     pre_build_image: true
 provisioner:
   name: ansible
   playbooks:
-    converge: ../playbook.yml
-  lint: |
-    set -e
-    yamllint .
-    ansible-lint
-scenario:
-  name: travis
-  test_sequence:
-    - lint
-    - destroy
-    # - dependency
-    - syntax
-    - create
-    # - prepare
-    - converge
-    - idempotence
-    # - side_effect
-    # - verify
-    - destroy
-verifier:
-  name: testinfra
-  directory: ../tests/
+    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   lint:
-    name: flake8
+    name: ansible-lint
