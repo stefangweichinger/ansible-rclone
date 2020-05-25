@@ -22,6 +22,8 @@ install:
   - pip install molecule docker yamllint ansible-lint
 
 script:
+  - molecule --version
+  - ansible --version
   # Run tests.
   - molecule test -s travis
 
