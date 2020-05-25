@@ -22,11 +22,11 @@ Please note that this role installs rclone from the upstream repository and not 
 
 ## Supported Platforms
 
-(2020-may-11)
+(2020-may-25)
 
 * CentOS 7,8
 * Debian 8,9,10
-* Fedora 30,31 (32 coming soon, I hope ... some tests failed)
+* Fedora 30,31,32
 * Ubuntu 1604,1804,2004
 * Ubuntu derivated distros: Linux Mint, Pop!\_OS
 
