@@ -10,6 +10,8 @@ AKA `ansible_rclone` and formerly `rclone`
 [![Ansible Role](https://img.shields.io/ansible/role/46861.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
 [![Ansible Role Downloads](https://img.shields.io/ansible/role/d/46861.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
 
+![Ansible Lint](https://github.com/stefangweichinger/ansible-rclone/workflows/Ansible%20Lint/badge.svg)
+
 
 An Ansible role to install [rclone](https://github.com/ncw/rclone)
 
