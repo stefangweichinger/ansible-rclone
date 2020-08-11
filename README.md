@@ -82,7 +82,7 @@ For example, to recreate a standard encrypted Google Drive mount setup, the `rcl
 type = drive
 client_id = <CLIENT_ID>
 client_secret = <CLIENT_SECRET>
-token = '{"access_token":"<ACCESS_TOKEN>","token_type":"Bearer","refresh_token":"<REFRESH_TOKEN>","expiry":"<DATETIME>"}'
+token = {"access_token":"<ACCESS_TOKEN>","token_type":"Bearer","refresh_token":"<REFRESH_TOKEN>","expiry":"<DATETIME>"}
 root_folder_id = <ROOT_FOLDER_ID>
 
 [encrypted-media]
