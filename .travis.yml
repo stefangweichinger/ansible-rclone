@@ -19,7 +19,7 @@ env:
 
 install:
   # Install test dependencies.
-  - pip install molecule==3.0.5 docker yamllint ansible-lint
+  - pip install molecule==3.0.6 docker==4.2.2 yamllint ansible-lint
 
 script:
   - molecule --version
