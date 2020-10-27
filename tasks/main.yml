@@ -56,6 +56,7 @@
   template:
     src: rclone.conf.j2
     dest: '{{ rclone_config_location }}'
+    mode: 0644
   when: rclone_configs is defined
 
 - name: Make dir for local manpages
