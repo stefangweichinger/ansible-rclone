@@ -10,6 +10,5 @@ jobs:
       - name: Molecule
         uses: monolithprojects/action-molecule@v1.3.0
         with:
-          molecule_command: converge
+          molecule_command: test
           scenario: travis
-          converge_extra_args: --tags foo,bar --extra_vars "my_var=true"
