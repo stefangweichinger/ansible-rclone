@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - release/v*
+      - ci_*
   pull_request:
     branches:
       - master
