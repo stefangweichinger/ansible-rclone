@@ -1,20 +1,31 @@
-on: push
+name: Molecule
+
+on:
+  push:
+    branches:
+      - master
+      - release/v*
+  pull_request:
+    branches:
+      - master
 
 jobs:
   molecule:
     runs-on: ubuntu-latest
-    matrix:
-      scenario:
-        - centos-7
-        - debian-9
-        - fedora-32
-        - ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario:
+          - travis
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
       - name: Molecule
         uses: gofrolist/molecule-action@v2
         with:
+            #molecule_options: --debug --base-config molecule/_shared/base.yml
+          molecule_options: --debug
           molecule_command: test
-          molecule_args: --scenario_name ${{ matrix.scenario }}
+          molecule_args: --scenario-name ${{ matrix.scenario }}
