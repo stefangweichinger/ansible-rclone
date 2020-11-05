@@ -3,12 +3,18 @@ on: push
 jobs:
   molecule:
     runs-on: ubuntu-latest
+    matrix:
+      scenario:
+        - centos-7
+        - debian-9
+        - fedora-32
+        - ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
       - name: Molecule
-        uses: monolithprojects/action-molecule@v1.3.0
+        uses: gofrolist/molecule-action@v2
         with:
           molecule_command: test
-          scenario: travis
+          molecule_args: --scenario_name ${{ matrix.scenario }}
