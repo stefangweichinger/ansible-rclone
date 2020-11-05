@@ -1,0 +1,15 @@
+on: push
+
+jobs:
+  molecule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: "${{ github.repository }}"
+      - name: Molecule
+        uses: monolithprojects/action-molecule@v1.3.0
+        with:
+          molecule_command: converge
+          scenario: travis
+          converge_extra_args: --tags foo,bar --extra_vars "my_var=true"
