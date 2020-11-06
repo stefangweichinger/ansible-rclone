@@ -21,3 +21,16 @@ provisioner:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   lint:
     name: ansible-lint
+scenario:
+  test_sequence:
+    - lint
+    - destroy
+    # - dependency
+    - syntax
+    - create
+    # - prepare
+    - converge
+    - idempotence
+    # - side_effect
+    - verify
+    - destroy
