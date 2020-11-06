@@ -19,6 +19,10 @@ provisioner:
   name: ansible
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
+  inventory:
+    host_vars:
+      instance:
+        rclone_version: ${TEST_VERSION:-stable}
   lint:
     name: ansible-lint
 scenario:

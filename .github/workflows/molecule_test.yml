@@ -41,7 +41,7 @@ jobs:
         uses: robertdebock/molecule-action@2.6.3
         env:
           MOLECULE_DISTRO: "${{ matrix.distros }}"
-          rclone_version: "${{ matrix.versions }}"
+          TEST_VERSION: "${{ matrix.versions }}"
         with:
           options: parallel
           scenario: ${{ matrix.scenario }}
