@@ -1,0 +1,19 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: true
+  become: true
+
+  tasks:
+
+    - name: "rclone - retrieve information"
+      stat:
+        path: "/usr/local/bin/rclone"
+      register: remote_file
+    - name: "rclone - assert that file is created correctly"
+      assert:
+        that:
+          - "remote_file.stat.exists"
+          - "remote_file.stat.isreg" # is a regular file
+          # - "remote_file.stat.path == '{{ test_rclone_file_path }}'"
+          - "remote_file.stat.mode == '0755'"
