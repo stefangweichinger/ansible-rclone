@@ -20,15 +20,15 @@ jobs:
         scenario:
           - travis
         distros:
-          - geerlingguy/docker-centos7-ansible
-          - geerlingguy/docker-centos8-ansible
-          - geerlingguy/docker-ubuntu2004-ansible
-          - geerlingguy/docker-ubuntu1804-ansible
-          - geerlingguy/docker-ubuntu1604-ansible
-          - geerlingguy/docker-debian10-ansible
-          - geerlingguy/docker-debian9-ansible
-          - geerlingguy/docker-fedora32-ansible
-          - geerlingguy/docker-fedora31-ansible
+          - centos7
+          - centos8
+          - debian10
+          - debian9
+          - fedora31
+          - fedora32
+          - ubuntu1604
+          - ubuntu1804
+          - ubuntu2004
     steps:
       - name: Checkout
         uses: actions/checkout@v2
