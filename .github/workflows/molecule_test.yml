@@ -30,7 +30,7 @@ jobs:
           - ubuntu1804
           - ubuntu2004
         versions:
-          - ""
+          - stable
           - beta
     steps:
       - name: Checkout

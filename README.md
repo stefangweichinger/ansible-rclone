@@ -51,7 +51,7 @@ This variable chooses the target architecture (for example 'amd64').
 
     rclone_version: ""
 
-The version of rclone to install. `rclone_version` is no longer set as a default, but if provided as a variable, can be set to a specific version number or "beta" to install the latest beta version.
+The version of rclone to install. `rclone_version` is no longer set as a default, but if provided as a variable, can be set to a specific version number, or "stable", or "beta" to install the latest beta version.
 
     rclone_config_location: "/root/.config/rclone/rclone.conf"
 
