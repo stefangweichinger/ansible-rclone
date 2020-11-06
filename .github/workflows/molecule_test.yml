@@ -29,6 +29,9 @@ jobs:
           - ubuntu1604
           - ubuntu1804
           - ubuntu2004
+        versions:
+          - ""
+          - beta
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -38,6 +41,7 @@ jobs:
         uses: gofrolist/molecule-action@v2
         env:
           MOLECULE_DISTRO: "${{ matrix.distros }}"
+          rclone_version: "${{ matrix.versions }}"
         with:
           # molecule_options: --debug --base-config molecule/_shared/base.yml
           molecule_options: --debug
