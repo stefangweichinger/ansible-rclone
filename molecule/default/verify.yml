@@ -14,12 +14,12 @@
       assert:
         that:
           - "remote_file.stat.exists"
-          - "remote_file.stat.isreg" # is a regular file
+          - "remote_file.stat.isreg"  # is a regular file
           # - "remote_file.stat.path == '{{ test_rclone_file_path }}'"
           - "remote_file.stat.mode == '0755'"
 
     - name: "rclone - check version"
-      command: "/usr/local/bin/rclone version" # noqa 301
+      command: "/usr/local/bin/rclone version"  # noqa 301
       register: shell_result
 
     - debug:
