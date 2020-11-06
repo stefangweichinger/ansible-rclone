@@ -38,12 +38,10 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: Molecule
-        uses: gofrolist/molecule-action@v2
+        uses: robertdebock/molecule-action@2.6.3
         env:
           MOLECULE_DISTRO: "${{ matrix.distros }}"
           rclone_version: "${{ matrix.versions }}"
         with:
-          # molecule_options: --debug --base-config molecule/_shared/base.yml
-          molecule_options: --debug
-          molecule_command: test
-          molecule_args: --scenario-name ${{ matrix.scenario }}
+          options: parallel
+          scenario: ${{ matrix.scenario }}
