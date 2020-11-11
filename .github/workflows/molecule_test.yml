@@ -47,3 +47,13 @@ jobs:
         with:
           options: parallel
           scenario: ${{ matrix.scenario }}
+
+  release:
+    needs:
+      - molecule
+    runs-on: ubuntu-latest
+    steps:
+      - name: galaxy
+        uses: robertdebock/galaxy-action@1.1.0
+        with:
+          galaxy_api_key: ${{ secrets.galaxy_api_key }}
