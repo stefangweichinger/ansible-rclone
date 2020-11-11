@@ -3,6 +3,8 @@ AKA `ansible_rclone` and formerly `rclone`
 
 [![Build Status](https://travis-ci.org/stefangweichinger/ansible-rclone.svg?branch=master)](https://travis-ci.org/stefangweichinger/ansible-rclone)
 
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/stefangweichinger/ansible-rclone/Molecule?label=GitHub%20Workflow%20Molecule)](https://github.com/stefangweichinger/ansible-rclone/actions)
+
 [![GitHub Open Issues](https://img.shields.io/github/issues/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 [![GitHub Forks](https://img.shields.io/github/forks/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
@@ -10,8 +12,7 @@ AKA `ansible_rclone` and formerly `rclone`
 [![Ansible Role](https://img.shields.io/ansible/role/46861.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
 [![Ansible Role Downloads](https://img.shields.io/ansible/role/d/46861.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
 
-![Ansible Lint](https://github.com/stefangweichinger/ansible-rclone/workflows/Ansible%20Lint/badge.svg)
-
+## Description
 
 An Ansible role to install [rclone](https://github.com/ncw/rclone)
 
@@ -49,7 +50,7 @@ This variable chooses the target architecture (for example 'amd64').
 
     rclone_version: ""
 
-The version of rclone to install. `rclone_version` is no longer set as a default, but if provided as a variable, can be set to a specific version number or "beta" to install the latest beta version.
+The version of rclone to install. `rclone_version` is no longer set as a default, but if provided as a variable, can be set to a specific version number, or "stable", or "beta" to install the latest beta version.
 
     rclone_config_location: "/root/.config/rclone/rclone.conf"
 

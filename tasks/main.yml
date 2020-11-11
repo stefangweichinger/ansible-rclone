@@ -29,7 +29,10 @@
 
 - name: Do stable install
   include_tasks: stable.yml
-  when: rclone_version is undefined or rclone_version != 'beta'
+  when:
+    - rclone_version is undefined or
+      rclone_version == 'stable' or
+      rclone_version != 'beta'
 
 - name: Do beta install
   include_tasks: beta.yml
@@ -56,6 +59,7 @@
   template:
     src: rclone.conf.j2
     dest: '{{ rclone_config_location }}'
+    mode: 0644
   when: rclone_configs is defined
 
 - name: Make dir for local manpages
