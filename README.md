@@ -1,8 +1,6 @@
 # ansible-rclone
 AKA `ansible_rclone` and formerly `rclone`
 
-[![Build Status](https://travis-ci.org/stefangweichinger/ansible-rclone.svg?branch=master)](https://travis-ci.org/stefangweichinger/ansible-rclone)
-
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/stefangweichinger/ansible-rclone/Molecule?label=GitHub%20Workflow%20Molecule)](https://github.com/stefangweichinger/ansible-rclone/actions)
 
 [![GitHub Open Issues](https://img.shields.io/github/issues/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone/issues)
@@ -25,11 +23,11 @@ Please note that this role installs rclone from the upstream repository and not 
 
 ## Supported Platforms
 
-(2020-may-25)
+The build tests run on a selected set of distros, currently I decided to use the last two releases of each CentOS, Debian, Fedora, Ubuntu.
 
 * CentOS 7,8
 * Debian 8,9,10
-* Fedora 30,31,32
+* Fedora 30,31,32,33
 * Ubuntu 1604,1804,2004
 * Ubuntu derivated distros: Linux Mint, Pop!\_OS
 
@@ -135,11 +133,22 @@ None.
 
 Note that this module has undergone a name change. It was previously known as `stefangweichinger.rclone`, however Galaxy changed it's naming methods. We are working on a change that will put move it back to this name for simplicity. Ansible Galaxy substitutes `-` to `_` and used to strip a prefix or `ansible`. For more information, see the [this issue](https://github.com/stefangweichinger/ansible-rclone/issues/48).
 
-## Tests
+## Molecule Testing
 
-New tests using [molecule](https://molecule.readthedocs.io/en/latest/index.html)
+The tests of this ansible role use [molecule](https://molecule.readthedocs.io/en/latest/index.html)
 
-pls feel free to review my first steps into testing the role with molecule
-additional distros might be added/tested soon
+### (disabled) Travis CI
 
-Check the travis logs at     https://travis-ci.org/github/stefangweichinger/ansible-rclone
+At first I used Travis CI, see the logs at https://travis-ci.org/github/stefangweichinger/ansible-rclone
+
+[![Build Status](https://travis-ci.org/stefangweichinger/ansible-rclone.svg?branch=master)](https://travis-ci.org/stefangweichinger/ansible-rclone)
+
+### (current) CI with GitHub Actions
+
+In November 2020 I switched over to running the CI pipeline within Github Actions:
+
+https://github.com/stefangweichinger/ansible-rclone/actions
+
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/stefangweichinger/ansible-rclone/Molecule?label=GitHub%20Workflow%20Molecule)](https://github.com/stefangweichinger/ansible-rclone/actions)
+
+This, like this whole repo, is a work in progress.
