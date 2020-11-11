@@ -7,6 +7,7 @@ on:
     branches:
       - master
       - ci_*
+      - pr_*
     paths-ignore:
       - 'README.md'
   pull_request:
