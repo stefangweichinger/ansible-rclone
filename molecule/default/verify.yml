@@ -8,6 +8,7 @@
     _rclone_binary_path:
       Debian: "/usr/local/bin/rclone"
       Fedora: "/usr/local/bin/rclone"
+      RedHat: "/usr/local/bin/rclone"
       Ubuntu: "/usr/local/bin/rclone"
 
     rclone_binary_path: "{{ _rclone_binary_path[ansible_os_family] }}"
