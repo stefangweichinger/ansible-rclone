@@ -4,11 +4,19 @@
   gather_facts: true
   become: true
 
+  vars:
+    _rclone_binary_path:
+      Debian: "/usr/local/bin/rclone"
+      Fedora: "/usr/local/bin/rclone"
+      Ubuntu: "/usr/local/bin/rclone"
+
+    rclone_binary_path: "{{ _rclone_binary_path[ansible_os_family] }}"
+
   tasks:
 
     - name: "rclone - retrieve information"
       stat:
-        path: "/usr/local/bin/rclone"
+        path: "{{ rclone_binary_path }}"
       register: remote_file
     - name: "rclone - assert that file is created correctly"
       assert:
@@ -19,7 +27,7 @@
           - "remote_file.stat.mode == '0755'"
 
     - name: "rclone - check version"
-      command: "/usr/local/bin/rclone version"  # noqa 301
+      command: "{{ rclone_binary_path }} version"  # noqa 301
       register: shell_result
 
     - debug:

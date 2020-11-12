@@ -41,7 +41,7 @@
 - name: Copy rclone binary
   copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
-    dest: "/usr/local/bin/rclone"
+    dest: "{{ rclone_binary_path }}"
     mode: '0755'
     owner: root
     group: root
