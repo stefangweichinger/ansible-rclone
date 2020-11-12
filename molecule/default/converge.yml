@@ -19,4 +19,4 @@
       changed_when: false
 
   roles:
-    - role: stefangweichinger.ansible_rclone
+    - role: ansible_rclone
