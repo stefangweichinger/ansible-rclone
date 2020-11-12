@@ -25,6 +25,8 @@ provisioner:
         rclone_version: ${TEST_VERSION:-stable}
   lint:
     name: ansible-lint
+verifier:
+  name: ansible
 scenario:
   test_sequence:
     - lint
