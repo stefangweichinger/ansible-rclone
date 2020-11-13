@@ -1,0 +1,12 @@
+---
+- name: Update repositories cache on Ubuntu
+  apt:
+    update_cache: true
+  become: true
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Install required packages
+  package:
+    name: rclone
+    state: present
+  become: true

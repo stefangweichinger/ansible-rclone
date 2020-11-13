@@ -35,6 +35,9 @@ jobs:
         versions:
           - stable
           - beta
+        os_packages:
+          - true
+          - false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -45,6 +48,7 @@ jobs:
         env:
           MOLECULE_DISTRO: "${{ matrix.distros }}"
           TEST_VERSION: "${{ matrix.versions }}"
+          OS_PACKAGES: "${{ matrix.os_packages }}"
         with:
           options: parallel
           scenario: ${{ matrix.scenario }}

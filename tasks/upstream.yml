@@ -1,0 +1,81 @@
+---
+- name: Update repositories cache on Ubuntu
+  apt:
+    update_cache: true
+  become: true
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Install required packages
+  package:
+    name: '{{ item }}'
+    state: present
+  become: true
+  with_items: '{{ PACKAGES }}'
+
+- name: Create temporary working directory
+  file:
+    path: "{{ rclone_setup_tmp_dir }}"
+    state: directory
+    mode: '0775'
+
+- name: Do stable install
+  include_tasks: stable.yml
+  when:
+    - rclone_version is undefined or
+      rclone_version == 'stable' or
+      rclone_version != 'beta'
+
+- name: Do beta install
+  include_tasks: beta.yml
+  when: rclone_version == 'beta'
+
+- name: Copy rclone binary
+  copy:
+    src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
+    dest: "{{ rclone_binary_path }}"
+    mode: '0755'
+    owner: root
+    group: root
+    remote_src: true
+  become: true
+
+- name: Create config directory
+  file:
+    path: '{{ rclone_config_location | dirname }}'
+    state: directory
+    mode: '0700'
+  when: rclone_configs is defined
+
+- name: Set up rclone config
+  template:
+    src: rclone.conf.j2
+    dest: '{{ rclone_config_location }}'
+    mode: 0644
+  when: rclone_configs is defined
+
+- name: Make dir for local manpages
+  file:
+    path: '{{ MAN_PAGES.PATH }}'
+    state: directory
+    mode: '0775'
+    owner: '{{ MAN_PAGES.OWNER }}'
+    group: '{{ MAN_PAGES.GROUP }}'
+  become: true
+  when: install_manpages
+
+- name: Copy rclone manpage
+  copy:
+    src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone.1"
+    dest: "{{ MAN_PAGES.PATH }}/rclone.1"
+    mode: '0644'
+    owner: root
+    group: root
+    remote_src: true
+  become: true
+  when: install_manpages
+
+- name: Update mandb
+  command: mandb
+  become: true
+  changed_when: false
+  when: install_manpages
