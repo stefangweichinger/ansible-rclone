@@ -17,8 +17,6 @@ rclone_config_location: "/root/.config/rclone/rclone.conf"
 # If false, install rclone from the rclone-project-repository.
 os_packages: false
 
-os_packages: "false"
-
 PACKAGES:
   - unzip
 
