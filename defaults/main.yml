@@ -16,6 +16,8 @@ rclone_config_location: "/root/.config/rclone/rclone.conf"
 # Which version to install if not defined
 rclone_version: "stable"
 
+os_packages: "false"
+
 PACKAGES:
   - unzip
 
