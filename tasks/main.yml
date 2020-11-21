@@ -41,7 +41,7 @@
     - rclone_version is undefined or
       rclone_version == 'stable' or
       rclone_version != 'beta' or
-      rclone_version
+      rclone_version  # this is just a first draft. always true. should check the format of the string
 - name: Copy rclone binary
   copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
