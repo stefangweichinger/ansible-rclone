@@ -27,17 +27,21 @@
     state: directory
     mode: '0775'
 
-- name: Do stable install
-  include_tasks: stable.yml
-  when:
-    - rclone_version is undefined or
-      rclone_version == 'stable' or
-      rclone_version != 'beta'
+- name: debug rclone_version
+  debug:
+    var: rclone_version
 
 - name: Do beta install
   include_tasks: beta.yml
   when: rclone_version == 'beta'
 
+- name: Do stable install
+  include_tasks: stable.yml
+  when:
+    - rclone_version is undefined or
+      rclone_version == 'stable' or
+      rclone_version != 'beta' or
+      rclone_version
 - name: Copy rclone binary
   copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
