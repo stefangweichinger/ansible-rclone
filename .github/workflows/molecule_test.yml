@@ -35,6 +35,7 @@ jobs:
         versions:
           - stable
           - beta
+          - 1.50.2
     steps:
       - name: Checkout
         uses: actions/checkout@v2
