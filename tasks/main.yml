@@ -27,10 +27,6 @@
     state: directory
     mode: '0775'
 
-- name: debug rclone_version
-  debug:
-    var: rclone_version
-
 - name: Do beta install
   include_tasks: beta.yml
   when: rclone_release == 'beta'
