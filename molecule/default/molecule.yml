@@ -22,7 +22,8 @@ provisioner:
   inventory:
     host_vars:
       instance:
-        rclone_version: ${TEST_VERSION:-stable}
+        rclone_release: ${TEST_RELEASE:-stable}
+        rclone_version: ${TEST_VERSION:-''}
   lint:
     name: ansible-lint
 scenario:
