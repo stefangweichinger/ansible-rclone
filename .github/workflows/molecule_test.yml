@@ -37,6 +37,7 @@ jobs:
           - beta
         versions:
           - "1.53.3"
+          - ""
     steps:
       - name: Checkout
         uses: actions/checkout@v2
