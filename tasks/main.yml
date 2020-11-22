@@ -24,6 +24,11 @@
 - name: Create temporary working directory
   file:
     path: "{{ rclone_setup_tmp_dir }}"
+    state: absent
+
+- name: Create temporary working directory
+  file:
+    path: "{{ rclone_setup_tmp_dir }}"
     state: directory
     mode: '0775'
 
