@@ -23,13 +23,16 @@ provisioner:
     host_vars:
       instance:
         rclone_version: ${TEST_VERSION:-stable}
+        os_packages: ${OS_PACKAGES:-false}
   lint:
     name: ansible-lint
+verifier:
+  name: ansible
 scenario:
   test_sequence:
     - lint
     - destroy
-    # - dependency
+    - dependency
     - syntax
     - create
     # - prepare
