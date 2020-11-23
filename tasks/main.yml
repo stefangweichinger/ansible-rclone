@@ -27,16 +27,27 @@
     state: directory
     mode: '0775'
 
-- name: Do stable install
-  include_tasks: stable.yml
-  when:
-    - rclone_version is undefined or
-      rclone_version == 'stable' or
-      rclone_version != 'beta'
-
 - name: Do beta install
   include_tasks: beta.yml
-  when: rclone_version == 'beta'
+  when: rclone_release == 'beta'
+
+- name: Do stable install
+  include_tasks: stable.yml
+  when: rclone_release == 'stable'
+
+- name: Get list of files extracted from the rclone archive
+  find:
+    path: "{{ rclone_setup_tmp_dir }}"
+    depth: 2
+    file_type: directory
+  register: rclone_archive
+
+- name: Validate the version in the archive matches the expected version ({{ rclone_version }})
+  fail:
+    msg: >
+      "The version of rclone ({{ rclone_archive.files[0].path | basename }}) in
+      the archive does not match the expected version ({{ rclone_version }})"
+  when: rclone_version not in rclone_archive.files[0].path
 
 - name: Copy rclone binary
   copy:

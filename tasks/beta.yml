@@ -9,11 +9,15 @@
     - name: Set variable for beta version
       set_fact:
         rclone_version: "{{ rclone_latest_beta_version.content | replace ('rclone v', '', 1) | trim }}"
+        beta_version_url: https://beta.rclone.org/rclone-beta-latest-linux-{{ rclone_arch }}.zip
+  when:
+    - rclone_version | length == 0
 
-- name: Get rclone latest beta version
+- name: Get rclone beta version
   unarchive:
-    src: https://beta.rclone.org/rclone-beta-latest-linux-{{ rclone_arch }}.zip
+    src: "{{ beta_version_url | default('https://beta.rclone.org/v' + rclone_version + '/rclone-v' + rclone_version + '-linux-' + rclone_arch + '.zip') }}"
     dest: "{{ rclone_setup_tmp_dir }}"
     remote_src: true
     mode: 0644
+    list_files: true
     creates: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}"
