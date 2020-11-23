@@ -38,28 +38,29 @@ PRs welcome, but we can't test on every platform.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    install_manpages: "true"
+### `install_manpages: "true"`
 
 This can be used to toggle the installation of manpages.
 
-    rclone_arch: "amd64"
+### `rclone_arch: "amd64"`
 
 This variable chooses the target architecture (for example 'amd64').
+
+### `rclone_version: "stable"`
+
+The version of rclone to install. `rclone_version` can be set to a specific version number, or "stable", or "beta" to install the latest beta version.
 
     rclone_version: ""
     
     rclone_version: "1.50.2"
     
     rclone_version: "beta"
-      
 
-The version of rclone to install. `rclone_version` is no longer set as a default, but if provided as a variable, can be set to a specific version number, or "stable", or "beta" to install the latest beta version.
-
-    rclone_config_location: "/root/.config/rclone/rclone.conf"
+### `rclone_config_location: "/root/.config/rclone/rclone.conf"`
 
 The location to install the rclone config file if you provide `rclone_configs`
 
-    rclone_configs: ""
+### `rclone_configs: ""`
 
 This variable allows for predefined remote configs to be loaded. `rclone_configs` must be a YAML list with a name variable and a properties variable which is another list of arbitrary key value pairs. See the example below which would configure a Google Drive remote:
 
@@ -73,7 +74,7 @@ rclone_configs:
       token: '{"access_token":"","token_type":"","refresh_token":"","expiry":""}'
 ```
 
-### rclone_configs detailed example
+#### rclone_configs detailed example
 
 The `rclone_configs` variable is used to recreate the `rclone.conf` file. This config file stores the rclone remotes that have been defined and are usable. This is an alternative to simply copying a stored `rclone.conf` file directly.
 
