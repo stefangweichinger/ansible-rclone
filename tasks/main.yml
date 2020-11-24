@@ -42,13 +42,6 @@
     file_type: directory
   register: rclone_archive
 
-- name: Validate the version in the archive matches the expected version ({{ rclone_version }})
-  fail:
-    msg: >
-      "The version of rclone ({{ rclone_archive.files[0].path | basename }}) in
-      the archive does not match the expected version ({{ rclone_version }})"
-  when: rclone_version not in rclone_archive.files[0].path
-
 - name: Copy rclone binary
   copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
