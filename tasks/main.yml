@@ -21,6 +21,13 @@
   become: true
   with_items: '{{ PACKAGES }}'
 
+- name: Remove temporary working directory
+  file:
+    path: "{{ rclone_setup_tmp_dir }}"
+    state: absent
+  tags:
+    - molecule-idempotence-notest
+
 - name: Create temporary working directory
   file:
     path: "{{ rclone_setup_tmp_dir }}"
