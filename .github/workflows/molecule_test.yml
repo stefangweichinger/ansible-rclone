@@ -62,3 +62,4 @@ jobs:
         uses: robertdebock/galaxy-action@1.1.0
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
+        if: ${{ github.ref == 'refs/heads/master' }}
