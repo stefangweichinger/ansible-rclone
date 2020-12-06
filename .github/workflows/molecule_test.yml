@@ -16,7 +16,7 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   molecule:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     strategy:
       fail-fast: false
       matrix:
@@ -56,7 +56,7 @@ jobs:
   release:
     needs:
       - molecule
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - name: galaxy
         uses: robertdebock/galaxy-action@1.1.0
