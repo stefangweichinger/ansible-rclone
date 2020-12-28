@@ -71,8 +71,10 @@ rclone_configs:
       type: drive
       client_id: 12345
       client_secret: 67890
-      token: '{"access_token":"","token_type":"","refresh_token":"","expiry":""}'
+      token: ' {"access_token":"","token_type":"","refresh_token":"","expiry":""}'
 ```
+
+Note that the space after the single quote `'` for `token` is intentional in order force this into a string. Otherwise, it will be interpreted as an object and have its double quotes be converted to single quotes within the config file which rclone cannot parse correctly.
 
 #### rclone_configs detailed example
 
@@ -108,7 +110,7 @@ rclone_configs:
       type: drive
       client_id: <CLIENT_ID>
       client_secret: <CLIENT_SECRET>
-      token: '{"access_token":"<ACCESS_TOKEN>","token_type":"Bearer","refresh_token":"<REFRESH_TOKEN>","expiry":"<DATETIME>"}'
+      token: ' {"access_token":"<ACCESS_TOKEN>","token_type":"Bearer","refresh_token":"<REFRESH_TOKEN>","expiry":"<DATETIME>"}'
       root_folder_id = <ROOT_FOLDER_ID>
   - name: encrypted-media
     properties:
