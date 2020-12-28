@@ -74,7 +74,7 @@ rclone_configs:
       token: ' {"access_token":"","token_type":"","refresh_token":"","expiry":""}'
 ```
 
-Note that the space after the single quote `'` for `token` is intentional in order force this into a string. Otherwise, it will be interpreted as an object and have its double quotes be converted to single quotes within the config file which rclone cannot parse correctly.
+Note that the space after the single quote `'` for `token` is intentional in order to force this into a string. Otherwise, it will be interpreted as an object and have its double quotes be converted to single quotes within the config file which rclone cannot parse correctly.
 
 #### rclone_configs detailed example
 
