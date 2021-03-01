@@ -8,6 +8,10 @@
   tags:
     - vars
 
+- name: print ansible_facts vars
+  debug:
+    var: ansible_facts.ansible_local
+
 - name: Update repositories cache on Ubuntu
   apt:
     update_cache: true
@@ -34,68 +38,39 @@
     state: directory
     mode: '0775'
 
-- name: Do beta install
-  include_tasks: beta.yml
-  when: rclone_release == 'beta'
+- debug:
+    var: ansible_facts.ansible_local.rclone.configured
 
-- name: Do stable install
-  include_tasks: stable.yml
-  when: rclone_release == 'stable'
+- debug:
+    var: ansible_facts.ansible_local.rclone.installed_version
 
-- name: Get list of files extracted from the rclone archive
-  find:
-    path: "{{ rclone_setup_tmp_dir }}"
-    depth: 2
-    file_type: directory
-  register: rclone_archive
+- name: Perform the install steps
+  include_tasks: install.yml
+  when: (ansible_facts['ansible_local']['rclone']['installed'] is not true) or (ansible_facts['ansible_local']['rclone']['installed_version'] != rclone_version)
 
-- name: Copy rclone binary
-  copy:
-    src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
-    dest: "/usr/local/bin/rclone"
+- name: Create directory for ansible custom facts
+  ansible.builtin.file:
+    state: directory
+    recurse: yes
+    path: /etc/ansible/facts.d
+
+- name: Create facts file from template
+  ansible.builtin.template:
+    src: 'etc/ansible/facts.d/rclone.fact.j2'
+    dest: /etc/ansible/facts.d/rclone.fact
     mode: '0755'
-    owner: root
-    group: root
-    remote_src: true
-  become: true
+  register: rclone__register_facts
 
-- name: Create config directory
-  file:
-    path: '{{ rclone_config_location | dirname }}'
-    state: directory
-    mode: '0700'
-  when: rclone_configs is defined
+- name: Update Ansible facts if they were modified
+  action: setup
+  when: rclone__register_facts is changed
 
-- name: Set up rclone config
-  template:
-    src: rclone.conf.j2
-    dest: '{{ rclone_config_location }}'
-    mode: 0644
-  when: rclone_configs is defined
+- debug:
+    var: ansible_local.rclone.version
 
-- name: Make dir for local manpages
-  file:
-    path: '{{ MAN_PAGES.PATH }}'
-    state: directory
-    mode: '0775'
-    owner: '{{ MAN_PAGES.OWNER }}'
-    group: '{{ MAN_PAGES.GROUP }}'
-  become: true
-  when: install_manpages
+- debug:
+    var: ansible_local.rclone.rclone.installed_version
 
-- name: Copy rclone manpage
-  copy:
-    src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone.1"
-    dest: "{{ MAN_PAGES.PATH }}/rclone.1"
-    mode: '0644'
-    owner: root
-    group: root
-    remote_src: true
-  become: true
-  when: install_manpages
-
-- name: Update mandb
-  command: mandb
-  become: true
-  changed_when: false
-  when: install_manpages
+- name: DEBUG
+  setup:
+    filter: ansible_local
