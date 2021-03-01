@@ -13,7 +13,7 @@
     - rclone_version | length == 0 and rclone_release == 'beta'
 
 - block:
-    - name: Check latest {{rclone_release}} rclone version number
+    - name: Check latest stable rclone version number
       uri:
         url: https://downloads.rclone.org/version.txt
         return_content: true
