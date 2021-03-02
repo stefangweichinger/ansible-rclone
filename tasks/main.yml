@@ -8,38 +8,19 @@
   tags:
     - vars
 
+- name: Re-read facts after adding custom fact
+  ansible.builtin.setup:
+    filter: ansible_local
+
 - name: print ansible_facts vars
   debug:
     var: ansible_facts.ansible_local
 
-- name: Update repositories cache on Ubuntu
-  apt:
-    update_cache: true
-  become: true
-  when: ansible_distribution == 'Ubuntu'
-
-- name: Install required packages
-  package:
-    name: '{{ item }}'
-    state: present
-  become: true
-  with_items: '{{ PACKAGES }}'
-
-- name: Remove temporary working directory
-  file:
-    path: "{{ rclone_setup_tmp_dir }}"
-    state: absent
-  tags:
-    - molecule-idempotence-notest
-
-- name: Create temporary working directory
-  file:
-    path: "{{ rclone_setup_tmp_dir }}"
-    state: directory
-    mode: '0775'
-
 - debug:
     var: ansible_facts.ansible_local.rclone.configured
+
+- debug:
+    var: ansible_facts.ansible_local.rclone.installed
 
 - debug:
     var: ansible_facts.ansible_local.rclone.installed_version
@@ -51,7 +32,7 @@
 - name: Create directory for ansible custom facts
   ansible.builtin.file:
     state: directory
-    recurse: yes
+    recurse: true
     path: /etc/ansible/facts.d
 
 - name: Create facts file from template
@@ -69,7 +50,7 @@
     var: ansible_local.rclone.version
 
 - debug:
-    var: ansible_local.rclone.rclone.installed_version
+    var: ansible_local.rclone.installed_version
 
 - name: DEBUG
   setup:
