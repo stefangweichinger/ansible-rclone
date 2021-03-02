@@ -7,6 +7,7 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - master
       - ci_*
+      - issue*
       - pr_*
     paths-ignore:
       - 'README.md'
