@@ -9,8 +9,23 @@
     - vars
 
 - name: Re-read facts after adding custom fact
+  become: yes
   ansible.builtin.setup:
     filter: ansible_local
+
+- block:
+    - name: Check latest stable rclone version number
+      uri:
+        url: https://downloads.rclone.org/version.txt
+        return_content: true
+      register:
+        rclone_latest_version
+      check_mode: false
+    - name: Set variable to latest stable version number
+      set_fact:
+        rclone_version: "{{ rclone_latest_version.content | replace ('rclone v', '', 1) | trim }}"
+  when:
+    - rclone_version | length == 0
 
 - name: print ansible_facts vars
   debug:
@@ -21,6 +36,9 @@
 
 - debug:
     var: ansible_facts.ansible_local.rclone.installed
+
+- debug:
+    var: rclone_version
 
 - debug:
     var: ansible_facts.ansible_local.rclone.installed_version
@@ -47,7 +65,7 @@
   when: rclone__register_facts is changed
 
 - debug:
-    var: ansible_local.rclone.version
+    var: rclone_version
 
 - debug:
     var: ansible_local.rclone.installed_version
