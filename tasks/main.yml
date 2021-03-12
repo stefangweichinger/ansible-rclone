@@ -9,7 +9,7 @@
     - vars
 
 - name: Re-read facts after adding custom fact
-  become: yes
+  become: true
   ansible.builtin.setup:
     filter: ansible_local
 
