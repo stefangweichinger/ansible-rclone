@@ -43,22 +43,6 @@
     - rclone_version | length == 0 or rclone_version == "0.0.0"
     - rclone_release == 'beta'
 
-- name: print ansible_facts vars
-  debug:
-    var: ansible_facts.ansible_local
-
-- debug:
-    var: ansible_facts.ansible_local.rclone.configured
-
-- debug:
-    var: ansible_facts.ansible_local.rclone.installed
-
-- debug:
-    var: rclone_version
-
-- debug:
-    var: ansible_facts.ansible_local.rclone.installed_version
-
 - name: Perform the install steps
   include_tasks: install.yml
   when: (ansible_facts['ansible_local']['rclone']['installed'] is not true) or (ansible_facts['ansible_local']['rclone']['installed_version'] != rclone_version)
@@ -79,13 +63,3 @@
 - name: Update Ansible facts if they were modified
   action: setup
   when: rclone__register_facts is changed
-
-- debug:
-    var: rclone_version
-
-- debug:
-    var: ansible_local.rclone.installed_version
-
-- name: DEBUG
-  setup:
-    filter: ansible_local
