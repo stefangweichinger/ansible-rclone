@@ -4,8 +4,8 @@ rclone_arch: amd64
 
 # release of rclone to use. 'default' or 'beta' are accepted
 rclone_release: stable
-rclone_version: ''
 
+rclone_version: '{{ ansible_local.rclone.version | d("0.0.0") }}'
 
 install_manpages: true
 

@@ -6,10 +6,10 @@ driver:
 lint: |
   set -e
   yamllint .
-  ansible-lint
+  #ansible-lint
 platforms:
   - name: instance
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian10}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro

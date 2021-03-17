@@ -3,7 +3,8 @@
 dependencies: []
 
 galaxy_info:
-  author: 'Stefan G. Weichinger'
+  author: 'stefangweichinger'
+  role_name: 'ansible_rclone'
   description: 'Install rclone'
   company: 'oops'
   license: 'GNU General Public License v3'
