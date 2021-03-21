@@ -11,5 +11,5 @@
   template:
     src: rclone.conf.j2
     dest: '{{ rclone_config_location }}'
-    mode: 0644
+    mode: 0600
   when: rclone_configs is defined
