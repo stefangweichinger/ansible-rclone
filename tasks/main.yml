@@ -43,9 +43,12 @@
     - rclone_version | length == 0 or rclone_version == "0.0.0"
     - rclone_release == 'beta'
 
-- name: Perform the install steps
-  include_tasks: install.yml
+- name: Install the binary
+  include_tasks: install-bin.yml
   when: (ansible_facts['ansible_local']['rclone']['installed'] is not true) or (ansible_facts['ansible_local']['rclone']['installed_version'] != rclone_version)
+
+- name: Install the config
+  include_tasks: install-config.yml
 
 - name: Create directory for ansible custom facts
   ansible.builtin.file:
