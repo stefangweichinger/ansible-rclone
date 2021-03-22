@@ -60,8 +60,21 @@
   include_tasks: install-bin.yml
   when: (((not ansible_local.rclone.installed|d())|bool) or (ansible_local.rclone.installed_version|d("0.0.0")) != rclone_version)
 
-- name: Install the config
-  include_tasks: install-config.yml
+- name: Install configs
+  block:
+    - name: Create config directory
+      file:
+        path: '{{ rclone_config_location | dirname }}'
+        state: directory
+        mode: '0700'
+
+    - name: Set up rclone config
+      template:
+        src: rclone.conf.j2
+        dest: '{{ rclone_config_location }}'
+        mode: 0600
+  become: true
+  when: rclone_configs is defined
 
 - name: Update Ansible facts if they were modified
   action: setup
