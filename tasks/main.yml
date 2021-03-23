@@ -26,6 +26,17 @@
   ansible.builtin.setup:
     filter: ansible_local
 
+# from https://github.com/fititnt/infrastructure-as-code-ad-hoc-ansible/blob/master/info/show-ansible-facts-local.yml
+- name: "ansible-ad-hoc | show-ansible-facts-local | "
+  setup:
+    filter: "ansible_local"
+    gather_subset:
+     - '!all'
+     - '!min'
+     - 'facter'
+- debug:
+    msg: "{{ ansible_facts['ansible_local'] }}"
+
 - block:
     - name: Check latest stable rclone version number
       uri:
