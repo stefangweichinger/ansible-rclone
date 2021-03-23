@@ -31,9 +31,9 @@
   setup:
     filter: "ansible_local"
     gather_subset:
-     - '!all'
-     - '!min'
-     - 'facter'
+      - '!all'
+      - '!min'
+      - 'facter'
 - debug:
     msg: "{{ ansible_facts['ansible_local'] }}"
 
