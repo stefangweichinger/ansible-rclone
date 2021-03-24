@@ -45,6 +45,7 @@
 - name: DEBUG
   command: "ls {{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}"
   register: dir_out
+  changed_when: "'molecule-notest' not in ansible_skip_tags"
 
 - debug: var={{item}}
   with_items: dir_out.stdout_lines
