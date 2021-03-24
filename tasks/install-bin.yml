@@ -42,6 +42,13 @@
     file_type: directory
   register: rclone_archive
 
+- name: DEBUG
+  command: "ls {{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}"
+  register: dir_out
+
+- debug: var={{item}}
+  with_items: dir_out.stdout_lines
+
 - name: Copy rclone binary
   copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
