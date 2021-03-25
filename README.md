@@ -23,12 +23,12 @@ Please note that this role installs rclone from the upstream repository and not 
 
 ## Supported Platforms
 
-The build tests run on a selected set of distros, currently I decided to use the last two releases of each CentOS, Debian, Fedora, Ubuntu.
+The build tests run on a selected set of distros:
 
-* CentOS 7,8
-* Debian 8,9,10
-* Fedora 30,31,32,33
-* Ubuntu 1604,1804,2004
+* CentOS 8
+* Debian 9,10
+* Fedora 32,33
+* Ubuntu 1804,2004
 * Ubuntu derivated distros: Linux Mint, Pop!\_OS
 
 Some older releases also work with this role, but I decided to remove some of them from `galaxy_info`.
