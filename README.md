@@ -23,7 +23,7 @@ Please note that this role installs rclone from the upstream repository and not 
 
 ## Supported Platforms
 
-The build tests run on a selected set of distros, currently I decided to use the last two releases of each CentOS, Debian, Fedora, Ubuntu.
+The build tests run on a selected set of distros:
 
 * CentOS 8
 * Debian 9,10
