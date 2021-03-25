@@ -8,6 +8,19 @@
   tags:
     - vars
 
+- name: Create directory for ansible custom facts
+  ansible.builtin.file:
+    state: directory
+    recurse: true
+    path: /etc/ansible/facts.d
+
+- name: Create facts file from template
+  ansible.builtin.template:
+    src: 'etc/ansible/facts.d/rclone.fact.j2'
+    dest: /etc/ansible/facts.d/rclone.fact
+    mode: '0755'
+  register: rclone__register_facts
+
 - name: Re-read facts after adding custom fact
   become: true
   ansible.builtin.setup:
@@ -45,23 +58,23 @@
 
 - name: Install the binary
   include_tasks: install-bin.yml
-  when: (ansible_facts['ansible_local']['rclone']['installed'] is not true) or (ansible_facts['ansible_local']['rclone']['installed_version'] != rclone_version)
+  when: (((not ansible_local.rclone.installed|d())|bool) or (ansible_local.rclone.installed_version|d("0.0.0")) != rclone_version)
 
-- name: Install the config
-  include_tasks: install-config.yml
+- name: Install configs
+  block:
+    - name: Create config directory
+      file:
+        path: '{{ rclone_config_location | dirname }}'
+        state: directory
+        mode: '0700'
 
-- name: Create directory for ansible custom facts
-  ansible.builtin.file:
-    state: directory
-    recurse: true
-    path: /etc/ansible/facts.d
-
-- name: Create facts file from template
-  ansible.builtin.template:
-    src: 'etc/ansible/facts.d/rclone.fact.j2'
-    dest: /etc/ansible/facts.d/rclone.fact
-    mode: '0755'
-  register: rclone__register_facts
+    - name: Set up rclone config
+      template:
+        src: rclone.conf.j2
+        dest: '{{ rclone_config_location }}'
+        mode: 0600
+  become: true
+  when: rclone_configs is defined
 
 - name: Update Ansible facts if they were modified
   action: setup
