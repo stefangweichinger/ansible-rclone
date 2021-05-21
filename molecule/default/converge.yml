@@ -4,9 +4,11 @@
   become: true
 
   pre_tasks:
+
     - name: Update apt cache.
       apt: update_cache=true cache_valid_time=600
       when: ansible_os_family == 'Debian'
+
     - name: Wait for systemd to complete initialization.     # noqa 303
       command: systemctl is-system-running
       register: systemctl_status
@@ -17,6 +19,10 @@
       delay: 5
       when: ansible_distribution == 'Fedora'
       changed_when: false
+
+    - name: Show ansible version
+      debug:
+        msg: "Ansible Version: {{ ansible_version.full }}"
 
   roles:
     - role: ansible-rclone
