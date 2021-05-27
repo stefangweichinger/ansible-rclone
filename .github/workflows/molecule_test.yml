@@ -17,7 +17,7 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   molecule:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
@@ -36,7 +36,7 @@ jobs:
           - stable
           - beta
         versions:
-          - "1.53.3"
+          - "1.55.1"
           - ""
     steps:
       - name: Checkout
@@ -44,7 +44,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: Molecule
-        uses: robertdebock/molecule-action@2.6.16
+        uses: robertdebock/molecule-action@master
         env:
           MOLECULE_DISTRO: "${{ matrix.distros }}"
           TEST_RELEASE: "${{ matrix.releases }}"
@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: galaxy
-        uses: robertdebock/galaxy-action@1.1.0
+        uses: robertdebock/galaxy-action@1.1.1
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
         if: ${{ github.ref == 'refs/heads/master' }}
