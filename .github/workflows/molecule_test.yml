@@ -44,7 +44,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: Molecule
-        uses: robertdebock/molecule-action@2.6.16
+        uses: robertdebock/molecule-action@master
         env:
           MOLECULE_DISTRO: "${{ matrix.distros }}"
           TEST_RELEASE: "${{ matrix.releases }}"
@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: galaxy
-        uses: robertdebock/galaxy-action@1.1.0
+        uses: robertdebock/galaxy-action@1.1.1
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
         if: ${{ github.ref == 'refs/heads/master' }}
