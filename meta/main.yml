@@ -19,9 +19,7 @@ galaxy_info:
         - stretch
     - name: Fedora
       versions:
-        - 34
-        - 33
-        - 32
+        - all
     - name: Ubuntu
       versions:
         - focal
