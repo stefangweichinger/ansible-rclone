@@ -66,13 +66,28 @@
       file:
         path: '{{ rclone_config_location | dirname }}'
         state: directory
-        mode: '0700'
+        mode: 0700
 
     - name: Set up rclone config
       template:
         src: rclone.conf.j2
         dest: '{{ rclone_config_location }}'
         mode: 0600
+  become: true
+  when: rclone_configs is defined
+
+- name: Add environment profile script
+  block:
+    - name: Create config directory
+      file:
+        path: '/etc/profile.d'
+        state: directory
+        mode: 0755
+    - template:
+        src: environment.j2
+        dest: '/etc/profile.d/rclone.sh'
+        mode: 0644
+    - ansible.builtin.shell: 'sh /etc/profile.d/rclone.sh'
   become: true
   when: rclone_configs is defined
 
