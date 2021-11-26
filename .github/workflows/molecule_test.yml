@@ -37,7 +37,7 @@ jobs:
           - stable
           - beta
         versions:
-          - "1.55.1"
+          - "1.56.0"
           - ""
     steps:
       - name: Checkout
