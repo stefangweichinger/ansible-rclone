@@ -46,15 +46,17 @@ This can be used to toggle the installation of manpages.
 
 This variable chooses the target architecture (for example 'amd64').
 
-### `rclone_version: "stable"`
+### `rclone_version: "1.57.0"`
 
-The version of rclone to install. `rclone_version` can be set to a specific version number, or "stable", or "beta" to install the latest beta version.
+The version of rclone to install. `rclone_version` can be set to a specific version number.
 
-    rclone_version: ""
-    
-    rclone_version: "1.50.2"
-    
-    rclone_version: "beta"
+    rclone_version: "1.55.1"
+
+### `rclone_release: "stable"`
+
+Can be set to "stable", or "beta" to install the latest beta version.
+
+    rclone_release: "beta"
 
 ### `rclone_config_location: "/root/.config/rclone/rclone.conf"`
 
