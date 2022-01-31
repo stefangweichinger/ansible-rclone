@@ -1,6 +1,0 @@
----
-collections:
-  - name: community.docker
-    version: ">=1.2.0,<2"
-  - name: community.general
-    version: ">=2,<3"
