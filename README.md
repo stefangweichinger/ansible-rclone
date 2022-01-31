@@ -25,8 +25,7 @@ Please note that this role installs rclone from the upstream repository and not 
 
 The build tests run on a selected set of distros:
 
-* CentOS 8
-* Debian 9,10
+* Debian 9,10,11
 * Fedora 32,33,34
 * Ubuntu 1804,2004
 * Ubuntu derivated distros: Linux Mint, Pop!\_OS
