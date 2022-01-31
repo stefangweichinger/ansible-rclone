@@ -30,7 +30,6 @@ jobs:
           - fedora32
           - fedora33
           - fedora34
-          - fedora35
           - ubuntu1804
           - ubuntu2004
         releases:
