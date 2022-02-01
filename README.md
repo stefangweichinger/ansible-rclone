@@ -3,8 +3,6 @@ AKA `ansible_rclone` and formerly `rclone`
 
 [![Ansible Molecule](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml/badge.svg)](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml)
 
-[![Release to Ansible Galaxy](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/galaxy.yml/badge.svg)](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/galaxy.yml)
-
 [![GitHub Open Issues](https://img.shields.io/github/issues/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 [![GitHub Forks](https://img.shields.io/github/forks/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
