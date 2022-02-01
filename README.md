@@ -33,6 +33,9 @@ The build tests run on a selected set of distros:
 Some older releases also work with this role, but I decided to remove some of them from `galaxy_info`.
 PRs welcome, but we can't test on every platform.
 
+In early 2022 I removed the tests for CentOS as it is not receiving upstream packages anymore.
+The role should still work, though.
+
 ## Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
