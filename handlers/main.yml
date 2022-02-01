@@ -1,0 +1,4 @@
+---
+
+- name: Update facts
+  action: setup
