@@ -12,7 +12,7 @@
     name: '{{ item }}'
     state: present
   become: true
-  with_items: '{{ PACKAGES }}'
+  with_items: '{{ rclone_packages }}'
 
 - name: Remove temporary working directory
   file:
