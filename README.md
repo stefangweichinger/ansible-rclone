@@ -149,12 +149,7 @@ Note that this module has undergone a name change. It was previously known as `s
 ## Molecule Testing
 
 The tests of this ansible role use [molecule](https://molecule.readthedocs.io/en/latest/index.html)
-
-### (disabled) Travis CI
-
-At first I used Travis CI, see the logs at https://travis-ci.org/github/stefangweichinger/ansible-rclone
-
-[![Build Status](https://travis-ci.org/stefangweichinger/ansible-rclone.svg?branch=master)](https://travis-ci.org/stefangweichinger/ansible-rclone)
+I use the GitHub Action [Test Ansible roles with Molecule](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) for these tests.
 
 ### (current) CI with GitHub Actions
 
@@ -165,3 +160,20 @@ https://github.com/stefangweichinger/ansible-rclone/actions
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/stefangweichinger/ansible-rclone/Molecule?label=GitHub%20Workflow%20Molecule)](https://github.com/stefangweichinger/ansible-rclone/actions)
 
 This, like this whole repo, is a work in progress.
+
+### tox
+
+In January 2022 I learned about [tox](https://tox.wiki/en/latest/)
+`tox` can be used for testing against various different Python versions, Ansible versions, etc.
+It is run within the molecule tests now.
+
+### (disabled) Travis CI
+
+At first I used Travis CI, see the logs at https://travis-ci.org/github/stefangweichinger/ansible-rclone
+
+## [Author Information](#author-information)
+
+[Stefan G. Weichinger](https://www.oops.co.at/)
+
+Please consider [sponsoring me](https://github.com/sponsors/stefangweichinger).
+
