@@ -12,7 +12,7 @@
     name: '{{ item }}'
     state: present
   become: true
-  with_items: '{{ PACKAGES }}'
+  with_items: '{{ rclone_packages }}'
 
 - name: Remove temporary working directory
   file:
@@ -54,18 +54,18 @@
 
 - name: Make dir for local manpages
   file:
-    path: '{{ MAN_PAGES.PATH }}'
+    path: '{{ rclone_man_pages.PATH }}'
     state: directory
     mode: '0775'
-    owner: '{{ MAN_PAGES.OWNER }}'
-    group: '{{ MAN_PAGES.GROUP }}'
+    owner: '{{ rclone_man_pages.OWNER }}'
+    group: '{{ rclone_man_pages.GROUP }}'
   become: true
   when: install_manpages
 
 - name: Copy rclone manpage
   copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone.1"
-    dest: "{{ MAN_PAGES.PATH }}/rclone.1"
+    dest: "{{ rclone_man_pages.PATH }}/rclone.1"
     mode: '0644'
     owner: root
     group: root
