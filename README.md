@@ -1,7 +1,9 @@
 # ansible-rclone
 AKA `ansible_rclone` and formerly `rclone`
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/stefangweichinger/ansible-rclone/Molecule?label=GitHub%20Workflow%20Molecule)](https://github.com/stefangweichinger/ansible-rclone/actions)
+[![Molecule](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml/badge.svg)](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml)
+
+[![Release to Ansible Galaxy](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/galaxy.yml/badge.svg)](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/galaxy.yml)
 
 [![GitHub Open Issues](https://img.shields.io/github/issues/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
