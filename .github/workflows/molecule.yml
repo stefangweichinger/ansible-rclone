@@ -1,6 +1,6 @@
 ---
 
-name: Molecule
+name: Ansible Molecule
 
 on:  # yamllint disable-line rule:truthy
   push:
