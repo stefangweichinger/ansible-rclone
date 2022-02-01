@@ -10,7 +10,7 @@ on:  # yamllint disable-line rule:truthy
       - 'README.md'
   pull_request:
     branches:
-      - master
+      - main
   schedule:
     - cron: '15 8 8 * *'
 
