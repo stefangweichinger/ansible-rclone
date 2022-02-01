@@ -157,7 +157,7 @@ In November 2020 I switched over to running the CI pipeline within Github Action
 
 https://github.com/stefangweichinger/ansible-rclone/actions
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/stefangweichinger/ansible-rclone/Molecule?label=GitHub%20Workflow%20Molecule)](https://github.com/stefangweichinger/ansible-rclone/actions)
+[![Ansible Molecule](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml/badge.svg)](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml)
 
 This, like this whole repo, is a work in progress.
 
