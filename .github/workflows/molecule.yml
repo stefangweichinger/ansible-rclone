@@ -4,11 +4,8 @@ name: Molecule
 
 on:  # yamllint disable-line rule:truthy
   push:
-    branches:
-      - master
-      - ci_*
-      - issue*
-      - pr_*
+    tags_ignore:
+      - '*'
     paths-ignore:
       - 'README.md'
   pull_request:
