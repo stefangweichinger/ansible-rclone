@@ -7,6 +7,8 @@ on:
     types: [created, edited, published, released]
 jobs:
   release:
+    needs:
+      - molecule
     runs-on: ubuntu-20.04
     steps:
       - name: galaxy
