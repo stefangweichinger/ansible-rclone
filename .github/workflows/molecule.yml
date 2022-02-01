@@ -16,7 +16,18 @@ on:  # yamllint disable-line rule:truthy
       - master
 
 jobs:
-  molecule:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          path: "${{ github.repository }}"
+      - name: molecule
+        uses: robertdebock/molecule-action@4.0.6
+        with:
+          command: lint
+  test:
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
@@ -39,11 +50,11 @@ jobs:
           - "1.56.0"
           - ""
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: Molecule
+      - name: molecule
         uses: robertdebock/molecule-action@4.0.6
         env:
           MOLECULE_DISTRO: "${{ matrix.distros }}"
@@ -52,14 +63,3 @@ jobs:
         with:
           options: parallel
           scenario: ${{ matrix.scenario }}
-
-  release:
-    needs:
-      - molecule
-    runs-on: ubuntu-20.04
-    steps:
-      - name: galaxy
-        uses: robertdebock/galaxy-action@1.1.1
-        with:
-          galaxy_api_key: ${{ secrets.galaxy_api_key }}
-        if: ${{ github.ref == 'refs/heads/master' }}
