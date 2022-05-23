@@ -39,9 +39,9 @@ jobs:
           - debian9
           - debian10
           - debian11
-          - fedora33
           - fedora34
           - fedora35
+          - fedora36
           - ubuntu1804
           - ubuntu2004
         releases:
