@@ -23,7 +23,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: robertdebock/molecule-action@4.0.6
+        uses: robertdebock/molecule-action@4.0.7
         with:
           command: lint
   test:
@@ -39,9 +39,9 @@ jobs:
           - debian9
           - debian10
           - debian11
-          - fedora33
           - fedora34
           - fedora35
+          - fedora36
           - ubuntu1804
           - ubuntu2004
         releases:
