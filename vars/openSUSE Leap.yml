@@ -1,0 +1,10 @@
+---
+
+rclone_packages:   # noqa var-naming
+  - unzip
+  - man-pages
+
+rclone_man_pages:  # noqa var-naming
+  OWNER: root
+  GROUP: root
+  PATH: '/usr/local/share/man/man1'
