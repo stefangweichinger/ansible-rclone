@@ -27,7 +27,7 @@ The build tests run on a selected set of distros:
 
 * Debian 9,10,11
 * Fedora 34,35,36
-* Ubuntu 1804,2004
+* Ubuntu 1804,2004,2204
 * Ubuntu-derived distros: Linux Mint, Pop!\_OS
 
 Some older releases also work with this role, but I decided to remove some of them from `galaxy_info`.
