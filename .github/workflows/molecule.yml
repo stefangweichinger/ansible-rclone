@@ -44,6 +44,7 @@ jobs:
           - fedora36
           - ubuntu1804
           - ubuntu2004
+          - ubuntu2204
         releases:
           - stable
           - beta
