@@ -175,5 +175,5 @@ At first I used Travis CI, see the logs at https://travis-ci.org/github/stefangw
 
 [Stefan G. Weichinger](https://www.oops.co.at/)
 
-Please consider [sponsoring me](https://github.com/sponsors/stefangweichinger) (upcoming).
+Please consider [sponsoring this project](https://github.com/sponsors/stefangweichinger).
 
