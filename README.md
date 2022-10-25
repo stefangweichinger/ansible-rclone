@@ -73,7 +73,7 @@ This variable allows for predefined remote configs to be loaded. `rclone_configs
   OWNER: root
   GROUP: root
 
-These variables allows for setting the ownership of the directory and config file for rclone. They are mostly needed if configuring rclone to run as an other user then root. But the defualts are set to preserve the defaults setting.
+These variables allow for setting the ownership of the directory and config file for rclone. They are mostly needed if configuring rclone to run as an other user than root. 
 
 ```
 rclone_configs:
