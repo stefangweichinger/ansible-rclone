@@ -21,3 +21,7 @@ rclone_packages:
 rclone_man_pages:
   OWNER: root
   GROUP: root
+
+rclone_config_owner:
+  OWNER: root
+  GROUP: root
