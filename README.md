@@ -65,6 +65,14 @@ Can be set to "stable", or "beta" to install the latest beta version.
 
 The location to install the rclone config file if you provide `rclone_configs`
 
+### `rclone_config_owner:`
+
+These variables allow for setting the ownership of the directory and config file for rclone. They are mostly needed if configuring rclone to run as an other user than root. 
+
+    rclone_config_owner:
+       OWNER: rclone
+       GROUP: rclone
+
 ### `rclone_configs: ""`
 
 This variable allows for predefined remote configs to be loaded. `rclone_configs` must be a YAML list with a name variable and a properties variable which is another list of arbitrary key value pairs. See the example below which would configure a Google Drive remote:
