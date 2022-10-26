@@ -69,15 +69,11 @@
       file:
         path: '{{ rclone_config_location | dirname }}'
         state: directory
-        owner: '{{ rclone_config_owner.OWNER }}'
-        group: '{{ rclone_config_owner.GROUP }}'
         mode: '0700'
 
     - name: Set up rclone config
       template:
         src: rclone.conf.j2
-        owner: '{{ rclone_config_owner.OWNER }}'
-        group: '{{ rclone_config_owner.GROUP }}'
         dest: '{{ rclone_config_location }}'
         mode: 0600
   become: true
