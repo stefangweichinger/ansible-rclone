@@ -69,8 +69,9 @@ The location to install the rclone config file if you provide `rclone_configs`
 
 These variables allow for setting the ownership of the directory and config file for rclone. They are mostly needed if configuring rclone to run as an other user than root. 
 
-    OWNER: rclone
-    GROUP: rclone
+    rclone_config_owner:
+       OWNER: rclone
+       GROUP: rclone
 
 ### `rclone_configs: ""`
 
