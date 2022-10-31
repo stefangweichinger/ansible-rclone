@@ -48,7 +48,7 @@ This can be used to toggle the installation of manpages.
 
 This variable chooses the target architecture (for example 'amd64').
 
-### `rclone_version: "1.57.0"`
+### `rclone_version: "1.60.0"`
 
 The version of rclone to install. `rclone_version` can be set to a specific version number.
 Make sure you add the last number as well: "1.56" won't work, "1.56.0" will do (check upstream repo for available releases).
