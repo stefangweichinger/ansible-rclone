@@ -67,7 +67,7 @@ Can be set to "stable", or "beta" to install the latest beta version.
 
 ### `rclone_config_location: "/root/.config/rclone/rclone.conf"`
 
-The location to install the rclone config file if you provide `rclone_configs`
+The location to install the `rclone` config file to if you provide `rclone_configs`
 
 ### `rclone_config_owner:`
 
