@@ -14,12 +14,12 @@ AKA `ansible_rclone` and formerly `rclone`
 
 An Ansible role to install [rclone](https://github.com/ncw/rclone)
 
-Please note that this role installs rclone from the upstream repository and not from the OS repositories!
+Please note that this role installs `rclone` from the upstream repository and not from the OS repositories!
 
 ## Usage
 
 1. Clone this repo into your local roles-directory or install via `ansible-galaxy install stefangweichinger.ansible_rclone`
-2. Add role to the hosts you want rclone installed to.
+2. Add role to the hosts you want `rclone` installed to.
 4. Run `ansible` ...
 
 And feel free to rate the role on [Ansible Galaxy](https://galaxy.ansible.com/stefangweichinger/ansible_rclone) to improve its "Community Score
@@ -54,7 +54,7 @@ This variable chooses the target architecture (for example 'amd64').
 
 ### `rclone_version: "1.60.0"`
 
-The version of rclone to install. `rclone_version` can be set to a specific version number.
+The version of `rclone` to install. `rclone_version` can be set to a specific version number.
 Make sure you add the last number as well: "1.56" won't work, "1.56.0" will do (check upstream repo for available releases).
 
     rclone_version: "1.56.0"
@@ -67,11 +67,11 @@ Can be set to "stable", or "beta" to install the latest beta version.
 
 ### `rclone_config_location: "/root/.config/rclone/rclone.conf"`
 
-The location to install the rclone config file if you provide `rclone_configs`
+The location to install the `rclone` config file to if you provide `rclone_configs`
 
 ### `rclone_config_owner:`
 
-These variables allow for setting the ownership of the directory and config file for rclone. They are mostly needed if configuring rclone to run as an other user than root. 
+These variables allow for setting the ownership of the directory and config file for `rclone`. They are mostly needed if configuring `rclone` to run as an other user than root (maybe a specific backup user or so).
 
     rclone_config_owner:
        OWNER: rclone
@@ -91,11 +91,11 @@ rclone_configs:
       token: ' {"access_token":"","token_type":"","refresh_token":"","expiry":""}'
 ```
 
-Note that the space after the single quote `'` for `token` is intentional in order to force this into a string. Otherwise, it will be interpreted as an object and have its double quotes be converted to single quotes within the config file which rclone cannot parse correctly.
+Note that the space after the single quote `'` for `token` is intentional in order to force this into a string. Otherwise, it will be interpreted as an object and have its double quotes be converted to single quotes within the config file which `rclone` cannot parse correctly.
 
 #### rclone_configs detailed example
 
-The `rclone_configs` variable is used to recreate the `rclone.conf` file. This config file stores the rclone remotes that have been defined and are usable. This is an alternative to simply copying a stored `rclone.conf` file directly.
+The `rclone_configs` variable is used to recreate the `rclone.conf` file. This config file stores the `rclone` remotes that have been defined and are usable. This is an alternative to simply copying a stored `rclone.conf` file directly.
 
 The `rclone_configs` simply takes a list of YAML objects which must have a `name` which will map to the name of the remote, and a `properties` which can be any key, value pairs which will map to the variables stored under that remote. These should be the ones expected by the `rclone.conf` file for the remote type you're configuring.
 
@@ -117,7 +117,7 @@ password = <PASSWORD>
 password2 = <PASSWORD2>
 ```
 
-To enable ansible-rclone to recreate that config file, you can provide an `rclone_configs` variable as follows.
+To enable the role to recreate that config file, you can provide an `rclone_configs` variable as follows.
 Note that this should always be encrypted if stored publicly as it gives access to your remotes:
 
 ```
@@ -156,7 +156,7 @@ None.
 [WARNING]: - stefangweichinger.rclone was NOT installed successfully: - sorry, stefangweichinger.rclone was not found on https://galaxy.ansible.com/api/
 ```
 
-Note that this module has undergone a name change. It was previously known as `stefangweichinger.rclone`, however Galaxy changed its naming methods. We are working on a change that will put move it back to this name for simplicity. Ansible Galaxy substitutes `-` to `_` and used to strip a prefix or `ansible`. For more information, see the [this issue](https://github.com/stefangweichinger/ansible-rclone/issues/48).
+Note that this module has undergone a name change. It was previously known as `stefangweichinger.rclone`, however Galaxy changed its naming methods. I am  considering a change that will put move it back to this name for simplicity. Ansible Galaxy substitutes `-` to `_` and used to strip a prefix or `ansible`. For more information, see the [this issue](https://github.com/stefangweichinger/ansible-rclone/issues/48).
 
 ## Molecule Testing
 
@@ -187,5 +187,4 @@ At first I used Travis CI, see the logs at https://travis-ci.org/github/stefangw
 
 [Stefan G. Weichinger](https://www.oops.co.at/)
 
-Please consider [sponsoring this project](https://github.com/sponsors/stefangweichinger).
-
+Please consider [sponsoring this project](https://github.com/sponsors/stefangweichinger) and/or rating the role on [Ansible Galaxy](https://galaxy.ansible.com/stefangweichinger/ansible_rclone).
