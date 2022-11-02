@@ -2,48 +2,48 @@
 
 
 - name: Update repositories cache on Ubuntu
-  apt:
+  ansible.builtin.apt:
     update_cache: true
   become: true
   when: ansible_distribution == 'Ubuntu'
 
 - name: Install required packages
-  package:
+  ansible.builtin.package:
     name: '{{ item }}'
     state: present
   become: true
   with_items: '{{ rclone_packages }}'
 
 - name: Remove temporary working directory
-  file:
+  ansible.builtin.file:
     path: "{{ rclone_setup_tmp_dir }}"
     state: absent
   tags:
     - molecule-idempotence-notest
 
 - name: Create temporary working directory
-  file:
+  ansible.builtin.file:
     path: "{{ rclone_setup_tmp_dir }}"
     state: directory
     mode: '0775'
 
 - name: Do beta install
-  include_tasks: beta.yml
+  ansible.builtin.include_tasks: beta.yml
   when: rclone_release == 'beta'
 
 - name: Do stable install
-  include_tasks: stable.yml
+  ansible.builtin.include_tasks: stable.yml
   when: rclone_release == 'stable'
 
 - name: Get list of files extracted from the rclone archive
-  find:
+  ansible.builtin.find:
     path: "{{ rclone_setup_tmp_dir }}"
     depth: 2
     file_type: directory
   register: rclone_archive
 
 - name: Copy rclone binary
-  copy:
+  ansible.builtin.copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone"
     dest: "/usr/local/bin/rclone"
     mode: '0755'
@@ -53,7 +53,7 @@
   become: true
 
 - name: Make dir for local manpages
-  file:
+  ansible.builtin.file:
     path: '{{ rclone_man_pages.PATH }}'
     state: directory
     mode: '0775'
@@ -63,7 +63,7 @@
   when: install_manpages
 
 - name: Copy rclone manpage
-  copy:
+  ansible.builtin.copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone.1"
     dest: "{{ rclone_man_pages.PATH }}/rclone.1"
     mode: '0644'
@@ -74,7 +74,7 @@
   when: install_manpages
 
 - name: Update mandb
-  command: mandb
+  ansible.builtin.command: mandb
   become: true
   changed_when: false
   when: install_manpages

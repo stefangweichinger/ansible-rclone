@@ -23,7 +23,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: robertdebock/molecule-action@4.0.7
+        uses: robertdebock/molecule-action@4.0.9
         with:
           command: lint
   test:
@@ -49,7 +49,7 @@ jobs:
           - stable
           - beta
         versions:
-          - "1.56.0"
+          - "1.60.0"
           - ""
     steps:
       - name: checkout
@@ -57,7 +57,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: robertdebock/molecule-action@4.0.6
+        uses: robertdebock/molecule-action@4.0.9
         env:
           MOLECULE_DISTRO: "${{ matrix.distros }}"
           TEST_RELEASE: "${{ matrix.releases }}"
@@ -72,7 +72,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: galaxy
-        uses: robertdebock/galaxy-action@1.2.0
+        uses: robertdebock/galaxy-action@1.2.1
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
           git_branch: main

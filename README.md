@@ -23,7 +23,7 @@ Please note that this role installs rclone from the upstream repository and not 
 
 ## Supported Platforms
 
-The build tests run on a selected set of distros:
+The build tests use the galaxy-action [molecule action](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) and run on a selected set of distros:
 
 * Debian 9,10,11
 * Fedora 34,35,36
@@ -48,7 +48,7 @@ This can be used to toggle the installation of manpages.
 
 This variable chooses the target architecture (for example 'amd64').
 
-### `rclone_version: "1.57.0"`
+### `rclone_version: "1.60.0"`
 
 The version of rclone to install. `rclone_version` can be set to a specific version number.
 Make sure you add the last number as well: "1.56" won't work, "1.56.0" will do (check upstream repo for available releases).
@@ -152,11 +152,11 @@ None.
 [WARNING]: - stefangweichinger.rclone was NOT installed successfully: - sorry, stefangweichinger.rclone was not found on https://galaxy.ansible.com/api/
 ```
 
-Note that this module has undergone a name change. It was previously known as `stefangweichinger.rclone`, however Galaxy changed it's naming methods. We are working on a change that will put move it back to this name for simplicity. Ansible Galaxy substitutes `-` to `_` and used to strip a prefix or `ansible`. For more information, see the [this issue](https://github.com/stefangweichinger/ansible-rclone/issues/48).
+Note that this module has undergone a name change. It was previously known as `stefangweichinger.rclone`, however Galaxy changed its naming methods. We are working on a change that will put move it back to this name for simplicity. Ansible Galaxy substitutes `-` to `_` and used to strip a prefix or `ansible`. For more information, see the [this issue](https://github.com/stefangweichinger/ansible-rclone/issues/48).
 
 ## Molecule Testing
 
-The tests of this ansible role use [molecule](https://molecule.readthedocs.io/en/latest/index.html)
+The tests of this ansible role use [molecule](https://molecule.readthedocs.io/en/latest/index.html).
 I use the GitHub Action [Test Ansible roles with Molecule](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) for these tests.
 
 ### (current) CI with GitHub Actions
