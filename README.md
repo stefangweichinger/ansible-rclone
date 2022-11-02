@@ -156,7 +156,7 @@ Note that this module has undergone a name change. It was previously known as `s
 
 ## Molecule Testing
 
-The tests of this ansible role use [molecule](https://molecule.readthedocs.io/en/latest/index.html)
+The tests of this ansible role use [molecule](https://molecule.readthedocs.io/en/latest/index.html).
 I use the GitHub Action [Test Ansible roles with Molecule](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) for these tests.
 
 ### (current) CI with GitHub Actions
