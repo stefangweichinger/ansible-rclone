@@ -23,7 +23,7 @@ Please note that this role installs rclone from the upstream repository and not 
 
 ## Supported Platforms
 
-The build tests run on a selected set of distros:
+The build tests use the galaxy-action [molecule action](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) and run on a selected set of distros:
 
 * Debian 9,10,11
 * Fedora 34,35,36
