@@ -20,6 +20,10 @@ Please note that this role installs rclone from the upstream repository and not 
 
 1. Clone this repo into your local roles-directory or install via `ansible-galaxy install stefangweichinger.ansible_rclone`
 2. Add role to the hosts you want rclone installed to.
+4. Run `ansible` ...
+
+And feel free to rate the role on [Ansible Galaxy](https://galaxy.ansible.com/stefangweichinger/ansible_rclone) to improve its "Community Score
+". You're welcome!
 
 ## Supported Platforms
 
