@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - main
+      - play_with_cz
 
 jobs:
   bump-version:
