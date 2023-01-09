@@ -11,15 +11,18 @@ on:
 jobs:
 
   pre-commit:
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        #pip install --upgrade --requirement requirements-test.txt
-        pip install --upgrade pre-commit
-    - name: Set up pre-commit hook environments
-      run: pre-commit install-hooks
-    - name: Run pre-commit on all files
-      run: pre-commit run --all-files
+    runs-on: ubuntu-latest
+    name: "Install and run pre-commit"
+    steps:
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          #pip install --upgrade --requirement requirements-test.txt
+          pip install --upgrade pre-commit
+      - name: Set up pre-commit hook environments
+        run: pre-commit install-hooks
+      - name: Run pre-commit on all files
+        run: pre-commit run --all-files
 
   bump-version:
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
