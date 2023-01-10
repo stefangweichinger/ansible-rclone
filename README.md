@@ -2,6 +2,9 @@
 
 ![Ansible Galaxy Role](https://img.shields.io/ansible/role/46861?label=Ansible%20Galaxy%20Role&style=for-the-badge)
 
+![Tag](https://img.shields.io/github/v/tag/stefangweichinger/ansible-rclone?sort=semver&style=for-the-badge)
+
+
 [![Ansible Molecule](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml/badge.svg)](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml)
 
 [![GitHub Open Issues](https://img.shields.io/github/issues/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone/issues)
