@@ -1,5 +1,6 @@
 # ansible-rclone
-AKA `ansible_rclone` and formerly `rclone`
+
+![Ansible Galaxy Role](https://img.shields.io/ansible/role/46861?label=Ansible%20Galaxy%20Role&style=for-the-badge)
 
 [![Ansible Molecule](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml/badge.svg)](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml)
 
@@ -9,6 +10,8 @@ AKA `ansible_rclone` and formerly `rclone`
 
 [![Ansible Role](https://img.shields.io/ansible/role/46861.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
 [![Ansible Role Downloads](https://img.shields.io/ansible/role/d/46861.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
+
+AKA `ansible_rclone` and formerly `rclone`
 
 ## Description
 
