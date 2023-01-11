@@ -17,10 +17,6 @@ repos:
     rev: v6.10.2
     hooks:
       - id: ansible-lint
-        pass_filenames: false
-        entry: ansible-lint --force-color -v
-        additional_dependencies:
-          - .[community]
 
   - repo: https://github.com/robertdebock/pre-commit
     rev: v1.5.2
