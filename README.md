@@ -165,10 +165,10 @@ Note that this module has undergone a name change. It was previously known as `s
 
 ## Versioning
 
-Changed in january 2023:
+Changed in January 2023:
 
 We are using [SemVer](https://semver.org/) and **CHANGELOG generation** powered by [Conventional Commits](https://conventionalcommits.org).
-Commit messages are now done using [commitizen](https://github.com/commitizen-tools/commitizen-action), which is run in a pre-commit command.
+Commit messages are now done using [commitizen](https://github.com/commitizen-tools/commitizen), which is run in a pre-commit command.
 
 This is new and will maybe see more finetuning.
 
