@@ -9,6 +9,7 @@ exclude_paths:
   - ./molecule/default/collections.yml
   - ./.tox
   - ./.cache
+  - ./.cz.yaml
 
 skip_list:
   - '106'
