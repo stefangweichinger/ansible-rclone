@@ -1,5 +1,8 @@
 # ansible-rclone
-AKA `ansible_rclone` and formerly `rclone`
+
+![Ansible Galaxy Role](https://img.shields.io/ansible/role/46861?label=Ansible%20Galaxy%20Role&style=for-the-badge)
+
+![Tag](https://img.shields.io/github/v/tag/stefangweichinger/ansible-rclone?sort=semver&style=for-the-badge)
 
 [![Ansible Molecule](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml/badge.svg)](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml)
 
@@ -9,6 +12,8 @@ AKA `ansible_rclone` and formerly `rclone`
 
 [![Ansible Role](https://img.shields.io/ansible/role/46861.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
 [![Ansible Role Downloads](https://img.shields.io/ansible/role/d/46861.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
+
+AKA `ansible_rclone` and formerly `rclone`
 
 ## Description
 
@@ -157,6 +162,15 @@ None.
 ```
 
 Note that this module has undergone a name change. It was previously known as `stefangweichinger.rclone`, however Galaxy changed its naming methods. I am  considering a change that will put move it back to this name for simplicity. Ansible Galaxy substitutes `-` to `_` and used to strip a prefix or `ansible`. For more information, see the [this issue](https://github.com/stefangweichinger/ansible-rclone/issues/48).
+
+## Versioning
+
+Changed in January 2023:
+
+We are using [SemVer](https://semver.org/) and **CHANGELOG generation** powered by [Conventional Commits](https://conventionalcommits.org).
+Commit messages are now done using [commitizen](https://github.com/commitizen-tools/commitizen), which is run in a pre-commit command.
+
+This is new and will maybe see more finetuning.
 
 ## Molecule Testing
 
