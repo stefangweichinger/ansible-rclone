@@ -17,15 +17,17 @@ AKA `ansible_rclone` and formerly `rclone`
 
 ## Description
 
-An Ansible role to install [rclone](https://github.com/ncw/rclone)
+### tl;dr
 
-Please note that this role installs `rclone` from the upstream repository and not from the OS repositories!
+An [Ansible](https://www.ansible.com/) role to install [rclone](https://github.com/ncw/rclone)
 
 ## Usage
 
 1. Clone this repo into your local roles-directory or install via `ansible-galaxy install stefangweichinger.ansible_rclone`
 2. Add role to the hosts you want `rclone` installed to.
 4. Run `ansible` ...
+
+Please note that this role installs `rclone` from the upstream repository and not from the OS repositories!
 
 And feel free to rate the role on [Ansible Galaxy](https://galaxy.ansible.com/stefangweichinger/ansible_rclone) to improve its "Community Score
 ". You're welcome!
