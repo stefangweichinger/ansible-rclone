@@ -19,7 +19,7 @@ AKA `ansible_rclone` and formerly `rclone`
 
 ### tl;dr
 
-An [Ansible](https://www.ansible.com/) role to install [rclone](https://github.com/ncw/rclone)
+An [Ansible](https://www.ansible.com/) role to install [rclone](https://github.com/ncw/rclone) directly from upstream.
 
 ## Usage
 
