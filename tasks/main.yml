@@ -75,7 +75,7 @@
         state: directory
         owner: '{{ rclone_config_owner.OWNER }}'
         group: '{{ rclone_config_owner.GROUP }}'
-        mode: '0700'
+        mode: '0755'
 
     - name: Set up rclone config
       ansible.builtin.template:
