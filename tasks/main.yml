@@ -84,3 +84,4 @@
         group: '{{ rclone_config_owner.GROUP }}'
         dest: '{{ rclone_config_location }}'
         mode: 0600
+      register: setup_rclone_config
