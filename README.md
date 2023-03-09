@@ -146,6 +146,31 @@ rclone_configs:
 
 ```
 
+The task to create/update `rclone.conf` registers a variable named `setup_rclone_config`. The attributes of the variable are that of the `ansible.builtin.template` module (e.g. `setup_rclone_config.dest`, `setup_rclone_config.uid`, etc.) and common return values (e.g. `setup_rclone_config.changed`, `setup_rclone_config.failed`, etc.)
+
+You can reference this variable in later tasks if you wish to perform an action when the config has been updated. For example:
+
+```yml
+- name: Install and configure rclone
+  ansible.builtin.include_role:
+    name: stefangweichinger.ansible_rclone
+  vars:
+    rclone_configs:
+      - name: ExampleGoogleDriveRemote
+        properties:
+          type: drive
+          client_id: 12345
+          client_secret: 67890
+
+- name: Restart rclone
+  ansible.builtin.systemd:
+    name: rclone.service
+    state: restarted
+  when: setup_rclone_config.changed
+```
+
+Note: This example assumes you have created the `rclone.service` systemd unit yourself. That action is not a function of this role.
+
 ## Dependencies
 
 None.
