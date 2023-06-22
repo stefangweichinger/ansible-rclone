@@ -36,9 +36,9 @@ jobs:
         scenario:
           - default
         distros:
-          - debian9
           - debian10
           - debian11
+          - debian12
           - fedora34
           - fedora35
           - fedora36
