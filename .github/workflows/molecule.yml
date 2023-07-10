@@ -27,7 +27,7 @@ jobs:
           # this is to fix GIT not liking owner of the checkout dir
           chown -R $(id -u):$(id -g) $PWD
       - name: molecule
-        uses: robertdebock/molecule-action@4.0.9
+        uses: robertdebock/molecule-action@5.0.3
         with:
           command: lint
   test:
