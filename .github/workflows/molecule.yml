@@ -22,6 +22,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: "${{ github.repository }}"
+      - name: Set ownership
+        run: |
+          # this is to fix GIT not liking owner of the checkout dir
+          chown -R $(id -u):$(id -g) $PWD
       - name: molecule
         uses: robertdebock/molecule-action@5.0.3
         with:
@@ -56,6 +60,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: "${{ github.repository }}"
+      - name: Set ownership
+        run: |
+          # this is to fix GIT not liking owner of the checkout dir
+          chown -R $(id -u):$(id -g) $PWD
       - name: molecule
         uses: robertdebock/molecule-action@5.0.3
         env:
