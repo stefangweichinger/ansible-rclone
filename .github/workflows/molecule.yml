@@ -53,7 +53,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # needed for progressive mode to work
+          path: "${{ github.repository }}"
       - name: molecule
         uses: robertdebock/molecule-action@5.0.3
         env:
