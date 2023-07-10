@@ -23,7 +23,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: ansible-lint
-        uses: ansible-community/ansible-lint-action@main
+        uses: ansible/ansible-lint-action@main
   test:
     needs:
       - lint
