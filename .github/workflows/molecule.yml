@@ -57,7 +57,7 @@ jobs:
           # Workaround a bug in github actions:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: molecule
-        uses: robertdebock/molecule-action@5.0.3
+        uses: robertdebock/molecule-action@4.0.9
         env:
           MOLECULE_DISTRO: "${{ matrix.distros }}"
           TEST_RELEASE: "${{ matrix.releases }}"
