@@ -35,15 +35,8 @@ jobs:
           - debian10
           - debian11
           - debian12
-          - fedora34
-          - fedora35
-          - fedora36
-          - ubuntu1804
-          - ubuntu2004
-          - ubuntu2204
         releases:
           - stable
-          - beta
         versions:
           - "1.60.0"
           - ""
