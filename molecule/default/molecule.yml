@@ -24,18 +24,3 @@ provisioner:
       instance:
         rclone_release: ${TEST_RELEASE:-stable}
         rclone_version: ${TEST_VERSION:-''}
-  lint:
-    name: ansible-lint
-scenario:
-  test_sequence:
-    - lint
-    - destroy
-    # - dependency
-    - syntax
-    - create
-    # - prepare
-    - converge
-    - idempotence
-    # - side_effect
-    - verify
-    - destroy
