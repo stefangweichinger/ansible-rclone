@@ -21,7 +21,7 @@ galaxy_info:
         - all
     - name: Ubuntu
       versions:
-        - all        
+        - all
   galaxy_tags:
     - networking
     - system
