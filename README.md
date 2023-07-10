@@ -36,8 +36,8 @@ And feel free to rate the role on [Ansible Galaxy](https://galaxy.ansible.com/st
 
 The build tests use the galaxy-action [molecule action](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) and run on a selected set of distros:
 
-* Debian 9,10,11
-* Fedora 34,35,36
+* Debian 9,10,11,12
+* Fedora 34,35,36. Fedora 37 and 38 work as well but aren't actively tested because of issues with the related docker-images.
 * Ubuntu 1804,2004,2204
 * Ubuntu-derived distros: Linux Mint, Pop!\_OS
 
@@ -59,7 +59,7 @@ This can be used to toggle the installation of manpages.
 
 This variable chooses the target architecture (for example 'amd64').
 
-### `rclone_version: "1.60.0"`
+### `rclone_version: "1.63.0"`
 
 The version of `rclone` to install. `rclone_version` can be set to a specific version number.
 Make sure you add the last number as well: "1.56" won't work, "1.56.0" will do (check upstream repo for available releases).
