@@ -14,7 +14,7 @@ repos:
         args: [-c=.yamllint]
 
   - repo: https://github.com/ansible-community/ansible-lint.git
-    rev: v6.10.2
+    rev: v6.18.0
     hooks:
       - id: ansible-lint
 

@@ -1,0 +1,10 @@
+---
+name: ansible_rclone
+namespace: stefangweichinger
+version: 0.1.2
+authors:
+  - stefangweichinger
+readme: ./README.md
+description: "install rclone with ansible"
+repository: "https://github.com/stefangweichinger/ansible-rclone"
+tags: [tools, linux]
