@@ -1,8 +1,10 @@
 # ansible-rclone
 
-![Ansible Galaxy Role](https://img.shields.io/ansible/role/27200?label=Ansible%20Galaxy%20Role&style=for-the-badge)
+![Ansible Galaxy Role Downloads](https://img.shields.io/ansible/role/d/stefangweichinger/ansible_rclone?style=for-the-badge)
 
 ![Tag](https://img.shields.io/github/v/tag/stefangweichinger/ansible-rclone?sort=semver&style=for-the-badge)
+
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/stefangweichinger/ansible-rclone/molecule.yml)
 
 [![Ansible Molecule](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml/badge.svg)](https://github.com/stefangweichinger/ansible-rclone/actions/workflows/molecule.yml)
 
@@ -10,8 +12,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 [![GitHub Forks](https://img.shields.io/github/forks/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 
-[![Ansible Role](https://img.shields.io/ansible/role/27200.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
-[![Ansible Role Downloads](https://img.shields.io/ansible/role/d/27200.svg)](https://galaxy.ansible.com/stefangweichinger/ansible_rclone)
+
 
 AKA `ansible_rclone` and formerly `rclone`
 
