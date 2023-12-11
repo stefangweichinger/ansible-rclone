@@ -19,9 +19,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: checkout
-        uses: actions/checkout@v3
-      - name: ansible-lint
-        uses: ansible-community/ansible-lint-action@v6
+        uses: actions/checkout@v4
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint@v6
   test:
     needs:
       - lint
