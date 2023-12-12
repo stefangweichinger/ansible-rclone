@@ -64,9 +64,12 @@ jobs:
           TEST_VERSION: "${{ matrix.versions }}"
         with:
           scenario: ${{ matrix.scenario }}
+  release:
+    needs:
+      -test
+    runs-on: ubuntu-latest
+    steps:
       - name: Release to ansible galaxy
-        needs:
-          - molecule
         uses: robertdebock/galaxy-action@1.2.1
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
