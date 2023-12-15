@@ -5,7 +5,7 @@
   ansible.builtin.apt:
     update_cache: true
   become: true
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_facts.distribution == 'Ubuntu'
 
 - name: Install required packages
   ansible.builtin.package:
