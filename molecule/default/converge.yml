@@ -9,7 +9,7 @@
       ansible.builtin.apt:
         update_cache: yes
         cache_valid_time: 600
-      when: ansible_os_family == 'Debian'
+      when: ansible_facts.os_family == 'Debian'
 
     - name: Wait for systemd to complete initialization.     # noqa command-instead-of-module
       ansible.builtin.command: systemctl is-system-running
@@ -19,7 +19,7 @@
         'degraded' in systemctl_status.stdout
       retries: 30
       delay: 5
-      when: ansible_distribution == 'Fedora'
+      when: ansible_facts.distribution == 'Fedora'
       changed_when: false
 
     - name: Show ansible version
