@@ -85,3 +85,7 @@
         dest: '{{ rclone_config_location }}'
         mode: 0600
       register: setup_rclone_config
+
+- name: mount rclone
+  ansible.builtin.include_tasks: mount.yml
+  when: rclone_mount

@@ -2,3 +2,15 @@
 
 - name: Update facts
   action: ansible.builtin.setup
+
+- name: Reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Reload and restart rclone-mount services
+  ansible.builtin.shell: |
+    systemctl daemon-reload
+    for service in /etc/systemd/system/rclone-mount@*.service; do
+      systemctl enable $(basename $service)
+      systemctl restart $(basename $service)
+    done

@@ -1,0 +1,29 @@
+---
+
+- name: Create directory backup on the cloud
+  ansible.builtin.command:
+    cmd: "rclone mkdir '{{ item.name }}':{{ item.rclone_mount_remote_path }}"
+  loop: "{{ rclone_configs }}"
+
+- name: Install fuse
+  ansible.builtin.package:
+    name: fuse
+    state: present
+
+- name: Link between /usr/bin/fusermount and /usr/bin/fusermount3
+  ansible.builtin.file:
+    src: /usr/bin/fusermount
+    dest: /usr/bin/fusermount3
+    state: link
+    force: yes
+
+- name: Create and active services rclone mount
+  ansible.builtin.template:
+    src: rclone-mount@.service.j2
+    dest: "/etc/systemd/system/rclone-mount@{{ item.name | replace(' ', '_') }}.service"
+    owner: root
+    group: root
+    mode: '0644'
+  loop: "{{ rclone_configs }}"
+  when: item.rclone_mount_remote_path is defined and item.rclone_mount_local_path is defined
+  notify: "Reload and restart rclone-mount services"

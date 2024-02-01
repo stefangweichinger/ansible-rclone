@@ -1,0 +1,15 @@
+[Unit]
+Description=RClone Mount Service for {{ item.name }}
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/rclone mount '{{ item.name }}':{{ item.rclone_mount_remote_path }} {{ item.rclone_mount_local_path }}
+ExecStop=/bin/fusermount -u {{ item.rclone_mount_local_path }}
+Restart=on-failure
+User={{ ansible_user_id }}
+Group={{ ansible_user_gid }}
+
+[Install]
+WantedBy=default.target
