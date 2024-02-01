@@ -26,5 +26,10 @@ rclone_config_owner:
   OWNER: root
   GROUP: root
 
-rclone_mount: false
-rclone_auto_mount: true
+rclone_mounts: []
+# example :
+#rclone_mounts:
+#      - name: test
+#          remote_path: "/test"
+#          local_path: "/mnt"
+#          auto_mount: true

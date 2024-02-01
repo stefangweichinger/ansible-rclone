@@ -88,4 +88,4 @@
 
 - name: mount rclone
   ansible.builtin.include_tasks: mount.yml
-  when: rclone_mount
+  when: rclone_mounts | length > 0

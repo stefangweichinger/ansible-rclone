@@ -2,8 +2,8 @@
 
 - name: Create directory backup on the cloud
   ansible.builtin.command:
-    cmd: "rclone mkdir '{{ item.name }}':{{ item.rclone_mount_remote_path }}"
-  loop: "{{ rclone_configs }}"
+    cmd: "rclone mkdir '{{ item.remote_name }}':{{ item.remote_path }}"
+  loop: "{{ rclone_mounts }}"
 
 - name: Install fuse
   ansible.builtin.package:
@@ -24,6 +24,6 @@
     owner: root
     group: root
     mode: '0644'
-  loop: "{{ rclone_configs }}"
-  when: item.rclone_mount_remote_path is defined and item.rclone_mount_local_path is defined
+  loop: "{{ rclone_mounts }}"
+  when: item.remote_path is defined and item.local_path is defined
   notify: "Reload and restart rclone-mount services"
