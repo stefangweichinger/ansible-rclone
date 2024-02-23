@@ -4,6 +4,7 @@
   ansible.builtin.command:
     cmd: "rclone mkdir '{{ item.remote_name }}':{{ item.remote_path }}"
   loop: "{{ rclone_mounts }}"
+  when: rclone_mkdir 
 
 - name: Install fuse
   ansible.builtin.package:
@@ -17,7 +18,7 @@
     state: link
     force: yes
 
-- name: Create and active services rclone mount
+- name: Create and activate services rclone mount
   ansible.builtin.template:
     src: rclone-mount@.service.j2
     dest: "/etc/systemd/system/rclone-mount@{{ item.name | replace(' ', '_') }}.service"

@@ -172,6 +172,30 @@ You can reference this variable in later tasks if you wish to perform an action 
 
 Note: This example assumes you have created the `rclone.service` systemd unit yourself. That action is not a function of this role.
 
+### `rclone_mounts: ""`
+
+This variable allows for the configuration of rclone mounts within your infrastructure. `rclone_mounts` should be a YAML list of objects, each including keys for `name`, `remote_name`, `remote_path`, `local_path`, and `auto_mount`. This setup enables precise control over multiple mount points, their remote sources, and whether they should be automatically mounted.
+
+#### Detailed example for `rclone_mounts`
+
+To define mounts, you'll specify each mount's details in the playbook, allowing Ansible to handle the mounting process as per your configuration. This method is advantageous for managing mounts across multiple systems or ensuring persistent mounts across reboots when combined with the `auto_mount` option.
+The `name` defines the mount's identifier, used partly in naming the service. `remote_name` and `remote_path` determine the remote storage location, while `local_path` indicates where it mounts locally. 
+`auto_mount` controls whether the mount and corresponding service automatically activate, ensuring availability after reboots or redeployments.
+
+
+When incorporating rclone_mounts into your setup, each mount point you define will correspond to a system service, facilitating management and automation.
+
+Example configuration for mounting a directory from Backblaze B2 as a local backup directory:
+
+```yaml
+rclone_mounts:
+  - name: my-app
+    remote_name: BackblazeLM
+    remote_path: "/my-app"
+    local_path: "/var/backups/my-app/"
+    auto_mount: true
+```
+
 ## Dependencies
 
 None.

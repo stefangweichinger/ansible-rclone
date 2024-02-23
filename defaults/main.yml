@@ -26,6 +26,7 @@ rclone_config_owner:
   OWNER: root
   GROUP: root
 
+rclone_mkdir: true
 rclone_mounts: []
 # example :
 #rclone_mounts:
