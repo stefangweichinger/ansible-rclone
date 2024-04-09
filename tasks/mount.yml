@@ -4,7 +4,9 @@
   ansible.builtin.command:
     cmd: "rclone mkdir '{{ item.remote_name }}':{{ item.remote_path }}"
   loop: "{{ rclone_mounts }}"
-  when: rclone_mkdir 
+  when: rclone_mkdir
+  register: rclone_mkdir_output
+  changed_when: rclone_mkdir_output.rc == 0
 
 - name: Install fuse
   ansible.builtin.package:
@@ -28,3 +30,20 @@
   loop: "{{ rclone_mounts }}"
   when: item.remote_path is defined and item.local_path is defined
   notify: "Reload and restart rclone-mount services"
+
+- name: Find and manage rclone-mount services
+  tags: [always]
+  block:
+    - name: Find rclone-mount services
+      ansible.builtin.find:
+        paths: /etc/systemd/system
+        patterns: 'rclone-mount@*.service'
+      register: found_services
+
+    - name: Enable and restart rclone-mount services
+      ansible.builtin.systemd:
+        name: "{{ item.path | basename }}"
+        enabled: yes
+        state: restarted
+      loop: "{{ found_services.files }}"
+      notify: Reload and restart rclone-mount services

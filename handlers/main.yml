@@ -4,9 +4,5 @@
   action: ansible.builtin.setup
 
 - name: Reload and restart rclone-mount services
-  ansible.builtin.shell: |
-    systemctl daemon-reload
-    for service in /etc/systemd/system/rclone-mount@*.service; do
-      systemctl enable $(basename $service)
-      systemctl restart $(basename $service)
-    done
+  ansible.builtin.systemd:
+    daemon_reload: yes
