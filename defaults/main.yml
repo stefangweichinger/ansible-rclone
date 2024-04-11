@@ -25,3 +25,12 @@ rclone_man_pages:
 rclone_config_owner:
   OWNER: root
   GROUP: root
+
+rclone_mkdir: true
+rclone_mounts: []
+# example :
+# rclone_mounts:
+# - name: test
+# remote_path: "/test"
+# local_path: "/mnt"
+# auto_mount: true

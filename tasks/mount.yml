@@ -1,0 +1,49 @@
+---
+
+- name: Create directory backup on the cloud
+  ansible.builtin.command:
+    cmd: "rclone mkdir '{{ item.remote_name }}':{{ item.remote_path }}"
+  loop: "{{ rclone_mounts }}"
+  when: rclone_mkdir
+  register: rclone_mkdir_output
+  changed_when: rclone_mkdir_output.rc == 0
+
+- name: Install fuse
+  ansible.builtin.package:
+    name: fuse
+    state: present
+
+- name: Link between /usr/bin/fusermount and /usr/bin/fusermount3
+  ansible.builtin.file:
+    src: /usr/bin/fusermount
+    dest: /usr/bin/fusermount3
+    state: link
+    force: yes
+
+- name: Create and activate services rclone mount
+  ansible.builtin.template:
+    src: rclone-mount@.service.j2
+    dest: "/etc/systemd/system/rclone-mount@{{ item.name | replace(' ', '_') }}.service"
+    owner: root
+    group: root
+    mode: '0644'
+  loop: "{{ rclone_mounts }}"
+  when: item.remote_path is defined and item.local_path is defined
+  notify: "Reload and restart rclone-mount services"
+
+- name: Find and manage rclone-mount services
+  tags: [always]
+  block:
+    - name: Find rclone-mount services
+      ansible.builtin.find:
+        paths: /etc/systemd/system
+        patterns: 'rclone-mount@*.service'
+      register: found_services
+
+    - name: Enable and restart rclone-mount services
+      ansible.builtin.systemd:
+        name: "{{ item.path | basename }}"
+        enabled: yes
+        state: restarted
+      loop: "{{ found_services.files }}"
+      notify: Reload and restart rclone-mount services
