@@ -48,7 +48,7 @@ jobs:
           - "1.60.0"
           - ""
         scenario-archlinux:
-          - arch
+          - archlinux
         distros-archlinux:
           - archlinux
     steps:
