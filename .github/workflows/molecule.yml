@@ -47,6 +47,10 @@ jobs:
         versions:
           - "1.60.0"
           - ""
+        scenario-archlinux:
+          - arch
+        distros-archlinux:
+          - archlinux
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -64,6 +68,14 @@ jobs:
           TEST_VERSION: "${{ matrix.versions }}"
         with:
           scenario: ${{ matrix.scenario }}
+      - name: molecule-archlinux
+        uses: robertdebock/molecule-action@4.0.9
+        env:
+          MOLECULE_DISTRO: "${{ matrix.distros-archlinux }}"
+          TEST_RELEASE: "${{ matrix.releases }}"
+          TEST_VERSION: "${{ matrix.versions }}"
+        with:
+          scenario: ${{ matrix.scenario-archlinux }}
   release:
     needs:
       - test
