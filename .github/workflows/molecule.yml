@@ -44,10 +44,6 @@ jobs:
         versions:
           - "1.67.0"
           - ""
-        scenario-archlinux:
-          - archlinux
-        distros-archlinux:
-          - archlinux
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -65,14 +61,40 @@ jobs:
           TEST_VERSION: "${{ matrix.versions }}"
         with:
           scenario: ${{ matrix.scenario }}
-      - name: molecule-archlinux
+  test-archlinux:
+    needs:
+      - lint
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario:
+          - archlinux
+        distros:
+          - archlinux
+        releases:
+          - stable
+          - beta
+        versions:
+          - "1.60.0"
+          - ""
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          path: "${{ github.repository }}"
+      - name: Workaround Git Security Warning
+        run: |
+          # Workaround a bug in github actions:
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: molecule
         uses: robertdebock/molecule-action@4.0.9
         env:
-          MOLECULE_DISTRO: "${{ matrix.distros-archlinux }}"
+          MOLECULE_DISTRO: "${{ matrix.distros }}"
           TEST_RELEASE: "${{ matrix.releases }}"
           TEST_VERSION: "${{ matrix.versions }}"
         with:
-          scenario: ${{ matrix.scenario-archlinux }}
+          scenario: ${{ matrix.scenario }}
   release:
     needs:
       - test
