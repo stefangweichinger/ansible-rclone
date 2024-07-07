@@ -174,14 +174,14 @@ Note: This example assumes you have created the `rclone.service` systemd unit yo
 
 ### `rclone_mounts: ""`
 
-This variable allows for the configuration of rclone mounts within your infrastructure. `rclone_mounts` should be a YAML list of objects, each including keys for `name`, `remote_name`, `remote_path`, `local_path`, and `auto_mount`. This setup enables precise control over multiple mount points, their remote sources, and whether they should be automatically mounted.
+This variable allows for the configuration of rclone mounts within your infrastructure. `rclone_mounts` should be a YAML list of objects, each including keys for `name`, `remote_name`, `remote_path`, `local_path`, `auto_mount`, and `extra_args`. This setup enables precise control over multiple mount points, their remote sources, and whether they should be automatically mounted.
 
 #### Detailed example for `rclone_mounts`
 
 To define mounts, you'll specify each mount's details in the playbook, allowing Ansible to handle the mounting process as per your configuration. This method is advantageous for managing mounts across multiple systems or ensuring persistent mounts across reboots when combined with the `auto_mount` option.
-The `name` defines the mount's identifier, used partly in naming the service. `remote_name` and `remote_path` determine the remote storage location, while `local_path` indicates where it mounts locally. 
+The `name` defines the mount's identifier, used partly in naming the service. `remote_name` and `remote_path` determine the remote storage location, while `local_path` indicates where it mounts locally.
 `auto_mount` controls whether the mount and corresponding service automatically activate, ensuring availability after reboots or redeployments.
-
+`extra_args` allows for passing in extra arguments to the mount command such as `--allow-other`
 
 When incorporating rclone_mounts into your setup, each mount point you define will correspond to a system service, facilitating management and automation.
 
@@ -194,6 +194,7 @@ rclone_mounts:
     remote_path: "/my-app"
     local_path: "/var/backups/my-app/"
     auto_mount: true
+    extra_args: "--allow-other"
 ```
 
 ## Dependencies
