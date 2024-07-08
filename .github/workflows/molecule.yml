@@ -34,8 +34,8 @@ jobs:
         distros:
           - debian11
           - debian12
-          - fedora35
-          - fedora36
+          - fedora39
+          - fedora40
           - ubuntu2004
           - ubuntu2204
         releases:
