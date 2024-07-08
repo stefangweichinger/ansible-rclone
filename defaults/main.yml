@@ -34,3 +34,4 @@ rclone_mounts: []
 # remote_path: "/test"
 # local_path: "/mnt"
 # auto_mount: true
+# extra_args: "--allow-other"

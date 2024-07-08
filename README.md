@@ -37,12 +37,12 @@ And feel free to rate the role on [Ansible Galaxy](https://galaxy.ansible.com/st
 
 The build tests use the galaxy-action [molecule action](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) and run on a selected set of distros:
 
-* Debian 9,10,11,12
-* Fedora 34,35,36. Fedora 37 and 38 work as well but aren't actively tested because of issues with the related docker-images.
-* Ubuntu 1804,2004,2204
+* Debian 11,12
+* Fedora 35,36. Fedora 37 and 38 work as well but aren't actively tested because of issues with the related docker-images.
+* Ubuntu 2004,2204
 * Ubuntu-derived distros: Linux Mint, Pop!\_OS
 
-Some older releases also work with this role, but I decided to remove some of them from `galaxy_info`.
+Some older and newer releases also work with this role, but I decided to remove some of them from `galaxy_info`.
 PRs welcome, but we can't test on every platform.
 
 In early 2022 I removed the tests for CentOS as it is not receiving upstream packages anymore.
@@ -174,14 +174,14 @@ Note: This example assumes you have created the `rclone.service` systemd unit yo
 
 ### `rclone_mounts: ""`
 
-This variable allows for the configuration of rclone mounts within your infrastructure. `rclone_mounts` should be a YAML list of objects, each including keys for `name`, `remote_name`, `remote_path`, `local_path`, and `auto_mount`. This setup enables precise control over multiple mount points, their remote sources, and whether they should be automatically mounted.
+This variable allows for the configuration of rclone mounts within your infrastructure. `rclone_mounts` should be a YAML list of objects, each including keys for `name`, `remote_name`, `remote_path`, `local_path`, `auto_mount`, and `extra_args`. This setup enables precise control over multiple mount points, their remote sources, and whether they should be automatically mounted.
 
 #### Detailed example for `rclone_mounts`
 
 To define mounts, you'll specify each mount's details in the playbook, allowing Ansible to handle the mounting process as per your configuration. This method is advantageous for managing mounts across multiple systems or ensuring persistent mounts across reboots when combined with the `auto_mount` option.
-The `name` defines the mount's identifier, used partly in naming the service. `remote_name` and `remote_path` determine the remote storage location, while `local_path` indicates where it mounts locally. 
+The `name` defines the mount's identifier, used partly in naming the service. `remote_name` and `remote_path` determine the remote storage location, while `local_path` indicates where it mounts locally.
 `auto_mount` controls whether the mount and corresponding service automatically activate, ensuring availability after reboots or redeployments.
-
+`extra_args` allows for passing in extra arguments to the mount command such as `--allow-other`
 
 When incorporating rclone_mounts into your setup, each mount point you define will correspond to a system service, facilitating management and automation.
 
@@ -194,6 +194,7 @@ rclone_mounts:
     remote_path: "/my-app"
     local_path: "/var/backups/my-app/"
     auto_mount: true
+    extra_args: "--allow-other"
 ```
 
 ## Dependencies
