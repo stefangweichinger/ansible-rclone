@@ -37,8 +37,9 @@ And feel free to rate the role on [Ansible Galaxy](https://galaxy.ansible.com/st
 
 The build tests use the galaxy-action [molecule action](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) and run on a selected set of distros:
 
+* Arch Linux
 * Debian 11,12
-* Fedora 35,36. Fedora 37 and 38 work as well but aren't actively tested because of issues with the related docker-images.
+* Fedora 39,40
 * Ubuntu 2004,2204
 * Ubuntu-derived distros: Linux Mint, Pop!\_OS
 * Arch Linux
