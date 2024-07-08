@@ -32,24 +32,21 @@ jobs:
         scenario:
           - default
         distros:
-          - debian10
           - debian11
           - debian12
-          - fedora34
           - fedora35
           - fedora36
-          - ubuntu1804
           - ubuntu2004
           - ubuntu2204
         releases:
           - stable
           - beta
         versions:
-          - "1.60.0"
+          - "1.67.0"
           - ""
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: "${{ github.repository }}"
       - name: Workaround Git Security Warning
@@ -57,7 +54,7 @@ jobs:
           # Workaround a bug in github actions:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: molecule
-        uses: robertdebock/molecule-action@4.0.9
+        uses: robertdebock/molecule-action@6.0.1
         env:
           MOLECULE_DISTRO: "${{ matrix.distros }}"
           TEST_RELEASE: "${{ matrix.releases }}"
@@ -73,3 +70,4 @@ jobs:
         uses: robertdebock/galaxy-action@1.2.1
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
+          git_branch: main
