@@ -41,6 +41,7 @@ The build tests use the galaxy-action [molecule action](https://github.com/marke
 * Fedora 35,36. Fedora 37 and 38 work as well but aren't actively tested because of issues with the related docker-images.
 * Ubuntu 2004,2204
 * Ubuntu-derived distros: Linux Mint, Pop!\_OS
+* Arch Linux
 
 Some older and newer releases also work with this role, but I decided to remove some of them from `galaxy_info`.
 PRs welcome, but we can't test on every platform.
