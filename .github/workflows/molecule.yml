@@ -4,13 +4,15 @@ name: Ansible Molecule
 
 on:  # yamllint disable-line rule:truthy
   push:
-    tags_ignore:
+    tags-ignore:
       - '*'
     paths-ignore:
       - 'README.md'
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - 'README.md'
   schedule:
     - cron: '15 8 8 * *'
 
@@ -96,8 +98,10 @@ jobs:
         with:
           scenario: ${{ matrix.scenario }}
   release:
+    if: github.ref == 'refs/heads/main'
     needs:
       - test
+      - test-archlinux
     runs-on: ubuntu-latest
     steps:
       - name: Release to ansible galaxy
