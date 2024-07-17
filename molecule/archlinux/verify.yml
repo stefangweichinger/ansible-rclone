@@ -1,0 +1,28 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: true
+  become: true
+
+  tasks:
+
+    - name: "Rclone - retrieve information"
+      ansible.builtin.stat:
+        path: "/usr/local/bin/rclone"
+      register: remote_file
+
+    - name: "Rclone - assert that file is created correctly"
+      ansible.builtin.assert:
+        that:
+          - "remote_file.stat.exists"
+          - "remote_file.stat.isreg"  # is a regular file
+          # - "remote_file.stat.path == '{{ test_rclone_file_path }}'"
+          - "remote_file.stat.mode == '0755'"
+
+    - name: "Rclone - check version"
+      ansible.builtin.command: "/usr/local/bin/rclone version"  # noqa no-changed-when
+      register: shell_result
+
+    - name: "Display rclone version"
+      ansible.builtin.debug:
+        var: shell_result.stdout_lines
