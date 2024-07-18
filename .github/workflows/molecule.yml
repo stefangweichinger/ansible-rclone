@@ -4,8 +4,6 @@ name: Ansible Molecule
 
 on:  # yamllint disable-line rule:truthy
   push:
-    tags-ignore:
-      - '*'
     paths-ignore:
       - 'README.md'
   pull_request:
