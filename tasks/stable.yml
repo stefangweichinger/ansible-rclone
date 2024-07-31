@@ -6,4 +6,5 @@
     remote_src: true
     mode: 0744
     creates: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}"
-  changed_when: False
+  changed_when: false
+  check_mode: false
