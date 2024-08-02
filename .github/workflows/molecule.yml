@@ -69,9 +69,7 @@ jobs:
       fail-fast: false
       matrix:
         scenario:
-          - archlinux
-        distros:
-          - archlinux
+          - default
         releases:
           - stable
           - beta
@@ -90,10 +88,10 @@ jobs:
       - name: molecule
         uses: robertdebock/molecule-action@6.0.1
         env:
-          MOLECULE_DISTRO: "${{ matrix.distros }}"
           TEST_RELEASE: "${{ matrix.releases }}"
           TEST_VERSION: "${{ matrix.versions }}"
         with:
+          image: carlodepieri/docker-archlinux-ansible
           scenario: ${{ matrix.scenario }}
   release:
     if: github.ref == 'refs/heads/main'
