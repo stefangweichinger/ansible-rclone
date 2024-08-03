@@ -14,6 +14,9 @@ install_manpages: true
 # Defaults in case no variables for OS are chosen
 rclone_setup_tmp_dir: "/tmp/rclone_setup"
 
+# The location to install manpages
+rclone_manpages_location: "{{ default_rclone_manpages_location }}"
+
 # The location to install the binary file
 rclone_binary_location: "/usr/local/bin/"
 
@@ -22,7 +25,7 @@ rclone_config_location: "/root/.config/rclone/rclone.conf"
 
 rclone_packages: "{{ default_rclone_packages }}"
 
-rclone_man_pages:
+rclone_manpages_owner:
   OWNER: root
   GROUP: root
 
