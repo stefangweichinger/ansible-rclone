@@ -1,6 +1,6 @@
 ---
 
-rclone_packages:
+default_rclone_packages:
   - unzip
   - man
 
