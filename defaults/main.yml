@@ -7,6 +7,8 @@ rclone_release: stable
 
 rclone_version: '{{ ansible_local.rclone.version | d("0.0.0") }}'
 
+rclone_fact_path: "/etc/ansible/facts.d/rclone.fact"
+
 install_manpages: true
 
 # Defaults in case no variables for OS are chosen
