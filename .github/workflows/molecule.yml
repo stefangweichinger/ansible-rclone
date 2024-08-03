@@ -92,7 +92,6 @@ jobs:
           TEST_VERSION: "${{ matrix.versions }}"
           MOLECULE_PLATFORM_NAME: rclone-archlinux
         with:
-          image: carlodepieri/docker-archlinux-ansible
           scenario: ${{ matrix.scenario }}
   release:
     if: github.ref == 'refs/heads/main'
