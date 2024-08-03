@@ -5,7 +5,9 @@
   ansible.builtin.apt:
     update_cache: true
   become: true
-  when: ansible_facts.distribution == 'Ubuntu'
+  when: >-
+    rclone_packages | length > 0
+    and ansible_facts.distribution == 'Ubuntu'
 
 - name: Install required packages
   ansible.builtin.package:
@@ -13,6 +15,7 @@
     state: present
   become: true
   with_items: '{{ rclone_packages }}'
+  when: rclone_packages | length > 0
 
 - name: Remove temporary working directory
   ansible.builtin.file:
