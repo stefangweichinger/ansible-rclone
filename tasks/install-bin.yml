@@ -27,6 +27,7 @@
     path: "{{ rclone_setup_tmp_dir }}"
     state: directory
     mode: '0775'
+  changed_when: False
 
 - name: Do beta install
   ansible.builtin.include_tasks: beta.yml
