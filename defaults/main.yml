@@ -17,8 +17,7 @@ rclone_setup_tmp_dir: "/tmp/rclone_setup"
 # The location to install the config file if configured
 rclone_config_location: "/root/.config/rclone/rclone.conf"
 
-rclone_packages:
-  - unzip
+rclone_packages: "{{ default_rclone_packages }}"
 
 rclone_man_pages:
   OWNER: root

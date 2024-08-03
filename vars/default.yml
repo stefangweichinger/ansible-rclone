@@ -1,6 +1,6 @@
 ---
 
-rclone_packages: []  # noqa var-naming
+default_rclone_packages: []
 
 rclone_man_pages:  # noqa var-naming
   OWNER: root
