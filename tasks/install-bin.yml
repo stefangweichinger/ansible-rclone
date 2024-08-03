@@ -55,25 +55,27 @@
 
 - name: Make dir for local manpages
   ansible.builtin.file:
-    path: '{{ rclone_man_pages.PATH }}'
+    path: '{{ rclone_manpages_location }}'
     state: directory
     mode: '0775'
-    owner: '{{ rclone_man_pages.OWNER }}'
-    group: '{{ rclone_man_pages.GROUP }}'
+    owner: '{{ rclone_manpages_owner.OWNER }}'
+    group: '{{ rclone_manpages_owner.GROUP }}'
   when: install_manpages
 
 - name: Copy rclone manpage
   ansible.builtin.copy:
     src: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}/rclone.1"
-    dest: "{{ rclone_man_pages.PATH }}/rclone.1"
+    dest: "{{ rclone_manpages_location }}/rclone.1"
     mode: '0644'
-    owner: root
-    group: root
+    owner: '{{ rclone_manpages_owner.OWNER }}'
+    group: '{{ rclone_manpages_owner.GROUP }}'
     force: true
     remote_src: true
   when: install_manpages
 
 - name: Update mandb
   ansible.builtin.command: mandb
+  environment:
+    MANPATH: "{{ rclone_manpages_location | dirname }}"
   changed_when: false
   when: install_manpages

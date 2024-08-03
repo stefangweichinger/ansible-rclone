@@ -5,7 +5,4 @@ default_rclone_packages:
   - man
   - file
 
-rclone_man_pages:
-  OWNER: root
-  GROUP: root
-  PATH: '/usr/local/share/man/man1'
+default_rclone_manpages_location: '/usr/local/share/man/man1'

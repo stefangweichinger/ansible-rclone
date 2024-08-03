@@ -4,7 +4,4 @@ default_rclone_packages:
   - unzip
   - man-db
 
-rclone_man_pages:
-  OWNER: root
-  GROUP: root
-  PATH: '/usr/share/man/man1'
+default_rclone_manpages_location: '/usr/share/man/man1'
