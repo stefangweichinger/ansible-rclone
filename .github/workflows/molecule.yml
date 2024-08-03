@@ -90,6 +90,7 @@ jobs:
         env:
           TEST_RELEASE: "${{ matrix.releases }}"
           TEST_VERSION: "${{ matrix.versions }}"
+          MOLECULE_PLATFORM_NAME: rclone-archlinux          
         with:
           image: carlodepieri/docker-archlinux-ansible
           scenario: ${{ matrix.scenario }}
