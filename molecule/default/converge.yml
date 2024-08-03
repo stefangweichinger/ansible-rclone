@@ -5,11 +5,19 @@
 
   pre_tasks:
 
-    - name: Update apt cache.
+    - name: Update apt cache on Debian Linux.
       ansible.builtin.apt:
         update_cache: True
         cache_valid_time: 600
       when: ansible_facts.os_family == 'Debian'
+
+    - name: Update repositories cache on Archlinux.
+      community.general.pacman:
+        update_cache: true
+      when: ansible_facts.os_family == 'Archlinux'
+      register: pacman_result
+      changed_when: pacman_result.cache_updated
+      become: true
 
     - name: Wait for systemd to complete initialization.     # noqa command-instead-of-module
       ansible.builtin.command: systemctl is-system-running
