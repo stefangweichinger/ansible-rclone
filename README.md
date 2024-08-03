@@ -57,6 +57,37 @@ Available variables are listed below, along with default values (see `defaults/m
 
 This can be used to toggle the installation of manpages.
 
+### `rclone_manpages_location: "{{ default_rclone_manpages_location }}"`
+
+The location to install `rclone` manpages. The default is an OS specific location, but you can override it anywhere.
+
+### `rclone_manpages_owner:`
+
+These variables allow for setting the ownership of manpages for `rclone`. They are mostly needed if configuring `rclone` to run as an other user than root (maybe a specific backup user or so).
+
+    rclone_manpages_owner:
+       OWNER: rclone
+       GROUP: rclone
+
+### `rclone_binary_location: "/usr/local/bin/"`
+
+The location to install the `rclone` binary.
+
+### `rclone_binary_owner:`
+
+These variables allow for setting the ownership of the `rclone` binary. They are mostly needed if configuring `rclone` to install for non-root user.
+
+    rclone_binary_location: "/home/rclone/.local/bin/rclone/rclone"
+    rclone_binary_owner:
+       OWNER: rclone
+       GROUP: rclone
+
+### rclone_fact_path: "/etc/ansible/facts.d/rclone.fact"
+
+The location to ansible local facts for `rclone`. They are mostly needed if you run this role by non-root user.
+
+    rclone_fact_path: "/home/rclone/.config/ansible/facts.d/rclone.fact"
+
 ### `rclone_arch: "amd64"`
 
 This variable chooses the target architecture (for example 'amd64').
@@ -176,6 +207,8 @@ Note: This example assumes you have created the `rclone.service` systemd unit yo
 ### `rclone_mounts: ""`
 
 This variable allows for the configuration of rclone mounts within your infrastructure. `rclone_mounts` should be a YAML list of objects, each including keys for `name`, `remote_name`, `remote_path`, `local_path`, `auto_mount`, and `extra_args`. This setup enables precise control over multiple mount points, their remote sources, and whether they should be automatically mounted.
+
+If you use this variable, you must run this role as root using `become: true`.
 
 #### Detailed example for `rclone_mounts`
 
