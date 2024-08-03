@@ -4,7 +4,6 @@
 - name: Update repositories cache on Ubuntu
   ansible.builtin.apt:
     update_cache: true
-  become: true
   when: >-
     rclone_packages | length > 0
     and ansible_facts.distribution == 'Ubuntu'
@@ -13,7 +12,6 @@
   ansible.builtin.package:
     name: '{{ item }}'
     state: present
-  become: true
   with_items: '{{ rclone_packages }}'
   when: rclone_packages | length > 0
 
@@ -54,7 +52,6 @@
     group: root
     force: true
     remote_src: true
-  become: true
 
 - name: Make dir for local manpages
   ansible.builtin.file:
@@ -63,7 +60,6 @@
     mode: '0775'
     owner: '{{ rclone_man_pages.OWNER }}'
     group: '{{ rclone_man_pages.GROUP }}'
-  become: true
   when: install_manpages
 
 - name: Copy rclone manpage
@@ -75,11 +71,9 @@
     group: root
     force: true
     remote_src: true
-  become: true
   when: install_manpages
 
 - name: Update mandb
   ansible.builtin.command: mandb
-  become: true
   changed_when: false
   when: install_manpages
