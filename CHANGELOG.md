@@ -1,4 +1,10 @@
-## Unreleased
+
+## 0.2.0 [2024-08-04]
+
+- installation for non-root users
+- improvements in the molecule setup: arch-linux as separate platform, everything in default scenario
+
+## 0.1.3 - 0.1.9 TODO
 
 ## 0.1.2 (2023-03-09)
 
