@@ -77,7 +77,7 @@ The location to install the `rclone` binary.
 
 These variables allow for setting the ownership of the `rclone` binary. They are mostly needed if configuring `rclone` to install for non-root user.
 
-    rclone_binary_location: "/home/rclone/.local/bin/rclone/rclone"
+    rclone_binary_location: "/home/rclone/.local/bin/"
     rclone_binary_owner:
        OWNER: rclone
        GROUP: rclone
