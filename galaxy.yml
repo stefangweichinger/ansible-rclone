@@ -1,7 +1,7 @@
 ---
 name: ansible_rclone
 namespace: stefangweichinger
-version: 0.1.7
+version: 0.2.0
 authors:
   - stefangweichinger
 readme: ./README.md
