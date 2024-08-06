@@ -82,7 +82,7 @@ These variables allow for setting the ownership of the `rclone` binary. They are
        OWNER: rclone
        GROUP: rclone
 
-### rclone_fact_path: "/etc/ansible/facts.d/rclone.fact"
+### `rclone_fact_path: "/etc/ansible/facts.d/rclone.fact"`
 
 The location to ansible local facts for `rclone`. They are mostly needed if you run this role by non-root user.
 
