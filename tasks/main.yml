@@ -15,6 +15,7 @@
     state: directory
     recurse: true
     path: "{{ rclone_fact_path | dirname }}"
+  register: custom_facts_dir
 
 - name: Create facts file from template
   ansible.builtin.template:
@@ -22,6 +23,7 @@
     dest: '{{ rclone_fact_path }}'
     mode: '0755'
   notify: Update facts
+  when: custom_facts_dir.state is defined
 
 - name: Re-read facts after adding custom fact
   ansible.builtin.setup:
