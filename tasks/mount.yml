@@ -4,6 +4,8 @@
   ansible.builtin.command:
     cmd: "rclone mkdir '{{ item.remote_name }}':{{ item.remote_path }}"
   loop: "{{ rclone_mounts }}"
+  loop_control:
+    label: "{{ item.remote_name }}:{{ item.remote_path }}"
   when: rclone_mkdir
   register: rclone_mkdir_output
   changed_when: rclone_mkdir_output.rc == 0
@@ -28,6 +30,8 @@
     group: root
     mode: '0644'
   loop: "{{ rclone_mounts }}"
+  loop_control:
+    label: "{{ item.name }}"
   when: item.remote_path is defined and item.local_path is defined
   notify: "Reload and restart rclone-mount services"
 
@@ -46,4 +50,6 @@
         enabled: yes
         state: restarted
       loop: "{{ found_services.files }}"
+      loop_control:
+        label: "{{ item.path | basename }}"
       notify: Reload and restart rclone-mount services
