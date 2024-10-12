@@ -208,7 +208,7 @@ Note: This example assumes you have created the `rclone.service` systemd unit yo
 
 This variable allows for the configuration of rclone mounts within your infrastructure. `rclone_mounts` should be a YAML list of objects, each including keys for `name`, `remote_name`, `remote_path`, `local_path`, `auto_mount`, and `extra_args`. This setup enables precise control over multiple mount points, their remote sources, and whether they should be automatically mounted.
 
-The role will attempt to create all defined `remote_path`'s by default. You can disable this by setting `rclone_mkdir` to `false`.
+The role will attempt to create all defined `remote_path`'s by default, **if** the `remote_path` is not simply `/`. You can disable this by setting `rclone_mkdir` to `false`.
 
 If you use `rclone_mounts`, you must run this role as root using `become: true`.
 

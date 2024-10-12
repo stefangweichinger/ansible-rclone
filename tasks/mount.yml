@@ -6,7 +6,9 @@
   loop: "{{ rclone_mounts }}"
   loop_control:
     label: "{{ item.remote_name }}:{{ item.remote_path }}"
-  when: rclone_mkdir
+  when:
+    - rclone_mkdir
+    - item.remote_path != '/'
   register: rclone_mkdir_output
   changed_when: rclone_mkdir_output.rc == 0
 
