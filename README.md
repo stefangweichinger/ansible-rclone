@@ -206,7 +206,9 @@ Note: This example assumes you have created the `rclone.service` systemd unit yo
 
 ### `rclone_mounts: ""`
 
-This variable allows for the configuration of rclone mounts within your infrastructure. `rclone_mounts` should be a YAML list of objects, each including keys for `name`, `remote_name`, `remote_path`, `local_path`, `auto_mount`, and `extra_args`. This setup enables precise control over multiple mount points, their remote sources, and whether they should be automatically mounted.
+This variable allows for the configuration of rclone mounts within your infrastructure. `rclone_mounts` should be a YAML list of objects, each including keys for `name`, `remote_name`, `remote_path`, `local_path`, `auto_mount`, and `extra_args`. Optionally, you can also pass `local_path_mode` (defaults to `0755`), `local_path_owner`, and `local_path_group` (both default to `root`).
+
+This setup enables precise control over multiple mount points, their remote sources, and whether they should be automatically mounted.
 
 If you use this variable, you must run this role as root using `become: true`.
 
@@ -227,6 +229,9 @@ rclone_mounts:
     remote_name: BackblazeLM
     remote_path: "/my-app"
     local_path: "/var/backups/my-app/"
+    local_path_mode: 0755
+    local_path_owner: root
+    local_path_group: root
     auto_mount: true
     extra_args: "--allow-other"
 ```

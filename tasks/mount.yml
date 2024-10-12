@@ -8,6 +8,15 @@
   register: rclone_mkdir_output
   changed_when: rclone_mkdir_output.rc == 0
 
+- name: Ensure local path exists
+  ansible.builtin.file:
+    path: "{{ item.local_path }}"
+    mode: "{{ item.local_path_mode | default('0755') }}"
+    owner: "{{ item.local_path_owner | default('root') }}"
+    group: "{{ item.local_path_group | default('root') }}"
+    state: directory
+  loop: "{{ rclone_mounts }}"
+
 - name: Install fuse
   ansible.builtin.package:
     name: fuse
