@@ -53,6 +53,15 @@ jobs:
         run: |
           # Workaround a bug in github actions:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: molecule check
+        uses: robertdebock/molecule-action@6.0.1
+        env:
+          MOLECULE_DISTRO: "${{ matrix.distros }}"
+          TEST_RELEASE: "${{ matrix.releases }}"
+          TEST_VERSION: "${{ matrix.versions }}"
+        with:
+          scenario: ${{ matrix.scenario }}
+          command: check
       - name: molecule
         uses: robertdebock/molecule-action@6.0.1
         env:
@@ -85,6 +94,15 @@ jobs:
         run: |
           # Workaround a bug in github actions:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: molecule check
+        uses: robertdebock/molecule-action@6.0.1
+        env:
+          MOLECULE_DISTRO: "${{ matrix.distros }}"
+          TEST_RELEASE: "${{ matrix.releases }}"
+          TEST_VERSION: "${{ matrix.versions }}"
+        with:
+          scenario: ${{ matrix.scenario }}
+          command: check
       - name: molecule
         uses: robertdebock/molecule-action@6.0.1
         env:
