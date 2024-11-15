@@ -264,6 +264,8 @@ This is new and will maybe see more finetuning.
 The tests of this ansible role use [molecule](https://molecule.readthedocs.io/en/latest/index.html).
 I use the GitHub Action [Test Ansible roles with Molecule](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) for these tests.
 
+See also their [repository](https://github.com/robertdebock/molecule-action)
+
 ### (current) CI with GitHub Actions
 
 In November 2020 I switched over to running the CI pipeline within Github Actions:
