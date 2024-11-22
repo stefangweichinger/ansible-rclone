@@ -39,7 +39,7 @@ The build tests use the galaxy-action [molecule action](https://github.com/marke
 
 * Arch Linux
 * Debian 11,12
-* Fedora 39,40
+* Fedora 40,41
 * Ubuntu 2204,2404
 * Ubuntu-derived distros: Linux Mint, Pop!\_OS
 
@@ -270,6 +270,8 @@ This is new and will maybe see more finetuning.
 
 The tests of this ansible role use [molecule](https://molecule.readthedocs.io/en/latest/index.html).
 I use the GitHub Action [Test Ansible roles with Molecule](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) for these tests.
+
+See also their [repository](https://github.com/robertdebock/molecule-action)
 
 ### (current) CI with GitHub Actions
 
