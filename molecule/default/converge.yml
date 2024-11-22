@@ -29,6 +29,7 @@
       delay: 5
       when: ansible_facts.distribution == 'Fedora'
       changed_when: false
+      check_mode: false
 
     - name: Show ansible version
       ansible.builtin.debug:
