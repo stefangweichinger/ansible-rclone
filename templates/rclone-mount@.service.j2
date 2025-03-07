@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/usr/local/bin/rclone mount '{{ item.remote_name }}':{{ item.remote_path }} {{ item.local_path }} --allow-non-empty {{ item.extra_args }}
-ExecStop=/bin/fusermount -u {{ item.local_path }}
+ExecStop={{ default_fusermount_path }} -u {{ item.local_path }}
 Restart=on-failure
 User={{ ansible_user_id }}
 Group={{ ansible_user_gid }}

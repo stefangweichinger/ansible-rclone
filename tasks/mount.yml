@@ -26,12 +26,18 @@
     name: fuse
     state: present
 
-- name: Link between /usr/bin/fusermount and /usr/bin/fusermount3
+- name: Check for fusermount binary
+  stat:
+    path: "{{ default_fusermount_path }}"
+  register: register_fusermount
+
+- name: Link between fusermount binary and /usr/bin/fusermount3
   ansible.builtin.file:
-    src: /usr/bin/fusermount
+    src: {{ default_fusermount_path }}
     dest: /usr/bin/fusermount3
     state: link
     force: yes
+  when: register_fusermount.stat.exists
 
 - name: Create and activate services rclone mount
   ansible.builtin.template:
