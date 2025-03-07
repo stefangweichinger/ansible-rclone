@@ -27,13 +27,13 @@
     state: present
 
 - name: Check for fusermount binary
-  stat:
+  ansible.builtin.stat:
     path: "{{ default_fusermount_path }}"
   register: register_fusermount
 
 - name: Link between fusermount binary and /usr/bin/fusermount3
   ansible.builtin.file:
-    src: {{ default_fusermount_path }}
+    src: "{{ default_fusermount_path }}"
     dest: /usr/bin/fusermount3
     state: link
     force: yes
