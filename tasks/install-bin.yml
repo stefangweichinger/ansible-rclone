@@ -84,3 +84,10 @@
     MANPATH: "{{ rclone_manpages_location | dirname }}"
   changed_when: false
   when: install_manpages
+
+- name: Remove temporary working directory
+  ansible.builtin.file:
+    path: "{{ rclone_setup_tmp_dir }}"
+    state: absent
+  tags:
+    - molecule-idempotence-notest
