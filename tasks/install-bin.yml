@@ -1,19 +1,22 @@
 ---
 
-
-- name: Update repositories cache on Ubuntu
+- name: Install packages on Debian OS family
   ansible.builtin.apt:
+    name: '{{ item }}'
     update_cache: true
+  loop: '{{ rclone_packages }}'
   when: >-
     rclone_packages | length > 0
-    and ansible_facts.distribution == 'Ubuntu'
+    and ansible_facts.os_family == 'Debian'
 
-- name: Install required packages
+- name: Install packages
   ansible.builtin.package:
     name: '{{ item }}'
     state: present
-  with_items: '{{ rclone_packages }}'
-  when: rclone_packages | length > 0
+  loop: '{{ rclone_packages }}'
+  when: >-
+    rclone_packages | length > 0
+    and ansible_facts.os_family != 'Debian'
 
 - name: Remove temporary working directory
   ansible.builtin.file:
