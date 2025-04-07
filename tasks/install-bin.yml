@@ -3,7 +3,7 @@
 - name: Install packages on Debian OS family
   ansible.builtin.apt:
     name: '{{ item }}'
-    update_cache: true
+    cache_valid_time: 3600
   loop: '{{ rclone_packages }}'
   when: >-
     rclone_packages | length > 0
