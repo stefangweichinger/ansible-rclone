@@ -31,7 +31,7 @@
     src: /usr/bin/fusermount
     dest: /usr/bin/fusermount3
     state: link
-    force: yes
+    force: true
 
 - name: Create and activate services rclone mount
   ansible.builtin.template:
@@ -58,7 +58,7 @@
     - name: Enable and restart rclone-mount services
       ansible.builtin.systemd:
         name: "{{ item.path | basename }}"
-        enabled: yes
+        enabled: true
         state: restarted
       loop: "{{ found_services.files }}"
       loop_control:

@@ -5,4 +5,4 @@
 
 - name: Reload and restart rclone-mount services
   ansible.builtin.systemd:
-    daemon_reload: yes
+    daemon_reload: true
