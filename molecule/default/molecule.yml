@@ -8,8 +8,8 @@ lint: |
   yamllint .
   ansible-lint
 platforms:
-  - name: "rclone-${image:-debian12}-${tag:-latest}-${TOX_ENVNAME}"
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian12}-ansible:latest"
+  - name: "rclone-${image:-debian12}-${TOX_ENVNAME}"
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian12}-ansible"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
