@@ -3,3 +3,5 @@
 default_rclone_packages: []
 
 default_rclone_manpages_location: '/usr/local/share/man/man1'
+
+default_fusermount_path: '/usr/bin/fusermount'
