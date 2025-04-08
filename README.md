@@ -39,8 +39,8 @@ The build tests use the galaxy-action [molecule action](https://github.com/marke
 
 * Arch Linux
 * Debian 11,12
-* Fedora 39,40
-* Ubuntu 2204,2404
+* Fedora 40,41
+* Ubuntu 22.04,24.04
 * Ubuntu-derived distros: Linux Mint, Pop!\_OS
 
 Some older and newer releases also work with this role, but I decided to remove some of them from `galaxy_info`.
