@@ -36,4 +36,4 @@
         msg: "Ansible Version: {{ ansible_version.full }}"
 
   roles:
-    - role: stefangweichinger.ansible_rclone
+    - role: ansible-rclone
