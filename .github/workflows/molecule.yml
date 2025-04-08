@@ -16,16 +16,16 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: checkout
         uses: actions/checkout@v4
       - name: Run ansible-lint
-        uses: ansible/ansible-lint@v6
+        uses: ansible/ansible-lint@v25.2.1
   test:
     needs:
       - lint
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -34,15 +34,15 @@ jobs:
         distros:
           - debian11
           - debian12
-          - fedora39
           - fedora40
+          - fedora41
           - ubuntu2204
           - ubuntu2404
         releases:
           - stable
           - beta
         versions:
-          - "1.67.0"
+          - "1.69.0"
           - ""
     steps:
       - name: checkout
@@ -73,7 +73,7 @@ jobs:
   test-archlinux:
     needs:
       - lint
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -83,7 +83,7 @@ jobs:
           - stable
           - beta
         versions:
-          - "1.67.0"
+          - "1.69.0"
           - ""
     steps:
       - name: checkout
