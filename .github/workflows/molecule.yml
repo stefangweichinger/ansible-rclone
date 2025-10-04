@@ -32,10 +32,10 @@ jobs:
         scenario:
           - default
         distros:
-          - debian11
           - debian12
-          - fedora39
-          - fedora40
+          - debian13
+          - fedora41
+          - fedora42
           - ubuntu2204
           - ubuntu2404
         releases:
