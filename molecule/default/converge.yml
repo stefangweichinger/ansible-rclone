@@ -35,14 +35,5 @@
       ansible.builtin.debug:
         msg: "Ansible Version: {{ ansible_version.full }}"
 
-    - name: TEMP | Fix due to PAM error in some upstream images
-      when: ansible_distribution == 'Fedora' or ansible_distribution == 'Rocky'
-      # Explicitly don't try to become because that will trigger the broken PAM error
-      # become: true
-      # Bug in some upstream distros, /etc/shadow has no file perms in container image
-      ansible.builtin.file:
-        path: /etc/shadow
-        mode: '400'
-
   roles:
     - role: ansible-rclone
