@@ -38,8 +38,8 @@ And feel free to rate the role on [Ansible Galaxy](https://galaxy.ansible.com/st
 The build tests use the galaxy-action [molecule action](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) and run on a selected set of distros:
 
 * Arch Linux
-* Debian 11,12
-* Fedora 39,40
+* Debian 12,13
+* Fedora 41,42
 * Ubuntu 2204,2404
 * Ubuntu-derived distros: Linux Mint, Pop!\_OS
 
