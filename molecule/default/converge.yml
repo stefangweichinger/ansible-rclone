@@ -1,7 +1,7 @@
 ---
 - name: Converge
   hosts: all
-  become: false
+  become: true
 
   pre_tasks:
 
