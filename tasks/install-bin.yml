@@ -9,13 +9,13 @@
     rclone_packages | length > 0
     and ansible_facts.os_family == 'Debian'
 
-- name: Install packages on RedHat OS family
+- name: Install packages on Fedora Linux
   ansible.builtin.dnf:
     name: '{{ item }}'
   loop: '{{ rclone_packages }}'
   when: >-
     rclone_packages | length > 0
-    and ansible_facts.os_family == 'RedHat'
+    and ansible_facts['distribution'] == "Fedora"
 
 - name: Install packages
   ansible.builtin.package:
@@ -25,7 +25,7 @@
   when: >-
     rclone_packages | length > 0
     and ansible_facts.os_family != 'Debian'
-    and ansible_facts.os_family != 'RedHat'
+    and ansible_facts['distribution'] != "Fedora"
 
 - name: Remove temporary working directory
   ansible.builtin.file:
