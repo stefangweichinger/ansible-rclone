@@ -10,7 +10,7 @@
     and ansible_facts.os_family == 'Debian'
 
 - name: Install packages on RedHat OS family
-  ansible.builtin.dnf5:
+  ansible.builtin.dnf:
     name: '{{ item }}'
   loop: '{{ rclone_packages }}'
   when: >-
