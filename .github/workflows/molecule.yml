@@ -35,6 +35,7 @@ jobs:
           - debian12
           - debian13
           - fedora40
+          - fedora41
           - fedora42
           - ubuntu2204
           - ubuntu2404
@@ -42,7 +43,7 @@ jobs:
           - stable
           - beta
         versions:
-          - "1.67.0"
+          - "1.71.0"
           - ""
     steps:
       - name: Upgrade Ansible
