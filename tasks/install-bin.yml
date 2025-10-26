@@ -91,3 +91,4 @@
     state: absent
   tags:
     - molecule-idempotence-notest
+  changed_when: false
