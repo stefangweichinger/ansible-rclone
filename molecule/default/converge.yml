@@ -1,7 +1,8 @@
 ---
 - name: Converge
   hosts: all
-  become: false
+  become: true
+  gather_facts: false
 
   pre_tasks:
 
