@@ -67,7 +67,7 @@ jobs:
           TEST_VERSION: "${{ matrix.versions }}"
         with:
           scenario: ${{ matrix.scenario }}
-          command: check
+          command: "--debug check"
       - name: molecule
         uses: robertdebock/molecule-action@6.0.1
         env:
