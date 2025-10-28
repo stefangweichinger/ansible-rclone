@@ -2,8 +2,7 @@
 - name: Converge
   hosts: all
   become: true
-  gather_facts: false
-
+  
   pre_tasks:
 
     - name: Update apt cache on Debian Linux.
