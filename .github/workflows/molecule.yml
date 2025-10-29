@@ -63,7 +63,7 @@ jobs:
           molecule_command: check
           molecule_args: --scenario-name ${{ matrix.scenario }}
         env:
-          ANSIBLE_FORCE_COLOR: '1'    
+          ANSIBLE_FORCE_COLOR: '1'
   molecule-archlinux:
     needs:
       - lint
@@ -100,7 +100,7 @@ jobs:
           molecule_command: check
           molecule_args: --scenario-name ${{ matrix.scenario }}
         env:
-          ANSIBLE_FORCE_COLOR: '1' 
+          ANSIBLE_FORCE_COLOR: '1'
   release:
     if: github.ref == 'refs/heads/main'
     needs:
