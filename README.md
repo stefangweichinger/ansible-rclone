@@ -39,7 +39,7 @@ The build tests use the galaxy-action [molecule action](https://github.com/marke
 
 * Arch Linux
 * Debian 12,13
-* Fedora 41,42
+* Fedora 39,40
 * Ubuntu 2204,2404
 * Ubuntu-derived distros: Linux Mint, Pop!\_OS
 
