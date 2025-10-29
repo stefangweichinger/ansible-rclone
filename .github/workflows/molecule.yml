@@ -64,7 +64,7 @@ jobs:
           molecule_args: --scenario-name ${{ matrix.scenario }}
         env:
           ANSIBLE_FORCE_COLOR: '1'    
-  test-archlinux:
+  molecule-archlinux:
     needs:
       - lint
     runs-on: ubuntu-24.04
@@ -104,8 +104,8 @@ jobs:
   release:
     if: github.ref == 'refs/heads/main'
     needs:
-      - test
-      - test-archlinux
+      - molecule
+      - molecule-archlinux
     runs-on: ubuntu-latest
     steps:
       - name: Release to ansible galaxy
