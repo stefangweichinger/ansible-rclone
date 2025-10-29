@@ -7,7 +7,7 @@ on:  # yamllint disable-line rule:truthy
     tags:
       - '**'
     branches:
-      - stefangweichinger-patch-3
+      - 'stefangweichinger-patch-**'
   pull_request:
     branches:
       - main
