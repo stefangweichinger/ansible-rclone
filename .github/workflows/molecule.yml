@@ -84,7 +84,7 @@ jobs:
           sudo apt-get install -y ansible
           ansible --version
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: "${{ github.repository }}"
       - name: Workaround Git Security Warning
@@ -106,8 +106,13 @@ jobs:
       - molecule-archlinux
     runs-on: ubuntu-latest
     steps:
-      - name: Release to ansible galaxy
-        uses: robertdebock/galaxy-action@1.2.1
+       - name: 'Checkout git repo'
+        uses: actions/checkout@v5
+        with:
+          submodules: true
+          fetch-depth: 0
+          ref: main
+      - name: 'Release on galaxy'
+        uses: ansible-actions/ansible-galaxy-action@v1.2.0
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
-          git_branch: main
