@@ -1,4 +1,4 @@
-## 0.2.4 [2025-10-28]
+## 0.2.4 [2025-10-29]
 
 - rebuild of molecule testing: new actions, fixing tests for Fedora
 - reducing tests to more recent distros
