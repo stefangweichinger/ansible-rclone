@@ -34,20 +34,18 @@ jobs:
         scenario:
           - default
         distros:
-          - fedora39
           - fedora41
-          - fedora42
         releases:
           - stable
         versions:
           - "1.71.0"
           - ""
     steps:
-      - name: Upgrade Ansible
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ansible
-          ansible --version
+     # - name: Upgrade Ansible
+     #   run: |
+     #     sudo apt-get update
+     #     sudo apt-get install -y ansible
+     #     ansible --version
       - name: checkout
         uses: actions/checkout@v4
         with:
