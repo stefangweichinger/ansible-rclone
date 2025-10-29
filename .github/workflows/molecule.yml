@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v6
-  test:
+  molecule:
     needs:
       - lint
     runs-on: ubuntu-24.04
@@ -56,28 +56,14 @@ jobs:
         run: |
           # Workaround a bug in github actions:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip3 install ansible molecule molecule-plugins[docker] docker
-          ansible --version
-      - name: molecule check
-        uses: robertdebock/molecule-action@6.0.1
-        env:
-          MOLECULE_DISTRO: "${{ matrix.distros }}"
-          TEST_RELEASE: "${{ matrix.releases }}"
-          TEST_VERSION: "${{ matrix.versions }}"
+      - name: Molecule
+        uses: gofrolist/molecule-action@v2
         with:
-          scenario: ${{ matrix.scenario }}
-          command: "check"
-      - name: molecule
-        uses: robertdebock/molecule-action@6.0.1
+          molecule_options: --debug --base-config molecule/_shared/base.yml
+          molecule_command: check
+          molecule_args: --scenario-name ${{ matrix.scenario }}
         env:
-          MOLECULE_DISTRO: "${{ matrix.distros }}"
-          TEST_RELEASE: "${{ matrix.releases }}"
-          TEST_VERSION: "${{ matrix.versions }}"
-        with:
-          scenario: ${{ matrix.scenario }}
+          ANSIBLE_FORCE_COLOR: '1'    
   test-archlinux:
     needs:
       - lint
@@ -107,23 +93,14 @@ jobs:
         run: |
           # Workaround a bug in github actions:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-      - name: molecule check
-        uses: robertdebock/molecule-action@6.0.1
-        env:
-          MOLECULE_DISTRO: "${{ matrix.distros }}"
-          TEST_RELEASE: "${{ matrix.releases }}"
-          TEST_VERSION: "${{ matrix.versions }}"
+      - name: Molecule
+        uses: gofrolist/molecule-action@v2
         with:
-          scenario: ${{ matrix.scenario }}
-          command: check
-      - name: molecule
-        uses: robertdebock/molecule-action@6.0.1
+          molecule_options: --debug --base-config molecule/_shared/base.yml
+          molecule_command: check
+          molecule_args: --scenario-name ${{ matrix.scenario }}
         env:
-          TEST_RELEASE: "${{ matrix.releases }}"
-          TEST_VERSION: "${{ matrix.versions }}"
-          MOLECULE_PLATFORM_NAME: rclone-archlinux
-        with:
-          scenario: ${{ matrix.scenario }}
+          ANSIBLE_FORCE_COLOR: '1' 
   release:
     if: github.ref == 'refs/heads/main'
     needs:
