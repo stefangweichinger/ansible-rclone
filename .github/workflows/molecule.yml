@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v6
   molecule:
@@ -39,15 +39,9 @@ jobs:
           - stable
         versions:
           - "1.71.0"
-          - ""
     steps:
-     # - name: Upgrade Ansible
-     #   run: |
-     #     sudo apt-get update
-     #     sudo apt-get install -y ansible
-     #     ansible --version
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v
         with:
           path: "${{ github.repository }}"
       - name: Workaround Git Security Warning
@@ -104,9 +98,9 @@ jobs:
     needs:
       - molecule
       - molecule-archlinux
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-       - name: 'Checkout git repo'
+      - name: 'Checkout git repo'
         uses: actions/checkout@v5
         with:
           submodules: true
