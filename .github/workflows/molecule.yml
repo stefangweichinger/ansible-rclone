@@ -35,14 +35,13 @@ jobs:
           - debian11
           - debian12
           - fedora39
-          - fedora40
           - ubuntu2204
           - ubuntu2404
         releases:
           - stable
           - beta
         versions:
-          - "1.67.0"
+          - "1.71.0"
           - ""
     steps:
       - name: checkout
