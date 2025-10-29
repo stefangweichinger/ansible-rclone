@@ -12,8 +12,6 @@
 [![GitHub Stars](https://img.shields.io/github/stars/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 [![GitHub Forks](https://img.shields.io/github/forks/stefangweichinger/ansible-rclone.svg)](https://github.com/stefangweichinger/ansible-rclone)
 
-
-
 AKA `ansible_rclone` and formerly `rclone`
 
 ## Description
@@ -21,6 +19,10 @@ AKA `ansible_rclone` and formerly `rclone`
 ### tl;dr
 
 An [Ansible](https://www.ansible.com/) role to install [rclone](https://github.com/ncw/rclone) directly from upstream.
+
+## maintainers wanted
+
+If anyone is interested, contact me.
 
 ## Usage
 
@@ -35,13 +37,16 @@ And feel free to rate the role on [Ansible Galaxy](https://galaxy.ansible.com/st
 
 ## Supported Platforms
 
-The build tests use the galaxy-action [molecule action](https://github.com/marketplace/actions/test-ansible-roles-with-molecule) and run on a selected set of distros:
+The role is **tested** with [Molecule](https://molecule.readthedocs.io/en/stable/) via Github actions.
+Starting with Tag [0.2.4](https://github.com/stefangweichinger/ansible-rclone/releases/tag/0.2.4) the following distros are tested:
 
 * Arch Linux
 * Debian 12,13
-* Fedora 39,40
-* Ubuntu 2204,2404
-* Ubuntu-derived distros: Linux Mint, Pop!\_OS
+* Fedora 42
+* Ubuntu 2404
+
+Other releases like Ubuntu 2204 or Ubuntu-derived distros (Linux Mint, Pop!\_OS), Fedora 39-41 should work also.
+I decided to reduce the test matrix to keep the maintenance overhead smaller.
 
 Some older and newer releases also work with this role, but I decided to remove some of them from `galaxy_info`.
 PRs welcome, but we can't test on every platform.
