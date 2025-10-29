@@ -1,3 +1,13 @@
+## 0.2.4 [2025-10-28]
+
+- rebuild of molecule testing: new actions, fixing tests for Fedora
+- reducing tests to more recent distros
+
+## 0.2.3 [2025-10-28]
+
+- fixing and improving tests
+- Avoid changed state for only removing the temporary working directory (#185)
+
 ## 0.2.2 [2025-04-07]
 
 - improve idempotency
