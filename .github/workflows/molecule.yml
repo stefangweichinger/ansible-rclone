@@ -34,7 +34,10 @@ jobs:
         scenario:
           - default
         distros:
-          - fedora41
+          - debian12
+          - debian13
+          - fedora42
+          - ubuntu2404
         releases:
           - stable
         versions:
@@ -67,10 +70,8 @@ jobs:
           - default
         releases:
           - stable
-          - beta
         versions:
           - "1.71.0"
-          - ""
     steps:
       - name: Upgrade Ansible
         run: |
