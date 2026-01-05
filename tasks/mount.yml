@@ -26,13 +26,6 @@
     name: fuse
     state: present
 
-- name: Link between /usr/bin/fusermount and /usr/bin/fusermount3
-  ansible.builtin.file:
-    src: /usr/bin/fusermount
-    dest: /usr/bin/fusermount3
-    state: link
-    force: true
-
 - name: Create and activate services rclone mount
   ansible.builtin.template:
     src: rclone-mount@.service.j2
