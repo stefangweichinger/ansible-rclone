@@ -211,6 +211,9 @@ Note: This example assumes you have created the `rclone.service` systemd unit yo
 
 ### `rclone_mounts: ""`
 
+Note: this feature depends on the fuse-package installed on your system. In earlier releases the role created a symlink etc, now we don't do that anymore.
+Check https://github.com/stefangweichinger/ansible-rclone/issues/188#issuecomment-3696975707 for details, if needed.
+
 This variable allows for the configuration of rclone mounts within your infrastructure. `rclone_mounts` should be a YAML list of objects, each including keys for `name`, `remote_name`, `remote_path`, `local_path`, `auto_mount`, and `extra_args`. Optionally, you can also pass `local_path_mode` (defaults to `0755`), `local_path_owner`, and `local_path_group` (both default to `root`).
 
 This setup enables precise control over multiple mount points, their remote sources, and whether they should be automatically mounted.
