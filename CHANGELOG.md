@@ -1,3 +1,7 @@
+## 0.2.5 [2026-01-07]
+
+- removing symlinking for fusermount (#188)
+
 ## 0.2.4 [2025-10-29]
 
 - rebuild of molecule testing: new actions, fixing tests for Fedora
