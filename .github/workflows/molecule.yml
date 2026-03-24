@@ -38,11 +38,12 @@ jobs:
           - debian12
           - debian13
           - fedora42
+          - fedora43
           - ubuntu2404
         releases:
           - stable
         versions:
-          - "1.71.0"
+          - "1.73.3"
     steps:
       - name: checkout
         uses: actions/checkout@v6
