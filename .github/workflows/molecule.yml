@@ -102,7 +102,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: 'Checkout git repo'
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           submodules: true
           fetch-depth: 0
