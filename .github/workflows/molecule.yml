@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v6
   molecule:
@@ -45,7 +45,7 @@ jobs:
           - "1.71.0"
     steps:
       - name: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           path: "${{ github.repository }}"
       - name: Workaround Git Security Warning
@@ -80,7 +80,7 @@ jobs:
           sudo apt-get install -y ansible
           ansible --version
       - name: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           path: "${{ github.repository }}"
       - name: Workaround Git Security Warning
@@ -111,3 +111,4 @@ jobs:
         uses: ansible-actions/ansible-galaxy-action@v1.2.0
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
+        if: github.ref == 'refs/heads/main'
