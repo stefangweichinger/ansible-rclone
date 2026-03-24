@@ -100,6 +100,7 @@ jobs:
       - molecule
       - molecule-archlinux
     runs-on: ubuntu-24.04
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: 'Checkout git repo'
         uses: actions/checkout@v6
@@ -111,4 +112,4 @@ jobs:
         uses: ansible-actions/ansible-galaxy-action@v1.2.0
         with:
           galaxy_api_key: ${{ secrets.galaxy_api_key }}
-        if: github.ref == 'refs/heads/main'
+        
