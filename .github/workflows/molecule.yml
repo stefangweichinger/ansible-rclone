@@ -93,7 +93,6 @@ jobs:
         env:
           ANSIBLE_FORCE_COLOR: '1'
   release:
-    if: github.ref == 'refs/heads/main'
     needs:
       - molecule
       - molecule-archlinux
