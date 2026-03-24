@@ -4,15 +4,18 @@ name: Ansible Molecule
 
 on:  # yamllint disable-line rule:truthy
   push:
-    tags:
+    branches: [main]
+    tags-ignore:
       - '**'
   pull_request:
-    branches:
-      - main
-    paths-ignore:
-      - 'README.md'
   schedule:
-    - cron: '15 8 8 * *'
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      role_name:
+        description: 'Ansible role name'
+        value: ${{ jobs.role_name.outputs.role_name }}
 
 jobs:
   lint:
