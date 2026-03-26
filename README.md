@@ -42,7 +42,7 @@ Starting with Tag [0.2.4](https://github.com/stefangweichinger/ansible-rclone/re
 
 * Arch Linux
 * Debian 12,13
-* Fedora 42
+* Fedora 42,43
 * Ubuntu 2404
 
 Other releases like Ubuntu 2204 or Ubuntu-derived distros (Linux Mint, Pop!\_OS), Fedora 39-41 should work also.
