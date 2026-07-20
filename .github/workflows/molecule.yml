@@ -49,7 +49,7 @@ jobs:
           # Workaround a bug in github actions:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Molecule
-        uses: gofrolist/molecule-action@v2
+        uses: gofrolist/molecule-action@v2.7.99
         with:
           molecule_options: --debug --base-config molecule/_shared/base.yml
           molecule_command: check
@@ -84,7 +84,7 @@ jobs:
           # Workaround a bug in github actions:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Molecule
-        uses: gofrolist/molecule-action@v2
+        uses: gofrolist/molecule-action@v2.7.99
         with:
           molecule_options: --debug --base-config molecule/_shared/base.yml
           molecule_command: check
