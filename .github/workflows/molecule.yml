@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v6
   molecule:
@@ -41,7 +41,7 @@ jobs:
           - "1.73.3"
     steps:
       - name: checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: "${{ github.repository }}"
       - name: Workaround Git Security Warning
