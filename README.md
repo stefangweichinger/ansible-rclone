@@ -38,7 +38,7 @@ And feel free to rate the role on [Ansible Galaxy](https://galaxy.ansible.com/st
 ## Supported Platforms
 
 The role is **tested** with [Molecule](https://molecule.readthedocs.io/en/stable/) via Github actions.
-Starting with Tag [0.2.4](https://github.com/stefangweichinger/ansible-rclone/releases/tag/0.2.4) the following distros are tested:
+The following distros are tested:
 
 * Arch Linux
 * Debian 12,13
