@@ -32,9 +32,10 @@ jobs:
         distros:
           - debian12
           - debian13
-          - fedora42
           - fedora43
+          - fedora44
           - ubuntu2404
+          - ubuntu2604
         releases:
           - stable
         versions:
