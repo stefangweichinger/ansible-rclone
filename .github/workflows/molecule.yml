@@ -36,11 +36,6 @@ jobs:
         versions:
           - "1.73.3"
     steps:
-      - name: DEBUG - install fuse3
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y fuse3
-          which fusermount3
       - name: checkout
         uses: actions/checkout@v7
         with:
@@ -57,9 +52,6 @@ jobs:
           molecule_args: --scenario-name ${{ matrix.scenario }}
         env:
           ANSIBLE_FORCE_COLOR: '1'
-      - name: DEBUG - is fuse3 still there
-        run: |
-          which fusermount3
 
   release:
     needs:
