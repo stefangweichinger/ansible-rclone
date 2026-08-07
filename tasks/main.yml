@@ -97,10 +97,10 @@
 - name: DEBUG - is fuse3 still there
   ansible.builtin.command: which fusermount3
   changed_when: false
-  failed_when: false
+  failed_when: fmnt_installed.rc not in [0,1]
   register: fmnt_installed
 
 - name: DEBUG - check fusermount3 installation status
   ansible.builtin.fail:
     msg: "fusermount3 seems to be missing"
-  when: fmnt_installed|failed
+  when: fmnt_installed.rc not in [0]
