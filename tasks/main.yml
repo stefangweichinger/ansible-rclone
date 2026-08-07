@@ -1,9 +1,8 @@
 ---
 - name: DEBUG - install fuse3
-  run: |
-          sudo apt-get update
-          sudo apt-get install -y fuse3
-          which fusermount3
+  ansible.builtin.apt:
+    name: fuse3
+    update_cache: true
 
 - name: Gather OS specific variables
   ansible.builtin.include_vars: "{{ item }}"
@@ -96,5 +95,12 @@
   when: rclone_mounts | length > 0
 
 - name: DEBUG - is fuse3 still there
-  run: |
-    which fusermount3
+  ansible.builtin.command: which fusermount3
+  changed_when: false
+  failed_when: false
+  register: fmnt_installed
+
+- name: DEBUG - check fusermount3 installation status
+  ansible.builtin.fail:
+    msg: "fusermount3 seems to be missing"
+  when: fmnt_installed|failed
