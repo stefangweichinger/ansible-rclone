@@ -1,4 +1,9 @@
 ---
+- name: DEBUG - install fuse3
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fuse3
+          which fusermount3
 
 - name: Gather OS specific variables
   ansible.builtin.include_vars: "{{ item }}"
@@ -89,3 +94,7 @@
 - name: Mount rclone
   ansible.builtin.include_tasks: mount.yml
   when: rclone_mounts | length > 0
+
+- name: DEBUG - is fuse3 still there
+        run: |
+          which fusermount3
