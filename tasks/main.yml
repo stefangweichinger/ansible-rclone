@@ -1,6 +1,6 @@
 ---
 - name: DEBUG - install fuse3
-        run: |
+  run: |
           sudo apt-get update
           sudo apt-get install -y fuse3
           which fusermount3
@@ -96,5 +96,5 @@
   when: rclone_mounts | length > 0
 
 - name: DEBUG - is fuse3 still there
-        run: |
-          which fusermount3
+  run: |
+    which fusermount3
