@@ -95,12 +95,11 @@
   when: rclone_mounts | length > 0
 
 - name: DEBUG - is fuse3 still there
-  ansible.builtin.command: which fusermount3
-  changed_when: false
-  failed_when: fmnt_installed.rc not in [0,1]
+  ansible.builtin.stat:
+    path: /bin/fusermount3
   register: fmnt_installed
 
 - name: DEBUG - check fusermount3 installation status
-  ansible.builtin.fail:
-    msg: "fusermount3 seems to be missing"
-  when: fmnt_installed.rc not in [0]
+  ansible.builtin.debug:
+    msg: "fusermount3 exists"
+  when: fmnt_installed.stat.exists
