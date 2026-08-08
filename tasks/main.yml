@@ -3,6 +3,8 @@
   ansible.builtin.apt:
     name: fuse3
     update_cache: true
+  when:
+    ansible_facts.os_family == 'Debian'
 
 - name: Gather OS specific variables
   ansible.builtin.include_vars: "{{ item }}"
