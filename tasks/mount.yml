@@ -23,7 +23,7 @@
 
 - name: Install fuse
   ansible.builtin.package:
-    name: fuse
+    name: fuse3
     state: present
 
 - name: Create and activate services rclone mount
