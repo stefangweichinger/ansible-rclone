@@ -246,6 +246,11 @@ rclone_mounts:
     extra_args: "--allow-other"
 ```
 
+### `rclone_fusermount_package_name: "fuse3"`
+
+If `rclone_mounts` are used, the fusermount3-binary is needed, which is provided by the package `fuse3` in recent distros.
+You can override the package name by setting the variable `rclone_fusermount_package_name`.
+
 ## Dependencies
 
 None.
