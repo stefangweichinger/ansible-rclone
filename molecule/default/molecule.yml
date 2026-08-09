@@ -43,6 +43,5 @@ provisioner:
       instance:
         rclone_release: ${TEST_RELEASE:-stable}
         rclone_version: ${TEST_VERSION:-''}
-        rclone_mounts: "enable_for_molecule"
       rclone-archlinux:
         ansible_user: ansible
