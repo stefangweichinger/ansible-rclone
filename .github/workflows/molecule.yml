@@ -30,6 +30,10 @@ jobs:
         scenario:
           - default
         distros:
+          - debian12
+          - debian13
+          - fedora42
+          - fedora43
           - ubuntu2404
         releases:
           - stable
@@ -52,10 +56,45 @@ jobs:
           molecule_args: --scenario-name ${{ matrix.scenario }}
         env:
           ANSIBLE_FORCE_COLOR: '1'
-
+  molecule-archlinux:
+    needs:
+      - lint
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario:
+          - default
+        releases:
+          - stable
+        versions:
+          - "1.71.0"
+    steps:
+      - name: Upgrade Ansible
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ansible
+          ansible --version
+      - name: checkout
+        uses: actions/checkout@v6
+        with:
+          path: "${{ github.repository }}"
+      - name: Workaround Git Security Warning
+        run: |
+          # Workaround a bug in github actions:
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Molecule
+        uses: gofrolist/molecule-action@v2.7.99
+        with:
+          molecule_options: --debug --base-config molecule/_shared/base.yml
+          molecule_command: check
+          molecule_args: --scenario-name ${{ matrix.scenario }}
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
   release:
     needs:
       - molecule
+      - molecule-archlinux
     runs-on: ubuntu-24.04
     if: startsWith(github.ref, 'refs/tags/')
     steps:
