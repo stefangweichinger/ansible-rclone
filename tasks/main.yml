@@ -1,10 +1,4 @@
 ---
-- name: DEBUG - install fuse3
-  ansible.builtin.apt:
-    name: fuse3
-    update_cache: true
-  when:
-    ansible_facts.os_family == 'Debian'
 
 - name: Gather OS specific variables
   ansible.builtin.include_vars: "{{ item }}"
@@ -96,7 +90,7 @@
   ansible.builtin.include_tasks: mount.yml
   when: rclone_mounts | length > 0
 
-- name: DEBUG - is fuse3 still there
+- name: DEBUG - is fusermount3 available
   ansible.builtin.stat:
     path: /bin/fusermount3
   register: fmnt_installed
