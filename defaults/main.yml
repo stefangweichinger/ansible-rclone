@@ -49,3 +49,5 @@ rclone_mounts: []
 # local_path_group: root
 # auto_mount: true
 # extra_args: "--allow-other"
+
+rclone_fusermount_package_name: fuse3
