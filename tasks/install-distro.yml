@@ -1,0 +1,8 @@
+---
+
+- name: Install rclone from distribution repositories
+  ansible.builtin.package:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ rclone_binary_package }}'
+  # when: rclone_packages | length > 0

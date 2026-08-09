@@ -57,3 +57,12 @@
       loop_control:
         label: "{{ item.path | basename }}"
       notify: Reload and restart rclone-mount services
+
+- name: DEBUG - is fusermount3 available
+  ansible.builtin.stat:
+    path: /bin/fusermount3
+  register: fmnt_installed
+
+- name: DEBUG - check fusermount3 installation status
+  ansible.builtin.debug:
+    msg: "fusermount3 exists"
