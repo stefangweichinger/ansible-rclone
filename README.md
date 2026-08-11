@@ -38,14 +38,14 @@ And feel free to rate the role on [Ansible Galaxy](https://galaxy.ansible.com/st
 ## Supported Platforms
 
 The role is **tested** with [Molecule](https://molecule.readthedocs.io/en/stable/) via Github actions.
-Starting with Tag [0.2.4](https://github.com/stefangweichinger/ansible-rclone/releases/tag/0.2.4) the following distros are tested:
+The following distros are tested:
 
 * Arch Linux
 * Debian 12,13
-* Fedora 42,43
-* Ubuntu 2404
+* Fedora 43,44
+* Ubuntu 2404,2604
 
-Other releases like Ubuntu 2204 or Ubuntu-derived distros (Linux Mint, Pop!\_OS), Fedora 39-41 should work also.
+Other releases like Ubuntu 2204 or Ubuntu-derived distros (Linux Mint, Pop!\_OS), Fedora 39-42 should work also.
 I decided to reduce the test matrix to keep the maintenance overhead smaller.
 
 Some older and newer releases also work with this role, but I decided to remove some of them from `galaxy_info`.
